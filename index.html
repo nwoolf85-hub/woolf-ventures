@@ -12,7 +12,14 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/jpeg" href="images/woolf-logo.jpeg" />
 <link rel="apple-touch-icon" href="images/woolf-logo.jpeg" />
-<script>document.documentElement.classList.add('js');</script>
+<script>
+  // Progressive enhancement: only enable reveal-on-scroll for real interactive browsers.
+  // Headless/automated tools (navigator.webdriver) and prefers-reduced-motion users
+  // see content immediately instead of waiting for scroll.
+  if (!navigator.webdriver && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('js');
+  }
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -1668,26 +1675,26 @@
     return false;
   }
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), i * 80);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  // Hero loads immediately
-  requestAnimationFrame(() => document.querySelector('.hero-content')?.classList.add('in'));
-  // Fallback: if user hasn't scrolled within 4 seconds (e.g. print mode, screenshot tool,
-  // broken IntersectionObserver), reveal everything anyway so content is never stuck hidden.
-  let userHasScrolled = false;
-  window.addEventListener('scroll', () => { userHasScrolled = true; }, { once: true, passive: true });
-  setTimeout(() => {
-    if (!userHasScrolled) {
+  // Only run the reveal observer if the html has the .js class
+  // (real interactive browsers — see head script).
+  if (document.documentElement.classList.contains('js')) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 200px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // Hero loads immediately
+    requestAnimationFrame(() => document.querySelector('.hero-content')?.classList.add('in'));
+    // Belt-and-suspenders fallback: after 2 seconds, reveal anything still hidden
+    // regardless of scroll. Real users get the animation; edge cases see content.
+    setTimeout(() => {
       document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
-    }
-  }, 4000);
+    }, 2000);
+  }
 </script>
 </body>
 </html>

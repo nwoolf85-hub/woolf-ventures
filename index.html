@@ -162,15 +162,15 @@
   .hero-watermark {
     position: absolute;
     top: 50%;
-    right: -8%;
+    left: 52%;
     transform: translateY(-50%);
-    font-size: 52rem;
+    font-size: clamp(22rem, 62vw, 64rem);
     font-weight: 800;
-    line-height: 0.8;
+    line-height: 0.78;
     z-index: 1;
     pointer-events: none;
     user-select: none;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.06em;
     font-family: 'Inter', sans-serif;
     /* Glass treatment: gradient fill + edge stroke + halo glow */
     background: linear-gradient(135deg,
@@ -576,7 +576,7 @@
     .grid { grid-template-columns: 1fr; }
     .consulting-grid { grid-template-columns: 1fr; gap: 48px; }
     .scroll-cue { left: 24px; bottom: 28px; }
-    .hero-watermark { font-size: 28rem; right: -12%; }
+    .hero-watermark { left: 48%; }
     .chapter { right: 24px; top: 24px; font-size: 0.75rem; }
     .chapter::before { width: 20px; }
     .marquee-track span { font-size: 1.125rem; }

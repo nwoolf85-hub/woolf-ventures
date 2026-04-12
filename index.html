@@ -154,6 +154,7 @@
     border-right: 1px solid rgba(201,163,91,0.22);
     overflow: hidden;
     min-height: 100vh;
+    container-type: inline-size;
   }
   .hero-text::after {
     /* subtle vertical light leak along the gold rule, slowly breathing */
@@ -182,7 +183,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: clamp(13rem, 26vw, 22rem);
+    font-size: clamp(10rem, 42cqw, 20rem);
     font-weight: 800;
     line-height: 0.78;
     z-index: 0;
@@ -193,17 +194,17 @@
     white-space: nowrap;
     /* Glass treatment: gradient fill + edge stroke + halo glow */
     background: linear-gradient(135deg,
-      rgba(255,255,255,0.16) 0%,
-      rgba(201,163,91,0.18) 30%,
-      rgba(255,255,255,0.06) 55%,
-      rgba(201,163,91,0.20) 80%,
-      rgba(255,255,255,0.10) 100%);
+      rgba(255,255,255,0.22) 0%,
+      rgba(201,163,91,0.30) 30%,
+      rgba(255,255,255,0.12) 55%,
+      rgba(201,163,91,0.34) 80%,
+      rgba(255,255,255,0.18) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 2px rgba(255,255,255,0.10);
-    filter: drop-shadow(0 0 80px rgba(201,163,91,0.14)) drop-shadow(0 0 200px rgba(201,163,91,0.06));
+    -webkit-text-stroke: 2px rgba(201,163,91,0.18);
+    filter: drop-shadow(0 0 80px rgba(201,163,91,0.20)) drop-shadow(0 0 200px rgba(201,163,91,0.10));
     animation: wglow 8s ease-in-out infinite alternate;
   }
   @keyframes wglow {

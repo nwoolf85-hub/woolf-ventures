@@ -512,6 +512,103 @@
     transform: translateY(0);
   }
 
+  /* ---------- OPERATORS ---------- */
+  section.operators {
+    position: relative;
+    padding: 140px 80px;
+    border-top: 1px solid var(--line);
+    background:
+      radial-gradient(ellipse at 85% 40%, rgba(201,163,91,0.05), rgba(9,9,11,0) 65%),
+      var(--bg);
+  }
+  .operators-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 56px;
+  }
+  .operator-card {
+    background: var(--bg);
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    transition: background 0.4s ease;
+  }
+  .operator-card:hover {
+    background:
+      radial-gradient(ellipse at top right, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0) 60%),
+      var(--card);
+    box-shadow: inset 0 0 0 1px rgba(201,163,91,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .operator-monogram {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,163,91,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 2rem;
+    color: var(--accent);
+    background:
+      radial-gradient(circle at 30% 30%, rgba(201,163,91,0.14), rgba(9,9,11,0) 70%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 40px rgba(201,163,91,0.06);
+    margin-bottom: 6px;
+  }
+  .operator-role {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .operator-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--fg);
+    letter-spacing: -0.01em;
+    margin-top: -4px;
+  }
+  .operator-bio {
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 4px;
+    max-width: 420px;
+  }
+  .operator-links {
+    display: flex;
+    gap: 28px;
+    margin-top: 14px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .operator-link {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: gap 0.3s ease, color 0.3s ease;
+  }
+  .operator-link:hover { gap: 16px; color: #e8c886; }
+
   /* ---------- CONSULTING STRIP ---------- */
   section.consulting {
     position: relative;
@@ -643,6 +740,10 @@
     .hero-bg {
       background-position: 60% center;
     }
+    section.operators { padding-left: 24px; padding-right: 24px; }
+    .operators-grid { grid-template-columns: 1fr; }
+    .operator-card { padding: 40px 28px; }
+    .operator-name { font-size: 2rem; }
   }
 </style>
 </head>
@@ -765,8 +866,50 @@
   </div>
 </section>
 
+<section class="operators" id="operators">
+  <div class="chapter">III. &nbsp; The Operators</div>
+  <div class="section-head reveal">
+    <div>
+      <div class="section-label">Two Brothers</div>
+      <h2>One Playbook.<br/>Two Brains.</h2>
+    </div>
+    <p class="section-blurb">
+      Woolf Ventures is run by brothers — one in the field, one in the systems.
+      The portfolio works because the lanes don't overlap.
+    </p>
+  </div>
+  <div class="operators-grid reveal">
+    <div class="operator-card">
+      <div class="operator-monogram">N</div>
+      <div class="operator-role">Founder &amp; CEO · Austin, Texas</div>
+      <div class="operator-name">Neal Woolf</div>
+      <p class="operator-bio">
+        B2B sales operator. Built Tasty Trends from a truck cab into a multi-supplier
+        distribution platform serving convenience retailers across Texas. Lives where
+        the orders get written.
+      </p>
+      <div class="operator-links">
+        <a class="operator-link" href="https://tasty-trends-production.up.railway.app" target="_blank" rel="noopener">Tasty Trends →</a>
+      </div>
+    </div>
+    <div class="operator-card">
+      <div class="operator-monogram">S</div>
+      <div class="operator-role">Co-Founder &amp; CSO · Founder of Cascade</div>
+      <div class="operator-name">Steven Woolf</div>
+      <p class="operator-bio">
+        Specification infrastructure for AI-native teams. Advises operators, attorneys,
+        and technical leaders on turning ambiguity into shipped outcomes. The systems
+        brain behind the playbook.
+      </p>
+      <div class="operator-links">
+        <a class="operator-link" href="https://cascadehq.io" target="_blank" rel="noopener">Visit Cascade →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="consulting" id="consulting">
-  <div class="chapter">III. &nbsp; The Practice</div>
+  <div class="chapter">IV. &nbsp; The Practice</div>
   <div class="consulting-grid reveal">
     <div>
       <div class="section-label">Woolf Consulting</div>
@@ -788,7 +931,7 @@
       <div class="service">
         <div class="tag">Practice 01</div>
         <h4>AI &amp; Systems Advisory</h4>
-        <p>Specification infrastructure, agent design, memory systems, and the art of getting an LLM to actually do the work. Led by Steven Woolf.</p>
+        <p>Specification infrastructure, agent design, memory systems, and the art of getting an LLM to actually do the work. Led by Steven Woolf, founder of <a href="https://cascadehq.io" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(201,163,91,0.4);">Cascade</a>.</p>
       </div>
       <div class="service">
         <div class="tag">Practice 02</div>

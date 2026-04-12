@@ -12,7 +12,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/jpeg" href="images/woolf-logo.jpeg" />
 <link rel="apple-touch-icon" href="images/woolf-logo.jpeg" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #09090b;
@@ -32,6 +32,51 @@
     overflow-x: hidden;
   }
   a { color: inherit; text-decoration: none; }
+
+  /* ---------- FILM GRAIN OVERLAY (sitewide) ---------- */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grainShift 0.6s steps(4) infinite;
+  }
+  @keyframes grainShift {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-2%, 1%); }
+    50%  { transform: translate(1%, -2%); }
+    75%  { transform: translate(-1%, 2%); }
+    100% { transform: translate(2%, -1%); }
+  }
+
+  /* ---------- CHAPTER MARKERS (Roman numerals) ---------- */
+  .chapter {
+    position: absolute;
+    top: 32px;
+    right: 80px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.875rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .chapter::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+  }
 
   /* ---------- NAV ---------- */
   nav {
@@ -87,6 +132,18 @@
     padding: 0 80px;
     overflow: hidden;
   }
+  /* Cinematic letterbox bars */
+  .letterbox {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 36px;
+    background: #000;
+    z-index: 4;
+    pointer-events: none;
+  }
+  .letterbox.top { top: 72px; border-bottom: 1px solid rgba(201,163,91,0.45); }
+  .letterbox.bot { bottom: 0; border-top: 1px solid rgba(201,163,91,0.45); }
   .hero-bg {
     position: absolute;
     inset: -5%;
@@ -172,7 +229,18 @@
     text-transform: uppercase;
     margin-bottom: 28px;
   }
-  h1 .light { font-weight: 300; opacity: 0.6; display: block; font-size: 0.55em; letter-spacing: 0.14em; margin-top: 16px; }
+  h1 .serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: -0.005em;
+    font-size: 1.1em;
+    color: rgba(255,255,255,0.94);
+    display: inline-block;
+    padding-right: 0.1em;
+  }
+  h1 .light { font-weight: 300; opacity: 0.6; display: block; font-size: 0.55em; letter-spacing: 0.14em; margin-top: 16px; text-transform: none; font-family: 'Inter', sans-serif; }
   .subtitle {
     font-size: clamp(1rem, 1.4vw, 1.25rem);
     font-weight: 300;
@@ -224,6 +292,43 @@
   }
   .btn .arrow { display: inline-block; transition: transform 0.3s ease; }
   .btn:hover .arrow { transform: translateX(6px); }
+
+  /* ---------- MARQUEE TICKER ---------- */
+  .marquee {
+    position: relative;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(90deg, rgba(201,163,91,0.04), rgba(9,9,11,0) 50%, rgba(201,163,91,0.04));
+    overflow: hidden;
+    padding: 28px 0;
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 60s linear infinite;
+    gap: 56px;
+    align-items: center;
+  }
+  .marquee-track span {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.55);
+    white-space: nowrap;
+  }
+  .marquee-track .sep {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 
   /* ---------- VENTURES ---------- */
   section.ventures {
@@ -472,6 +577,10 @@
     .consulting-grid { grid-template-columns: 1fr; gap: 48px; }
     .scroll-cue { left: 24px; bottom: 28px; }
     .hero-watermark { font-size: 28rem; right: -12%; }
+    .chapter { right: 24px; top: 24px; font-size: 0.75rem; }
+    .chapter::before { width: 20px; }
+    .marquee-track span { font-size: 1.125rem; }
+    .letterbox { height: 24px; }
   }
 </style>
 </head>
@@ -487,11 +596,14 @@
 
 <section class="hero">
   <div class="hero-bg"></div>
+  <div class="letterbox top"></div>
+  <div class="letterbox bot"></div>
   <div class="hero-watermark" aria-hidden="true">W</div>
+  <div class="chapter">I. &nbsp; Prologue</div>
   <div class="hero-content reveal">
     <div class="eyebrow">Est. Austin, Texas · 2025</div>
     <h1>
-      An Empire<br/>Of Ventures.
+      <span class="serif">An Empire</span><br/>Of Ventures.
       <span class="light">Sales · Technology · Story · Sound</span>
     </h1>
     <p class="subtitle">
@@ -506,7 +618,25 @@
   <div class="scroll-cue">Scroll</div>
 </section>
 
+<section class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Tasty Trends</span><span class="sep">✦</span>
+    <span>Woolf Consulting</span><span class="sep">✦</span>
+    <span>Drip Austin</span><span class="sep">✦</span>
+    <span>Conquest of Empire</span><span class="sep">✦</span>
+    <span>Music &amp; Voice</span><span class="sep">✦</span>
+    <span>Patents &amp; IP</span><span class="sep">✦</span>
+    <span>Tasty Trends</span><span class="sep">✦</span>
+    <span>Woolf Consulting</span><span class="sep">✦</span>
+    <span>Drip Austin</span><span class="sep">✦</span>
+    <span>Conquest of Empire</span><span class="sep">✦</span>
+    <span>Music &amp; Voice</span><span class="sep">✦</span>
+    <span>Patents &amp; IP</span><span class="sep">✦</span>
+  </div>
+</section>
+
 <section class="ventures" id="ventures">
+  <div class="chapter">II. &nbsp; The Portfolio</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">The Portfolio</div>
@@ -570,6 +700,7 @@
 </section>
 
 <section class="consulting" id="consulting">
+  <div class="chapter">III. &nbsp; The Practice</div>
   <div class="consulting-grid reveal">
     <div>
       <div class="section-label">Woolf Consulting</div>

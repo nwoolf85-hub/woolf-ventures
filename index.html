@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Woolf Group — An Empire of Ventures</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090b;
+    --fg: #ffffff;
+    --muted: rgba(255,255,255,0.7);
+    --line: rgba(255,255,255,0.12);
+    --line-strong: rgba(255,255,255,0.35);
+    --accent: #c9a35b; /* Woolf gold — sibling to Cascade's green, distinctly ours */
+    --card: rgba(255,255,255,0.04);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    z-index: 100;
+    background: rgba(9,9,11,0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .brand img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .nav-cta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .nav-cta:hover {
+    border-color: var(--fg);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('images/hero-desert.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.35) contrast(1.1) saturate(0.7);
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(9,9,11,0.85) 0%, rgba(9,9,11,0.55) 50%, rgba(9,9,11,0.9) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  h1 .light { font-weight: 300; opacity: 0.6; display: block; font-size: 0.55em; letter-spacing: 0.14em; margin-top: 16px; }
+  .subtitle {
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 620px;
+    margin-bottom: 48px;
+  }
+  .cta-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 36px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(255,255,255,0.15); }
+  .btn-ghost:hover { border-color: var(--fg); background: rgba(255,255,255,0.06); }
+  .btn .arrow { display: inline-block; transition: transform 0.3s ease; }
+  .btn:hover .arrow { transform: translateX(6px); }
+
+  /* ---------- VENTURES ---------- */
+  section.ventures {
+    position: relative;
+    padding: 140px 80px;
+    border-top: 1px solid var(--line);
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-top: 12px;
+  }
+  .section-blurb {
+    max-width: 420px;
+    font-size: 0.9375rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .card {
+    background: var(--bg);
+    padding: 48px 40px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover { background: var(--card); }
+  .card .num {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 32px;
+  }
+  .card h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .card p {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .card .meta {
+    margin-top: 28px;
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ---------- CONSULTING STRIP ---------- */
+  section.consulting {
+    position: relative;
+    padding: 140px 80px;
+    border-top: 1px solid var(--line);
+    background:
+      linear-gradient(135deg, rgba(201,163,91,0.04), rgba(9,9,11,0) 60%),
+      var(--bg);
+  }
+  .consulting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .consulting h2 { margin-bottom: 28px; }
+  .consulting p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 520px;
+  }
+  .rate {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .rate strong {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--fg);
+    letter-spacing: 0.02em;
+    margin-top: 6px;
+  }
+  .service-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .service {
+    background: var(--bg);
+    padding: 36px 40px;
+  }
+  .service .tag {
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .service h4 {
+    font-size: 1.125rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .service p { font-size: 0.875rem; margin: 0; max-width: none; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: 60px 80px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  footer .brand img { width: 28px; height: 28px; }
+  .footer-meta {
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    nav, .hero, section.ventures, section.consulting, footer { padding-left: 24px; padding-right: 24px; }
+    .grid { grid-template-columns: 1fr; }
+    .consulting-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="brand">
+    <img src="images/woolf-logo.jpeg" alt="Woolf Group" />
+    <span>Woolf Group</span>
+  </a>
+  <a href="#consulting" class="nav-cta">Work With Us</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Woolf Ventures LLC · Est. Austin, TX</div>
+    <h1>
+      An Empire<br/>Of Ventures.
+      <span class="light">Sales · Technology · Story · Sound</span>
+    </h1>
+    <p class="subtitle">
+      A holding company for the work of Neal &amp; Steven Woolf — building B2B sales platforms,
+      AI infrastructure, original screenplays, music, and consumer brands from one operating playbook.
+    </p>
+    <div class="cta-row">
+      <a href="#ventures" class="btn btn-primary">Explore The Group <span class="arrow">→</span></a>
+      <a href="#consulting" class="btn btn-ghost">Woolf Consulting <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="ventures" id="ventures">
+  <div class="section-head">
+    <div>
+      <div class="section-label">The Portfolio</div>
+      <h2>Ventures</h2>
+    </div>
+    <p class="section-blurb">
+      Each venture stands alone but shares the same operating brain — a memory system, a recap discipline,
+      and a refusal to ship anything that isn't useful on day one.
+    </p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div>
+        <div class="num">01</div>
+        <h3>Tasty Trends</h3>
+        <p>B2B sales &amp; distribution platform serving Texas convenience retailers. 500+ SKUs, multi-supplier fulfillment, role-aware pricing.</p>
+      </div>
+      <div class="meta">Operating · Production</div>
+    </div>
+    <div class="card">
+      <div>
+        <div class="num">02</div>
+        <h3>Woolf Consulting</h3>
+        <p>AI &amp; systems advisory and B2B sales strategy for operators who need to move from intent to verified outcome.</p>
+      </div>
+      <div class="meta">Booking · 2026</div>
+    </div>
+    <div class="card">
+      <div>
+        <div class="num">03</div>
+        <h3>Drip Austin</h3>
+        <p>Premium pizza dipping sauces. EVOO and ghee base, no seed oils. Eight SKUs in development. Drip. Drizzle. Dip.</p>
+      </div>
+      <div class="meta">In Development</div>
+    </div>
+    <div class="card">
+      <div>
+        <div class="num">04</div>
+        <h3>Conquest of Empire</h3>
+        <p>HBO-style limited series. The Spanish conquest of the Aztecs. Three of eight episodes drafted.</p>
+      </div>
+      <div class="meta">Screenplay</div>
+    </div>
+    <div class="card">
+      <div>
+        <div class="num">05</div>
+        <h3>Music &amp; Voice</h3>
+        <p>Original songwriting and voice work. ATX Karaoke nights, narration projects, custom voice models.</p>
+      </div>
+      <div class="meta">Active</div>
+    </div>
+    <div class="card">
+      <div>
+        <div class="num">06</div>
+        <h3>Patents &amp; IP</h3>
+        <p>Provisional filings and original concepts in distribution, retail tech, and consumer goods.</p>
+      </div>
+      <div class="meta">Filing</div>
+    </div>
+  </div>
+</section>
+
+<section class="consulting" id="consulting">
+  <div class="consulting-grid">
+    <div>
+      <div class="section-label">Woolf Consulting</div>
+      <h2>Sessions That<br/>Pay For Themselves.</h2>
+      <p>
+        Two operators. One playbook. We help founders, attorneys, and operators turn ambiguous,
+        high-stakes problems into specifications you can actually ship — whether the bottleneck
+        is AI strategy, a stalled product launch, or a sales motion that stopped working.
+      </p>
+      <p>
+        Booked by referral. Run by Zoom or in-person in Austin. No retainer minimums on the first call.
+      </p>
+      <div class="rate">
+        Starting At
+        <strong>$500 / hour</strong>
+      </div>
+    </div>
+    <div class="service-stack">
+      <div class="service">
+        <div class="tag">Practice 01</div>
+        <h4>AI &amp; Systems Advisory</h4>
+        <p>Specification infrastructure, agent design, memory systems, and the art of getting an LLM to actually do the work. Led by Steven Woolf.</p>
+      </div>
+      <div class="service">
+        <div class="tag">Practice 02</div>
+        <h4>B2B Sales &amp; Distribution Strategy</h4>
+        <p>Field-tested playbooks for CPG, retail, and convenience-store distribution. Built from the truck cab, not the conference room. Led by Neal Woolf.</p>
+      </div>
+      <div class="service">
+        <div class="tag">Practice 03</div>
+        <h4>Operator-In-Residence</h4>
+        <p>For founders who need someone to actually pick up the phone, write the deck, and run the demo. Pilot engagements only.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">
+    <img src="images/woolf-logo.jpeg" alt="Woolf Group" />
+    <span>Woolf Group · Woolf Ventures LLC</span>
+  </div>
+  <div class="footer-meta">© 2026 Austin, Texas · All Rights Reserved</div>
+</footer>
+
+</body>
+</html>

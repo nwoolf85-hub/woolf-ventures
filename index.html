@@ -672,23 +672,52 @@
     margin-bottom: 20px;
     max-width: 520px;
   }
-  .rate {
+  .rate-stack {
     margin-top: 36px;
     padding-top: 28px;
     border-top: 1px solid var(--line);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
+    display: flex;
+    align-items: stretch;
+    gap: 32px;
+  }
+  .rate-tier {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+  .rate-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--accent);
   }
-  .rate strong {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 800;
+  .rate-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 2.75rem;
+    line-height: 0.9;
     color: var(--fg);
-    letter-spacing: 0.02em;
-    margin-top: 6px;
+    letter-spacing: -0.02em;
+  }
+  .rate-value.rate-free {
+    color: var(--accent);
+  }
+  .rate-value .rate-unit {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-left: 4px;
+  }
+  .rate-divider {
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, rgba(201,163,91,0.4) 50%, transparent 100%);
   }
   .service-stack {
     display: flex;
@@ -952,19 +981,28 @@
   <div class="consulting-grid reveal">
     <div>
       <div class="section-label">Woolf Consulting</div>
-      <h2>Sessions That<br/>Pay For Themselves.</h2>
+      <h2>30 Minutes Free.<br/>Decide From There.</h2>
       <p>
         Two operators. One playbook. We help founders, attorneys, and operators turn ambiguous,
         high-stakes problems into specifications you can actually ship — whether the bottleneck
         is AI strategy, a stalled product launch, or a sales motion that stopped working.
       </p>
       <p>
-        Booked by referral. Run by Zoom or in-person in Austin. No retainer minimums on the first call.
+        The free intro isn't a sales pitch. We pull a real problem from your world and solve a piece
+        of it live, in front of you. If we don't show you one connection you hadn't made, you owe us nothing.
       </p>
-      <div class="rate">
-        Starting At
-        <strong>$500 / hour</strong>
+      <div class="rate-stack">
+        <div class="rate-tier">
+          <div class="rate-label">First 30 Minutes</div>
+          <div class="rate-value rate-free">Free.</div>
+        </div>
+        <div class="rate-divider"></div>
+        <div class="rate-tier">
+          <div class="rate-label">Then</div>
+          <div class="rate-value">$299<span class="rate-unit"> / hr</span></div>
+        </div>
       </div>
+      <a href="mailto:neal@woolfventures.co?subject=Woolf%20Consulting%20-%20Free%2030%20Minutes" class="btn btn-primary" style="margin-top:32px;">Book Your Free 30 Minutes <span class="arrow">→</span></a>
     </div>
     <div class="service-stack">
       <div class="service">

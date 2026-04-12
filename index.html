@@ -901,6 +901,102 @@
   }
   .service p { font-size: 0.875rem; margin: 0; max-width: none; }
 
+  /* ---------- METHOD (How We Work) ---------- */
+  section.method {
+    position: relative;
+    padding: 140px 80px;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+    overflow: hidden;
+  }
+  section.method::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(ellipse at 20% 60%, rgba(201,163,91,0.05), rgba(9,9,11,0) 65%);
+    animation: lightDrift3 26s ease-in-out infinite alternate;
+    z-index: 0;
+    pointer-events: none;
+  }
+  section.method > * { position: relative; z-index: 1; }
+  @keyframes lightDrift3 {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(4%, -4%) scale(1.09); }
+  }
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 56px;
+  }
+  .method-card {
+    background: var(--bg);
+    padding: 56px 56px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    transition: background 0.4s ease;
+    min-height: 320px;
+  }
+  .method-card:hover {
+    background:
+      radial-gradient(ellipse at top right, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0) 60%),
+      var(--card);
+    box-shadow: inset 0 0 0 1px rgba(201,163,91,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .method-num {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .method-word {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 3.25rem;
+    line-height: 0.95;
+    color: var(--fg);
+    letter-spacing: -0.02em;
+    margin-top: -6px;
+  }
+  .method-tagline {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
+    margin-top: -2px;
+  }
+  .method-body {
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--muted);
+    margin-top: 8px;
+    max-width: 460px;
+  }
+  .method-practice {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  .method-practice strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
   /* ---------- FOOTER ---------- */
   footer {
     padding: 60px 80px;
@@ -928,6 +1024,10 @@
     .packages { margin-top: 64px; padding-top: 48px; }
     .packages-head h3 { font-size: 1.75rem; }
     .package { padding: 36px 28px; }
+    section.method { padding-left: 24px; padding-right: 24px; padding-top: 80px; padding-bottom: 80px; }
+    .method-grid { grid-template-columns: 1fr; }
+    .method-card { padding: 40px 28px 48px; min-height: auto; }
+    .method-word { font-size: 2.5rem; }
     .scroll-cue { left: 24px; bottom: 24px; }
     .chapter { right: 24px; top: 24px; font-size: 0.75rem; }
     .chapter::before { width: 20px; }
@@ -1237,6 +1337,69 @@
         <h4>Operator-In-Residence</h4>
         <p>For founders who need someone to actually pick up the phone, write the deck, and run the demo. Pilot engagements only.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="method" id="method">
+  <div class="chapter">V. &nbsp; The Method</div>
+  <div class="section-head reveal">
+    <div>
+      <div class="section-label">How We Work</div>
+      <h2>The Brain Behind<br/>The Brand.</h2>
+    </div>
+    <p class="section-blurb">
+      Six ventures, one operating system. The reason we can run a B2B distribution platform,
+      a screenplay, a CPG launch, and an AI advisory practice from the same desk isn't talent —
+      it's the playbook that compounds across all of them.
+    </p>
+  </div>
+  <div class="method-grid reveal">
+    <div class="method-card">
+      <div class="method-num">01</div>
+      <div class="method-word">Memory.</div>
+      <div class="method-tagline">We Don't Take Notes. We Build Memory.</div>
+      <p class="method-body">
+        Every constraint, decision, customer quirk, and supplier pattern lives in a persistent
+        memory system that survives across sessions, projects, and years. Nothing gets re-explained.
+        Nothing gets forgotten. The work picks up exactly where it left off.
+      </p>
+      <div class="method-practice">In Practice · <strong>45+ memory files, 500+ persisted facts</strong></div>
+    </div>
+    <div class="method-card">
+      <div class="method-num">02</div>
+      <div class="method-word">Recap.</div>
+      <div class="method-tagline">Every Session Ends With A Paper Trail.</div>
+      <p class="method-body">
+        Every working session — strategy, build, advisory, sales call — ends with a written recap.
+        Decisions captured, open questions logged, next moves named. It's how we make late-night
+        work survive into the next morning, and how nothing important slips through the cracks.
+      </p>
+      <div class="method-practice">In Practice · <strong>Daily recap PDFs, weekly + monthly reports</strong></div>
+    </div>
+    <div class="method-card">
+      <div class="method-num">03</div>
+      <div class="method-word">Pattern.</div>
+      <div class="method-tagline">What Works Once Becomes A Tool.</div>
+      <p class="method-body">
+        Templates rot. Patterns compound. When something works in one venture — a pricing structure,
+        a sales motion, a content format, a UI flourish — it becomes a transplantable pattern that
+        gets adapted into the next venture. The portfolio isn't six businesses. It's six expressions
+        of one method.
+      </p>
+      <div class="method-practice">In Practice · <strong>Tasty Trends → Drip → Karaoke ATX → Woolf Consulting</strong></div>
+    </div>
+    <div class="method-card">
+      <div class="method-num">04</div>
+      <div class="method-word">Compound.</div>
+      <div class="method-tagline">Six Ventures. One Brain. Infinite Leverage.</div>
+      <p class="method-body">
+        Most consultants sell hours. We sell what those hours add up to over years — a single
+        operating intelligence that has seen every problem in every venture and remembers what
+        worked. The longer the engagement, the more compounding leverage you get from a brain
+        that's already loaded with context.
+      </p>
+      <div class="method-practice">In Practice · <strong>This is the moat. There is no second place.</strong></div>
     </div>
   </div>
 </section>

@@ -66,7 +66,7 @@
   /* ---------- CHAPTER MARKERS (Roman numerals) ---------- */
   .chapter {
     position: absolute;
-    top: 32px;
+    top: 96px;        /* below the 72px fixed nav + 24px breathing */
     right: 80px;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -548,7 +548,7 @@
     z-index: 0;
     pointer-events: none;
   }
-  section.operators > * { position: relative; z-index: 1; }
+  section.operators > *:not(.chapter) { position: relative; z-index: 1; }
   @keyframes lightDrift1 {
     0%   { transform: translate(0, 0) scale(1); }
     100% { transform: translate(-6%, 4%) scale(1.08); }
@@ -666,7 +666,7 @@
     z-index: 0;
     pointer-events: none;
   }
-  section.consulting > * { position: relative; z-index: 1; }
+  section.consulting > *:not(.chapter) { position: relative; z-index: 1; }
   @keyframes lightDrift2 {
     0%   { transform: translate(0, 0) scale(1); }
     100% { transform: translate(5%, -3%) scale(1.10); }
@@ -932,7 +932,7 @@
     z-index: 0;
     pointer-events: none;
   }
-  section.method > * { position: relative; z-index: 1; }
+  section.method > *:not(.chapter) { position: relative; z-index: 1; }
   @keyframes lightDrift3 {
     0%   { transform: translate(0, 0) scale(1); }
     100% { transform: translate(4%, -4%) scale(1.09); }
@@ -1028,7 +1028,7 @@
     z-index: 0;
     pointer-events: none;
   }
-  section.book > * { position: relative; z-index: 1; }
+  section.book > *:not(.chapter) { position: relative; z-index: 1; }
   @keyframes lightDrift4 {
     0%   { transform: translate(0, 0) scale(1); }
     100% { transform: translate(-3%, 5%) scale(1.07); }
@@ -1265,7 +1265,7 @@
       <div class="eyebrow">Est. Austin, Texas · 2025</div>
       <h1>
         <span class="serif">An Empire</span><br/>Of Ventures.
-        <span class="light">Sales · Technology · Story · Sound</span>
+        <span class="light">Sales&nbsp;·&nbsp;Technology&nbsp;·&nbsp;Story&nbsp;·&nbsp;Sound</span>
       </h1>
       <p class="subtitle">
         The operating company of Neal &amp; Steven Woolf — building B2B sales platforms,
@@ -1438,6 +1438,24 @@
       <a href="#book" class="btn btn-primary" style="margin-top:32px;">Book Your Free 30 Minutes <span class="arrow">→</span></a>
     </div>
 
+    <div class="service-stack">
+      <div class="service">
+        <div class="tag">Practice 01</div>
+        <h4>AI &amp; Systems Advisory</h4>
+        <p>Specification infrastructure, agent design, memory systems, and the art of getting an LLM to actually do the work. Led by Steven Woolf, founder of <a href="https://cascadehq.io" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(201,163,91,0.4);">Cascade</a>.</p>
+      </div>
+      <div class="service">
+        <div class="tag">Practice 02</div>
+        <h4>B2B Sales &amp; Distribution Strategy</h4>
+        <p>Field-tested playbooks for CPG, retail, and convenience-store distribution. Built from the truck cab, not the conference room. Led by Neal Woolf.</p>
+      </div>
+      <div class="service">
+        <div class="tag">Practice 03</div>
+        <h4>Operator-In-Residence</h4>
+        <p>For founders who need someone to actually pick up the phone, write the deck, and run the demo. Pilot engagements only.</p>
+      </div>
+    </div>
+
     <div class="packages">
       <div class="packages-head reveal">
         <div>
@@ -1492,23 +1510,6 @@
           </p>
           <a class="package-cta" href="#book">Start with your free 30 →</a>
         </div>
-      </div>
-    </div>
-    <div class="service-stack">
-      <div class="service">
-        <div class="tag">Practice 01</div>
-        <h4>AI &amp; Systems Advisory</h4>
-        <p>Specification infrastructure, agent design, memory systems, and the art of getting an LLM to actually do the work. Led by Steven Woolf, founder of <a href="https://cascadehq.io" target="_blank" rel="noopener" style="color:var(--accent);border-bottom:1px solid rgba(201,163,91,0.4);">Cascade</a>.</p>
-      </div>
-      <div class="service">
-        <div class="tag">Practice 02</div>
-        <h4>B2B Sales &amp; Distribution Strategy</h4>
-        <p>Field-tested playbooks for CPG, retail, and convenience-store distribution. Built from the truck cab, not the conference room. Led by Neal Woolf.</p>
-      </div>
-      <div class="service">
-        <div class="tag">Practice 03</div>
-        <h4>Operator-In-Residence</h4>
-        <p>For founders who need someone to actually pick up the phone, write the deck, and run the demo. Pilot engagements only.</p>
       </div>
     </div>
   </div>
@@ -1613,11 +1614,11 @@
       <div class="form-row split">
         <div>
           <label for="bookName">Your Name</label>
-          <input type="text" id="bookName" name="name" required placeholder="Jane Smith" />
+          <input type="text" id="bookName" name="name" required autocomplete="name" placeholder="Jane Smith" />
         </div>
         <div>
           <label for="bookEmail">Email</label>
-          <input type="email" id="bookEmail" name="email" required placeholder="jane@company.com" />
+          <input type="email" id="bookEmail" name="email" required autocomplete="email" placeholder="jane@company.com" />
         </div>
       </div>
       <div class="form-row">

@@ -12,6 +12,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/jpeg" href="images/woolf-logo.jpeg" />
 <link rel="apple-touch-icon" href="images/woolf-logo.jpeg" />
+<script>document.documentElement.classList.add('js');</script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -506,13 +507,19 @@
     50%      { transform: scaleX(1);   transform-origin: left; opacity: 1; }
   }
 
-  /* ---------- REVEAL ON SCROLL ---------- */
+  /* ---------- REVEAL ON SCROLL (progressive enhancement) ---------- */
+  /* Default: visible. So no-JS, print, screenshot tools, and slow loads all work. */
   .reveal {
-    opacity: 0;
-    transform: translateY(28px);
+    opacity: 1;
+    transform: none;
     transition: opacity 0.9s ease, transform 0.9s ease;
   }
-  .reveal.in {
+  /* Only hide when JS is enabled — JS will then reveal on scroll. */
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  html.js .reveal.in {
     opacity: 1;
     transform: translateY(0);
   }
@@ -1672,6 +1679,15 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   // Hero loads immediately
   requestAnimationFrame(() => document.querySelector('.hero-content')?.classList.add('in'));
+  // Fallback: if user hasn't scrolled within 4 seconds (e.g. print mode, screenshot tool,
+  // broken IntersectionObserver), reveal everything anyway so content is never stuck hidden.
+  let userHasScrolled = false;
+  window.addEventListener('scroll', () => { userHasScrolled = true; }, { once: true, passive: true });
+  setTimeout(() => {
+    if (!userHasScrolled) {
+      document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+    }
+  }, 4000);
 </script>
 </body>
 </html>

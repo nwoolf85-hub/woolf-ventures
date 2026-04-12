@@ -4,6 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Woolf Group — An Empire of Ventures</title>
+<meta name="description" content="A holding company for the work of Neal & Steven Woolf — B2B sales platforms, AI infrastructure, original screenplays, music, and consumer brands from one operating playbook." />
+<meta property="og:title" content="Woolf Group — An Empire of Ventures" />
+<meta property="og:description" content="Sales · Technology · Story · Sound. The work of Neal & Steven Woolf, from Austin, Texas." />
+<meta property="og:image" content="images/woolf-logo.jpeg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/jpeg" href="images/woolf-logo.jpeg" />
+<link rel="apple-touch-icon" href="images/woolf-logo.jpeg" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -81,12 +89,33 @@
   }
   .hero-bg {
     position: absolute;
-    inset: 0;
+    inset: -5%;
     background-image: url('images/hero-desert.jpg');
     background-size: cover;
     background-position: center;
     filter: brightness(0.35) contrast(1.1) saturate(0.7);
     z-index: 0;
+    animation: kenburns 30s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  @keyframes kenburns {
+    0%   { transform: scale(1.0) translate(0, 0); }
+    100% { transform: scale(1.12) translate(-1.5%, 1%); }
+  }
+  .hero-watermark {
+    position: absolute;
+    top: 50%;
+    right: -8%;
+    transform: translateY(-50%);
+    font-size: 52rem;
+    font-weight: 800;
+    line-height: 0.8;
+    color: rgba(255,255,255,0.025);
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.05em;
+    font-family: 'Inter', sans-serif;
   }
   .hero-bg::after {
     content: '';
@@ -236,6 +265,66 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .dot-live {
+    background: #4ade80;
+    box-shadow: 0 0 0 0 rgba(74,222,128,0.6);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  .dot-booking { background: var(--accent); }
+  .dot-dev { background: rgba(255,255,255,0.4); }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.55); }
+    70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+    100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+  }
+
+  /* ---------- SCROLL CUE ---------- */
+  .scroll-cue {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .scroll-cue::before {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent), rgba(255,255,255,0));
+    animation: scrollLine 2.4s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleX(0.4); transform-origin: left; opacity: 0.4; }
+    50%      { transform: scaleX(1);   transform-origin: left; opacity: 1; }
+  }
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* ---------- CONSULTING STRIP ---------- */
@@ -330,6 +419,8 @@
     nav, .hero, section.ventures, section.consulting, footer { padding-left: 24px; padding-right: 24px; }
     .grid { grid-template-columns: 1fr; }
     .consulting-grid { grid-template-columns: 1fr; gap: 48px; }
+    .scroll-cue { left: 24px; bottom: 28px; }
+    .hero-watermark { font-size: 28rem; right: -12%; }
   }
 </style>
 </head>
@@ -345,7 +436,8 @@
 
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-content">
+  <div class="hero-watermark" aria-hidden="true">W</div>
+  <div class="hero-content reveal">
     <div class="eyebrow">Woolf Ventures LLC · Est. Austin, TX</div>
     <h1>
       An Empire<br/>Of Ventures.
@@ -360,10 +452,11 @@
       <a href="#consulting" class="btn btn-ghost">Woolf Consulting <span class="arrow">→</span></a>
     </div>
   </div>
+  <div class="scroll-cue">Scroll</div>
 </section>
 
 <section class="ventures" id="ventures">
-  <div class="section-head">
+  <div class="section-head reveal">
     <div>
       <div class="section-label">The Portfolio</div>
       <h2>Ventures</h2>
@@ -374,59 +467,59 @@
     </p>
   </div>
   <div class="grid">
-    <div class="card">
+    <div class="card reveal">
       <div>
         <div class="num">01</div>
         <h3>Tasty Trends</h3>
         <p>B2B sales &amp; distribution platform serving Texas convenience retailers. 500+ SKUs, multi-supplier fulfillment, role-aware pricing.</p>
       </div>
-      <div class="meta">Operating · Production</div>
+      <div class="meta"><span class="dot dot-live"></span>Operating · Production</div>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div>
         <div class="num">02</div>
         <h3>Woolf Consulting</h3>
         <p>AI &amp; systems advisory and B2B sales strategy for operators who need to move from intent to verified outcome.</p>
       </div>
-      <div class="meta">Booking · 2026</div>
+      <div class="meta"><span class="dot dot-booking"></span>Booking · 2026</div>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div>
         <div class="num">03</div>
         <h3>Drip Austin</h3>
         <p>Premium pizza dipping sauces. EVOO and ghee base, no seed oils. Eight SKUs in development. Drip. Drizzle. Dip.</p>
       </div>
-      <div class="meta">In Development</div>
+      <div class="meta"><span class="dot dot-dev"></span>In Development</div>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div>
         <div class="num">04</div>
         <h3>Conquest of Empire</h3>
         <p>HBO-style limited series. The Spanish conquest of the Aztecs. Three of eight episodes drafted.</p>
       </div>
-      <div class="meta">Screenplay</div>
+      <div class="meta"><span class="dot dot-dev"></span>Screenplay · Drafting</div>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div>
         <div class="num">05</div>
         <h3>Music &amp; Voice</h3>
         <p>Original songwriting and voice work. ATX Karaoke nights, narration projects, custom voice models.</p>
       </div>
-      <div class="meta">Active</div>
+      <div class="meta"><span class="dot dot-live"></span>Active</div>
     </div>
-    <div class="card">
+    <div class="card reveal">
       <div>
         <div class="num">06</div>
         <h3>Patents &amp; IP</h3>
         <p>Provisional filings and original concepts in distribution, retail tech, and consumer goods.</p>
       </div>
-      <div class="meta">Filing</div>
+      <div class="meta"><span class="dot dot-dev"></span>Filing</div>
     </div>
   </div>
 </section>
 
 <section class="consulting" id="consulting">
-  <div class="consulting-grid">
+  <div class="consulting-grid reveal">
     <div>
       <div class="section-label">Woolf Consulting</div>
       <h2>Sessions That<br/>Pay For Themselves.</h2>
@@ -471,5 +564,18 @@
   <div class="footer-meta">© 2026 Austin, Texas · All Rights Reserved</div>
 </footer>
 
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Hero loads immediately
+  requestAnimationFrame(() => document.querySelector('.hero-content')?.classList.add('in'));
+</script>
 </body>
 </html>

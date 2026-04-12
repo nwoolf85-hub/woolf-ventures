@@ -997,6 +997,163 @@
     font-weight: 600;
   }
 
+  /* ---------- BOOK / FORM ---------- */
+  section.book {
+    position: relative;
+    padding: 140px 80px;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+    overflow: hidden;
+  }
+  section.book::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(ellipse at 60% 50%, rgba(201,163,91,0.07), rgba(9,9,11,0) 60%);
+    animation: lightDrift4 32s ease-in-out infinite alternate;
+    z-index: 0;
+    pointer-events: none;
+  }
+  section.book > * { position: relative; z-index: 1; }
+  @keyframes lightDrift4 {
+    0%   { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-3%, 5%) scale(1.07); }
+  }
+  .book-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 56px;
+  }
+  .book-intro h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 2.75rem;
+    line-height: 1;
+    color: var(--fg);
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .book-intro p {
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 18px;
+    max-width: 460px;
+  }
+  .book-promise {
+    margin-top: 32px;
+    padding: 24px 28px;
+    border-left: 2px solid var(--accent);
+    background: rgba(201,163,91,0.04);
+    border-radius: 0 8px 8px 0;
+  }
+  .book-promise-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .book-promise-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.88);
+  }
+
+  .book-form {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(201,163,91,0.22);
+    border-radius: 12px;
+    padding: 48px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .form-row {
+    margin-bottom: 28px;
+  }
+  .form-row.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .form-row label {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .form-row input,
+  .form-row textarea {
+    width: 100%;
+    background: rgba(9,9,11,0.6);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    resize: none;
+  }
+  .form-row input:focus,
+  .form-row textarea:focus {
+    outline: none;
+    border-color: rgba(201,163,91,0.5);
+    background: rgba(9,9,11,0.85);
+  }
+  .form-row textarea { min-height: 90px; line-height: 1.6; }
+  .form-row .hint {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 8px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .book-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 36px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: var(--fg);
+    color: var(--bg);
+    border: 1px solid var(--fg);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(255,255,255,0.08);
+    margin-top: 8px;
+    width: 100%;
+    justify-content: center;
+  }
+  .book-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(255,255,255,0.18), 0 0 80px rgba(201,163,91,0.15);
+  }
+  .book-fineprint {
+    margin-top: 18px;
+    font-size: 0.6875rem;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
   /* ---------- FOOTER ---------- */
   footer {
     padding: 60px 80px;
@@ -1028,6 +1185,11 @@
     .method-grid { grid-template-columns: 1fr; }
     .method-card { padding: 40px 28px 48px; min-height: auto; }
     .method-word { font-size: 2.5rem; }
+    section.book { padding: 80px 24px; }
+    .book-grid { grid-template-columns: 1fr; gap: 48px; }
+    .book-intro h3 { font-size: 2rem; }
+    .book-form { padding: 32px 24px; }
+    .form-row.split { grid-template-columns: 1fr; }
     .scroll-cue { left: 24px; bottom: 24px; }
     .chapter { right: 24px; top: 24px; font-size: 0.75rem; }
     .chapter::before { width: 20px; }
@@ -1259,7 +1421,7 @@
           <div class="rate-value">$299<span class="rate-unit"> / hr</span></div>
         </div>
       </div>
-      <a href="mailto:neal@woolfventures.co?subject=Woolf%20Consulting%20-%20Free%2030%20Minutes" class="btn btn-primary" style="margin-top:32px;">Book Your Free 30 Minutes <span class="arrow">→</span></a>
+      <a href="#book" class="btn btn-primary" style="margin-top:32px;">Book Your Free 30 Minutes <span class="arrow">→</span></a>
     </div>
 
     <div class="packages">
@@ -1286,7 +1448,7 @@
             One hour. One problem. We solve a piece of it together and you walk away with a clear next step.
             No commitment beyond the hour.
           </p>
-          <a class="package-cta" href="mailto:neal@woolfventures.co?subject=Woolf%20Consulting%20-%20Free%2030%20Minutes">Start with your free 30 →</a>
+          <a class="package-cta" href="#book">Start with your free 30 →</a>
         </div>
 
         <div class="package featured">
@@ -1302,7 +1464,7 @@
             Five hours over six months. Enough for one focused project, a strategic decision, or a real working
             relationship. Use them weekly or save them for when it counts.
           </p>
-          <a class="package-cta" href="mailto:neal@woolfventures.co?subject=Woolf%20Consulting%20-%20The%20Sprint">Start with your free 30 →</a>
+          <a class="package-cta" href="#book">Start with your free 30 →</a>
         </div>
 
         <div class="package">
@@ -1317,7 +1479,7 @@
             Twelve hours across a full year. The committed engagement — roughly one session a month, with room
             to surge when something breaks or a deadline lands.
           </p>
-          <a class="package-cta" href="mailto:neal@woolfventures.co?subject=Woolf%20Consulting%20-%20The%20Quarter">Start with your free 30 →</a>
+          <a class="package-cta" href="#book">Start with your free 30 →</a>
         </div>
       </div>
     </div>
@@ -1404,6 +1566,73 @@
   </div>
 </section>
 
+<section class="book" id="book">
+  <div class="chapter">VI. &nbsp; The Conversation</div>
+  <div class="section-head reveal">
+    <div>
+      <div class="section-label">Book Your Free 30 Minutes</div>
+      <h2>Tell Us Where<br/>You're Stuck.</h2>
+    </div>
+    <p class="section-blurb">
+      The free intro is for people with a real problem they want help thinking through.
+      Tell us a little about yours and we'll come back within 24 hours with a time.
+    </p>
+  </div>
+  <div class="book-grid reveal">
+    <div class="book-intro">
+      <h3>What happens next.</h3>
+      <p>
+        We read every submission personally. If your problem is one we can actually help with,
+        you'll get a reply within a day with two or three time options for a 30-minute Zoom or
+        in-person Austin meet.
+      </p>
+      <p>
+        On the call we'll pull a real piece of your problem and solve it live, in front of you,
+        using the same tools and methods we use in our own ventures. No slides. No pitch deck.
+      </p>
+      <div class="book-promise">
+        <div class="book-promise-label">The Promise</div>
+        <div class="book-promise-text">
+          "If we don't show you one connection you hadn't made — one specific insight, one
+          tool, one move — you owe us nothing and we part as friends."
+        </div>
+      </div>
+    </div>
+    <form class="book-form" id="bookForm" onsubmit="return submitBook(event)">
+      <div class="form-row split">
+        <div>
+          <label for="bookName">Your Name</label>
+          <input type="text" id="bookName" name="name" required placeholder="Jane Smith" />
+        </div>
+        <div>
+          <label for="bookEmail">Email</label>
+          <input type="email" id="bookEmail" name="email" required placeholder="jane@company.com" />
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="bookProblem">What problem would you want to solve in 30 minutes?</label>
+        <textarea id="bookProblem" name="problem" required placeholder="Be specific. The more concrete, the better the demo we can run."></textarea>
+        <div class="hint">One sentence is fine. We just need enough to know what tools to bring.</div>
+      </div>
+      <div class="form-row">
+        <label for="bookTried">What have you already tried?</label>
+        <textarea id="bookTried" name="tried" required placeholder="Tools, consultants, internal attempts, anything."></textarea>
+        <div class="hint">Helps us avoid covering ground you've already walked.</div>
+      </div>
+      <div class="form-row">
+        <label for="bookSuccess">What does success look like in 6 months?</label>
+        <textarea id="bookSuccess" name="success" required placeholder="A number, a milestone, a feeling, a deliverable."></textarea>
+        <div class="hint">No wrong answers. We use this to anchor the conversation.</div>
+      </div>
+      <button type="submit" class="book-submit">Send My Submission <span class="arrow">→</span></button>
+      <div class="book-fineprint">
+        We read every submission personally. We reply within 24 hours.
+        Submissions go directly to neal@woolfventures.co.
+      </div>
+    </form>
+  </div>
+</section>
+
 <footer>
   <div class="brand">
     <img src="images/woolf-logo.jpeg" alt="Woolf Ventures" />
@@ -1413,6 +1642,28 @@
 </footer>
 
 <script>
+  function submitBook(e) {
+    e.preventDefault();
+    const name = document.getElementById('bookName').value.trim();
+    const email = document.getElementById('bookEmail').value.trim();
+    const problem = document.getElementById('bookProblem').value.trim();
+    const tried = document.getElementById('bookTried').value.trim();
+    const success = document.getElementById('bookSuccess').value.trim();
+    const subject = `Woolf Consulting · Free 30 Min · ${name}`;
+    const body =
+      `Hi Neal,\n\nI'd like to book a free 30-minute intro session with Woolf Consulting.\n\n` +
+      `── My details ──\n` +
+      `Name: ${name}\n` +
+      `Email: ${email}\n\n` +
+      `── What I want to solve in 30 minutes ──\n${problem}\n\n` +
+      `── What I've already tried ──\n${tried}\n\n` +
+      `── What success looks like in 6 months ──\n${success}\n\n` +
+      `── \n\nLooking forward to it.\n\n${name}`;
+    const mailto = `mailto:neal@woolfventures.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    return false;
+  }
+
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {

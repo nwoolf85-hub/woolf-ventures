@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  @page { size: 1200px 630px; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #09090b;
+    color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+  }
+  .bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('hero-desert.jpg');
+    background-size: cover;
+    background-position: 65% center;
+    filter: brightness(0.5) contrast(1.12) saturate(1.1);
+  }
+  .bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(9,9,11,0.94) 0%, rgba(9,9,11,0.72) 35%, rgba(9,9,11,0.15) 80%, rgba(9,9,11,0) 100%),
+      linear-gradient(180deg, rgba(9,9,11,0.30) 0%, rgba(9,9,11,0) 30%, rgba(9,9,11,0) 70%, rgba(9,9,11,0.40) 100%);
+  }
+  .letterbox {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: #000;
+    z-index: 3;
+  }
+  .letterbox.top { top: 0; border-bottom: 1px solid rgba(201,163,91,0.5); }
+  .letterbox.bot { bottom: 0; border-top: 1px solid rgba(201,163,91,0.5); }
+  .wv-watermark {
+    position: absolute;
+    top: 50%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    font-size: 580px;
+    font-weight: 800;
+    line-height: 0.78;
+    z-index: 1;
+    color: transparent;
+    letter-spacing: -0.08em;
+    background: linear-gradient(135deg,
+      rgba(255,255,255,0.14) 0%,
+      rgba(201,163,91,0.18) 30%,
+      rgba(255,255,255,0.06) 55%,
+      rgba(201,163,91,0.18) 80%,
+      rgba(255,255,255,0.08) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 2px rgba(255,255,255,0.10);
+  }
+  .content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .brand-row img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .brand-row .wordmark {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #c9a35b;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: #c9a35b;
+  }
+  h1 {
+    font-size: 104px;
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  h1 .serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: -0.005em;
+    color: rgba(255,255,255,0.96);
+    display: block;
+    font-size: 0.85em;
+  }
+  .tagline {
+    font-size: 21px;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+    margin-top: 8px;
+  }
+  .tagline .dot { color: #c9a35b; display: inline-block; margin: 0 6px; }
+  .url {
+    position: absolute;
+    bottom: 56px;
+    left: 80px;
+    z-index: 2;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="letterbox top"></div>
+  <div class="letterbox bot"></div>
+  <div class="wv-watermark">WV</div>
+  <div class="content">
+    <div class="brand-row">
+      <img src="woolf-logo.jpeg" alt="" />
+      <span class="wordmark">Woolf Ventures</span>
+    </div>
+    <div class="eyebrow">Est. Austin, Texas · 2025</div>
+    <h1>
+      <span class="serif">An Empire</span>
+      Of Ventures.
+    </h1>
+    <div class="tagline">Sales <span class="dot">·</span> Technology <span class="dot">·</span> Story <span class="dot">·</span> Sound</div>
+  </div>
+  <div class="url">woolfventures.co · The operating company of Neal &amp; Steven Woolf</div>
+</body>
+</html>

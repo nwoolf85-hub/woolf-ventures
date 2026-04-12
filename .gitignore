@@ -4,3 +4,8 @@ node_modules/
 .vercel
 .env
 .env.local
+
+# QA artifacts — never commit
+docs/qa-*.pdf
+docs/qa-*.jpeg
+docs/qa-*.png

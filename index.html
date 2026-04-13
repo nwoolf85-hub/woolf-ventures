@@ -1044,6 +1044,60 @@
   }
   .operator-link:hover { gap: 16px; color: #e8c886; }
 
+  /* "Also building" list on an operator card — a mini portfolio of
+     independent work outside the Woolf Ventures roof */
+  .also-building {
+    margin-top: 18px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .also-building-label {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(201,163,91,0.75);
+    margin-bottom: 14px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: none;
+  }
+  .also-building-item {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(201,163,91,0.18);
+    text-decoration: none;
+    transition: padding-left .25s ease;
+  }
+  .also-building-item:last-child { border-bottom: none; }
+  .also-building-item:hover { padding-left: 6px; }
+  .also-building-name {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .also-building-name .arrow {
+    font-size: 0.9rem;
+    transition: transform .25s ease;
+  }
+  .also-building-item:hover .also-building-name .arrow {
+    transform: translateX(4px);
+  }
+  .also-building-desc {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--muted);
+    margin-top: 6px;
+    font-weight: 300;
+  }
+
   /* ---------- CONSULTING STRIP ---------- */
   section.consulting {
     position: relative;
@@ -1870,15 +1924,24 @@
     </div>
     <div class="operator-card">
       <div class="operator-monogram">S</div>
-      <div class="operator-role">Co-Founder &amp; CSO · Founder of Cascade</div>
+      <div class="operator-role">Co-Founder &amp; CSO · Builder of Tools</div>
       <div class="operator-name">Steven Woolf</div>
       <p class="operator-bio">
         Specification infrastructure for AI-native teams. Advises operators, attorneys,
         and technical leaders on turning ambiguity into shipped outcomes. The systems
-        brain behind the playbook.
+        brain behind the playbook &mdash; and the quiet founder of a portfolio of
+        his own.
       </p>
-      <div class="operator-links">
-        <a class="operator-link" href="https://cascadehq.io" target="_blank" rel="noopener">Visit Cascade →</a>
+      <div class="also-building">
+        <div class="also-building-label">Also building &mdash;</div>
+        <a class="also-building-item" href="https://cascadehq.io" target="_blank" rel="noopener">
+          <div class="also-building-name">Cascade <span class="arrow">→</span></div>
+          <div class="also-building-desc">Specification infrastructure for AI-native teams. Used by operators and attorneys to turn ambiguity into verified outcomes.</div>
+        </a>
+        <a class="also-building-item" href="https://gearpro.ai" target="_blank" rel="noopener">
+          <div class="also-building-name">GearPro <span class="arrow">→</span></div>
+          <div class="also-building-desc">A digital passport for used musical gear. Helps musicians find real deals and avoid fraud &mdash; creativity without paying top dollar.</div>
+        </a>
       </div>
     </div>
   </div>

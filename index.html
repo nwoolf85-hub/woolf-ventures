@@ -536,6 +536,113 @@
     transform: translateY(0);
   }
 
+  /* ---------- CRAFT ---------- */
+  section.craft {
+    position: relative;
+    padding: 140px 80px;
+    border-top: 1px solid var(--line);
+    background: var(--bg);
+    overflow: hidden;
+  }
+  section.craft::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(ellipse at 20% 40%, rgba(201,163,91,0.055), rgba(9,9,11,0) 60%);
+    z-index: 0;
+    pointer-events: none;
+  }
+  section.craft > *:not(.chapter) { position: relative; z-index: 1; }
+  .craft-hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+  .craft-image {
+    display: block;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #0a0a0c;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  .craft-image:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 40px 110px rgba(0,0,0,0.6);
+  }
+  .craft-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .craft-copy {
+    padding: 8px 0;
+  }
+  .craft-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .craft-copy h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    line-height: 1.05;
+    margin-bottom: 28px;
+  }
+  .craft-copy p {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 18px;
+    max-width: 460px;
+    font-weight: 300;
+  }
+  .craft-copy .craft-small {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.125rem;
+    color: var(--accent);
+    opacity: 0.85;
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+  .craft-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fg);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 6px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .craft-link:hover {
+    color: var(--accent);
+  }
+  .craft-link .arrow {
+    transition: transform 0.3s ease;
+  }
+  .craft-link:hover .arrow {
+    transform: translateX(4px);
+  }
+  @media (max-width: 900px) {
+    section.craft { padding: 100px 24px; }
+    .craft-hero { grid-template-columns: 1fr; gap: 48px; }
+    .craft-copy p { max-width: 100%; }
+  }
+
   /* ---------- OPERATORS ---------- */
   section.operators {
     position: relative;
@@ -1351,7 +1458,7 @@
       <div>
         <div class="num">03</div>
         <h3>Drip Austin</h3>
-        <p>Premium pizza dipping sauces. EVOO and ghee base, no seed oils. Eight SKUs. Drip. Drizzle. Dip.</p>
+        <p>Premium pizza dipping sauces. Olive oil and ghee base. No seed oils. Four launch flavors. Drip. Drizzle. Dip.</p>
       </div>
       <div class="meta"><span class="dot dot-booking"></span>Launching · 2026</div>
     </a>
@@ -1424,8 +1531,43 @@
   </div>
 </section>
 
+<section class="craft" id="craft">
+  <div class="chapter">IV. &nbsp; The Craft</div>
+  <div class="section-head reveal">
+    <div>
+      <div class="section-label">Selected Work</div>
+      <h2>We Ship<br/>Real Things.</h2>
+    </div>
+    <p class="section-blurb">
+      The consulting practice is the strategy work. The Craft is the evidence. Every image below is
+      something we built, shipped, and still use — from the first sketch to the gold foil on the lid.
+    </p>
+  </div>
+
+  <div class="craft-hero reveal">
+    <a class="craft-image" href="https://nwoolf85-hub.github.io/drip-austin/" target="_blank" rel="noopener" aria-label="Visit Drip Austin">
+      <img src="images/drip-quartet.jpg" alt="Drip Austin — four-SKU premium dipping sauce lineup in black and gold foil" loading="lazy"/>
+    </a>
+    <div class="craft-copy">
+      <div class="craft-label">Brand System · Drip Austin</div>
+      <h3>The Lineup.</h3>
+      <p>
+        A premium four-flavor dipping sauce brand designed, engineered, and merchandised end-to-end —
+        from ingredients through packaging through the micro-site. Pure olive oil and ghee base.
+        No seed oils. Four launch flavors, three more coming.
+      </p>
+      <p class="craft-small">
+        Drip. Drizzle. Dip.
+      </p>
+      <a href="https://nwoolf85-hub.github.io/drip-austin/" class="craft-link" target="_blank" rel="noopener">
+        Visit Drip Austin <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="consulting" id="consulting">
-  <div class="chapter">IV. &nbsp; The Practice</div>
+  <div class="chapter">V. &nbsp; The Practice</div>
   <div class="consulting-grid reveal">
     <div>
       <div class="section-label">Woolf Consulting</div>
@@ -1531,7 +1673,7 @@
 </section>
 
 <section class="method" id="method">
-  <div class="chapter">V. &nbsp; The Method</div>
+  <div class="chapter">VI. &nbsp; The Method</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">How We Work</div>
@@ -1594,7 +1736,7 @@
 </section>
 
 <section class="book" id="book">
-  <div class="chapter">VI. &nbsp; The Conversation</div>
+  <div class="chapter">VII. &nbsp; The Conversation</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">Book Your Free 30 Minutes</div>

@@ -210,18 +210,19 @@
   }
   .hero-bg {
     position: absolute;
-    inset: -5%;
+    inset: -3%;
     background-image: url('images/hero-desert.jpg');
     background-size: cover;
-    background-position: 65% center;
-    filter: brightness(0.78) contrast(1.10) saturate(1.10);
+    background-position: 62% 28%;
+    filter: brightness(0.8) contrast(1.08) saturate(1.08);
     z-index: 0;
-    animation: kenburns 30s ease-in-out infinite alternate;
+    animation: kenburns 54s ease-in-out infinite alternate;
     will-change: transform;
+    transform-origin: 62% 38%;
   }
   @keyframes kenburns {
-    0%   { transform: scale(1.0) translate(0, 0); }
-    100% { transform: scale(1.08) translate(-0.8%, 0.5%); }
+    0%, 22%  { transform: scale(1.015) translate(0, 0); }
+    100%     { transform: scale(1.045) translate(-0.5%, 0.3%); }
   }
   .hero-bg::after {
     content: '';
@@ -1871,23 +1872,22 @@
   <div class="spotlight-grid reveal">
     <div class="spotlight-frame">
       <div class="spotlight-tag">Launching 2026</div>
-      <img src="images/drip-cooler-hero.jpg" alt="Drip Austin 2oz dipping cups merchandised on a convenience store cooler door" />
+      <img src="images/drip-quartet.jpg" alt="Drip Austin — four-flavor launch lineup in black and gold foil" />
     </div>
     <div class="spotlight-copy">
       <div class="section-label">Featured Venture</div>
       <h2>Drip Austin</h2>
       <div class="tagline">Drip. Drizzle. Dip.</div>
       <p class="body">
-        A premium 2&nbsp;oz dipping-cup brand engineered for convenience and specialty retail &mdash;
-        pure olive oil and ghee, no seed oils, four Austin-born flavors. Built to ride shotgun
-        with every frozen pizza, pretzel, and late-night hunt the city has to offer. The
-        Primal Kitchen of pizza dip, merchandised where the impulse happens.
+        A premium 2&nbsp;oz dipping-cup brand built for the way people actually eat &mdash;
+        pure olive oil and ghee, no seed oils, four Austin-born flavors designed
+        from the ingredient up. The Primal Kitchen of pizza dip.
       </p>
       <div class="flavor-chips">
         <span class="flavor-chip">Classic Garlic Butter</span>
         <span class="flavor-chip">Hot Honey Garlic</span>
         <span class="flavor-chip">The ATX Original</span>
-        <span class="flavor-chip">Spicy Calabrian Chili</span>
+        <span class="flavor-chip">Cool Ranch</span>
       </div>
       <a href="https://nwoolf85-hub.github.io/drip-austin/" target="_blank" rel="noopener" class="spotlight-cta">
         Visit Drip Austin <span>→</span>

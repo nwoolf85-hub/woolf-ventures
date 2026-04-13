@@ -179,19 +179,19 @@
     z-index: 2;
     max-width: 560px;
   }
-  /* The WV wax seal — sits in the bottom-left of the hero text column as a
-     maker's mark. Small, confident, never clips. */
+  /* The WV wax seal — sits on the photo like an artist signing the canvas.
+     Lives in the .hero-photo column so it never collides with text content. */
   .wv-seal {
     position: absolute;
-    left: 80px;
-    bottom: 60px;
-    width: 112px;
-    height: 112px;
-    z-index: 2;
+    right: 32px;
+    bottom: 56px;
+    width: 104px;
+    height: 104px;
+    z-index: 5;
     pointer-events: none;
-    opacity: 0.92;
-    filter: drop-shadow(0 0 18px rgba(201,163,91,0.20))
-            drop-shadow(0 0 40px rgba(201,163,91,0.08));
+    opacity: 0.95;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.55))
+            drop-shadow(0 0 28px rgba(201,163,91,0.22));
     animation: sealBreath 9s ease-in-out infinite alternate;
   }
   .wv-seal svg { width: 100%; height: 100%; display: block; }
@@ -1488,10 +1488,10 @@
       background: linear-gradient(90deg, transparent 0%, rgba(201,163,91,0.5) 50%, transparent 100%);
     }
     .wv-seal {
-      left: 24px;
-      bottom: 28px;
-      width: 84px;
-      height: 84px;
+      right: 18px;
+      bottom: 40px;
+      width: 78px;
+      height: 78px;
     }
     .hero-bg {
       background-position: 60% center;
@@ -1518,42 +1518,6 @@
 
 <section class="hero">
   <div class="hero-text">
-    <div class="wv-seal" aria-hidden="true">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="wv-seal-arc-top" d="M 100 100 m -78 0 a 78 78 0 1 1 156 0" />
-          <path id="wv-seal-arc-bot" d="M 100 100 m -72 0 a 72 72 0 1 0 144 0" />
-          <linearGradient id="wv-seal-gold" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#e3c47e" />
-            <stop offset="55%"  stop-color="#c9a35b" />
-            <stop offset="100%" stop-color="#8f6d34" />
-          </linearGradient>
-        </defs>
-        <!-- outer ring -->
-        <circle cx="100" cy="100" r="96" fill="none" stroke="url(#wv-seal-gold)" stroke-width="1.6" opacity="0.9"/>
-        <circle cx="100" cy="100" r="88" fill="none" stroke="url(#wv-seal-gold)" stroke-width="0.8" opacity="0.55"/>
-        <circle cx="100" cy="100" r="62" fill="none" stroke="url(#wv-seal-gold)" stroke-width="1.1" opacity="0.8"/>
-        <!-- top microtype: WOOLF VENTURES -->
-        <text font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="3.2" fill="url(#wv-seal-gold)">
-          <textPath href="#wv-seal-arc-top" startOffset="50%" text-anchor="middle">WOOLF · VENTURES</textPath>
-        </text>
-        <!-- bottom microtype: EST AUSTIN TEXAS · MMXXV -->
-        <text font-family="Inter, sans-serif" font-size="9" font-weight="500" letter-spacing="2.6" fill="url(#wv-seal-gold)" opacity="0.85">
-          <textPath href="#wv-seal-arc-bot" startOffset="50%" text-anchor="middle">EST · AUSTIN TEXAS · MMXXV</textPath>
-        </text>
-        <!-- center WV monogram -->
-        <text x="100" y="118" text-anchor="middle"
-              font-family="Cormorant Garamond, serif" font-style="italic"
-              font-size="68" font-weight="500"
-              fill="url(#wv-seal-gold)"
-              letter-spacing="-2">WV</text>
-        <!-- small flanking stars -->
-        <g fill="url(#wv-seal-gold)" opacity="0.8">
-          <circle cx="28" cy="100" r="1.6"/>
-          <circle cx="172" cy="100" r="1.6"/>
-        </g>
-      </svg>
-    </div>
     <div class="hero-content reveal">
       <div class="eyebrow">Est. Austin, Texas · 2025</div>
       <h1>
@@ -1577,6 +1541,37 @@
     <div class="letterbox top"></div>
     <div class="letterbox bot"></div>
     <div class="chapter">I. &nbsp; Prologue</div>
+    <div class="wv-seal" aria-hidden="true">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="wv-seal-arc-top" d="M 100 100 m -78 0 a 78 78 0 1 1 156 0" />
+          <path id="wv-seal-arc-bot" d="M 100 100 m -72 0 a 72 72 0 1 0 144 0" />
+          <linearGradient id="wv-seal-gold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#e3c47e" />
+            <stop offset="55%"  stop-color="#c9a35b" />
+            <stop offset="100%" stop-color="#8f6d34" />
+          </linearGradient>
+        </defs>
+        <circle cx="100" cy="100" r="96" fill="rgba(9,9,11,0.35)" stroke="url(#wv-seal-gold)" stroke-width="1.6" opacity="0.95"/>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="url(#wv-seal-gold)" stroke-width="0.8" opacity="0.6"/>
+        <circle cx="100" cy="100" r="62" fill="none" stroke="url(#wv-seal-gold)" stroke-width="1.1" opacity="0.85"/>
+        <text font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="3.2" fill="url(#wv-seal-gold)">
+          <textPath href="#wv-seal-arc-top" startOffset="50%" text-anchor="middle">WOOLF · VENTURES</textPath>
+        </text>
+        <text font-family="Inter, sans-serif" font-size="9" font-weight="500" letter-spacing="2.6" fill="url(#wv-seal-gold)" opacity="0.9">
+          <textPath href="#wv-seal-arc-bot" startOffset="50%" text-anchor="middle">EST · AUSTIN TEXAS · MMXXV</textPath>
+        </text>
+        <text x="100" y="118" text-anchor="middle"
+              font-family="Cormorant Garamond, serif" font-style="italic"
+              font-size="68" font-weight="500"
+              fill="url(#wv-seal-gold)"
+              letter-spacing="-2">WV</text>
+        <g fill="url(#wv-seal-gold)" opacity="0.85">
+          <circle cx="28" cy="100" r="1.6"/>
+          <circle cx="172" cy="100" r="1.6"/>
+        </g>
+      </svg>
+    </div>
   </div>
 </section>
 

@@ -643,6 +643,149 @@
     .craft-copy p { max-width: 100%; }
   }
 
+  /* ---------- SPOTLIGHT (Featured Venture) ---------- */
+  section.spotlight {
+    position: relative;
+    padding: 140px 80px;
+    border-top: 1px solid var(--line);
+    background: #060607;
+    overflow: hidden;
+  }
+  section.spotlight::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(ellipse at 18% 55%, rgba(201,163,91,0.08), rgba(9,9,11,0) 60%);
+    animation: lightDrift1 24s ease-in-out infinite alternate;
+    z-index: 0;
+    pointer-events: none;
+  }
+  section.spotlight > *:not(.chapter) { position: relative; z-index: 1; }
+  .spotlight-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 72px;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .spotlight-frame {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+      0 40px 120px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(201,163,91,0.35),
+      0 0 0 8px rgba(9,9,11,0.9),
+      0 0 0 9px rgba(201,163,91,0.22);
+    aspect-ratio: 1 / 1;
+  }
+  .spotlight-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    animation: spotlightPan 26s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  @keyframes spotlightPan {
+    0%   { transform: scale(1.02) translate(0, 0); }
+    100% { transform: scale(1.10) translate(-1.5%, 0.8%); }
+  }
+  .spotlight-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(9,9,11,0) 55%, rgba(9,9,11,0.35) 100%);
+    pointer-events: none;
+  }
+  .spotlight-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 3;
+    background: rgba(9,9,11,0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(201,163,91,0.45);
+    color: var(--accent);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .spotlight-copy .section-label {
+    color: var(--accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .spotlight-copy h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.4rem, 4.2cqw + 1rem, 4.2rem);
+    line-height: 1.02;
+    margin-bottom: 14px;
+    color: #fff;
+  }
+  .spotlight-copy .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--accent);
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+  }
+  .spotlight-copy p.body {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 28px;
+  }
+  .flavor-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .flavor-chip {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.82);
+    padding: 8px 14px;
+    border: 1px solid rgba(201,163,91,0.35);
+    border-radius: 999px;
+    background: rgba(201,163,91,0.05);
+    font-weight: 500;
+  }
+  .spotlight-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 30px;
+    background: var(--accent);
+    color: #09090b;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .spotlight-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(201,163,91,0.28);
+  }
+
   /* ---------- OPERATORS ---------- */
   section.operators {
     position: relative;
@@ -1362,6 +1505,9 @@
     .hero-bg {
       background-position: 60% center;
     }
+    section.spotlight { padding: 90px 24px; }
+    .spotlight-grid { grid-template-columns: 1fr; gap: 44px; }
+    .spotlight-copy h2 { font-size: 2.6rem; }
     section.operators { padding-left: 24px; padding-right: 24px; }
     .operators-grid { grid-template-columns: 1fr; }
     .operator-card { padding: 40px 28px; }
@@ -1489,8 +1635,38 @@
   </div>
 </section>
 
+<section class="spotlight" id="spotlight">
+  <div class="chapter">III. &nbsp; The Drop</div>
+  <div class="spotlight-grid reveal">
+    <div class="spotlight-frame">
+      <div class="spotlight-tag">Launching 2026</div>
+      <img src="images/drip-cooler-hero.jpg" alt="Drip Austin 2oz dipping cups merchandised on a convenience store cooler door" />
+    </div>
+    <div class="spotlight-copy">
+      <div class="section-label">Featured Venture</div>
+      <h2>Drip Austin</h2>
+      <div class="tagline">Drip. Drizzle. Dip.</div>
+      <p class="body">
+        A premium 2&nbsp;oz dipping-cup brand engineered for convenience and specialty retail &mdash;
+        pure olive oil and ghee, no seed oils, four Austin-born flavors. Built to ride shotgun
+        with every frozen pizza, pretzel, and late-night hunt the city has to offer. The
+        Primal Kitchen of pizza dip, merchandised where the impulse happens.
+      </p>
+      <div class="flavor-chips">
+        <span class="flavor-chip">Classic Garlic Butter</span>
+        <span class="flavor-chip">Hot Honey Garlic</span>
+        <span class="flavor-chip">The ATX Original</span>
+        <span class="flavor-chip">Spicy Calabrian Chili</span>
+      </div>
+      <a href="https://nwoolf85-hub.github.io/drip-austin/" target="_blank" rel="noopener" class="spotlight-cta">
+        Visit Drip Austin <span>→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="operators" id="operators">
-  <div class="chapter">III. &nbsp; The Operators</div>
+  <div class="chapter">IV. &nbsp; The Operators</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">Two Brothers</div>
@@ -1532,7 +1708,7 @@
 </section>
 
 <section class="craft" id="craft">
-  <div class="chapter">IV. &nbsp; The Craft</div>
+  <div class="chapter">V. &nbsp; The Craft</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">Selected Work</div>
@@ -1567,7 +1743,7 @@
 </section>
 
 <section class="consulting" id="consulting">
-  <div class="chapter">V. &nbsp; The Practice</div>
+  <div class="chapter">VI. &nbsp; The Practice</div>
   <div class="consulting-grid reveal">
     <div>
       <div class="section-label">Woolf Consulting</div>
@@ -1673,7 +1849,7 @@
 </section>
 
 <section class="method" id="method">
-  <div class="chapter">VI. &nbsp; The Method</div>
+  <div class="chapter">VII. &nbsp; The Method</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">How We Work</div>
@@ -1736,7 +1912,7 @@
 </section>
 
 <section class="book" id="book">
-  <div class="chapter">VII. &nbsp; The Conversation</div>
+  <div class="chapter">VIII. &nbsp; The Conversation</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">Book Your Free 30 Minutes</div>

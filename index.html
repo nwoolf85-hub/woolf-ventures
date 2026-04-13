@@ -631,6 +631,158 @@
     .craft-copy p { max-width: 100%; }
   }
 
+  /* ---------- STORY (About / The House) ---------- */
+  section.story {
+    position: relative;
+    padding: 160px 80px;
+    border-top: 1px solid var(--line);
+    background: #060607;
+    overflow: hidden;
+  }
+  section.story::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(201,163,91,0.07), rgba(9,9,11,0) 60%),
+      radial-gradient(ellipse at 10% 85%, rgba(201,163,91,0.05), rgba(9,9,11,0) 60%);
+    animation: lightDrift1 24s ease-in-out infinite alternate;
+    z-index: 0;
+    pointer-events: none;
+  }
+  section.story > *:not(.chapter) { position: relative; z-index: 1; }
+  .story-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .story-label {
+    color: var(--accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    text-align: center;
+  }
+  .story-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.4rem, 5.6vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .story-gold-rule {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 0 auto 56px;
+  }
+  .story-body {
+    color: rgba(255,255,255,0.78);
+    font-size: 1.125rem;
+    line-height: 1.85;
+    font-weight: 300;
+  }
+  .story-body p {
+    margin-bottom: 32px;
+  }
+  .story-body p:last-child { margin-bottom: 0; }
+  .story-body .lede {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.92);
+    font-weight: 400;
+  }
+  .story-body .subhead {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    margin: 64px 0 20px;
+    font-weight: 600;
+  }
+  .story-pullquote {
+    margin: 72px -20px;
+    padding: 48px 40px;
+    border-top: 1px solid rgba(201,163,91,0.35);
+    border-bottom: 1px solid rgba(201,163,91,0.35);
+    text-align: center;
+  }
+  .story-pullquote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.75rem, 3.4vw, 2.6rem);
+    line-height: 1.25;
+    color: #fff;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  .story-pullquote cite {
+    display: block;
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .story-invitation {
+    margin-top: 72px;
+    padding: 36px;
+    border: 1px solid rgba(201,163,91,0.3);
+    border-radius: 12px;
+    background: rgba(201,163,91,0.03);
+    text-align: center;
+  }
+  .story-invitation p {
+    color: rgba(255,255,255,0.88);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .story-invitation .cta-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .story-invitation a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .story-invitation a.primary {
+    background: var(--accent);
+    color: #09090b;
+  }
+  .story-invitation a.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(201,163,91,0.25);
+  }
+  .story-invitation a.ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.24);
+  }
+  .story-invitation a.ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
   /* ---------- SPOTLIGHT (Featured Venture) ---------- */
   section.spotlight {
     position: relative;
@@ -1499,6 +1651,10 @@
     section.spotlight { padding: 90px 24px; }
     .spotlight-grid { grid-template-columns: 1fr; gap: 44px; }
     .spotlight-copy h2 { font-size: 2.6rem; }
+    section.story { padding: 100px 24px; }
+    .story-body { font-size: 1.05rem; }
+    .story-pullquote { margin: 56px 0; padding: 36px 20px; }
+    .story-invitation { padding: 28px 22px; }
     section.operators { padding-left: 24px; padding-right: 24px; }
     .operators-grid { grid-template-columns: 1fr; }
     .operator-card { padding: 40px 28px; }
@@ -1728,8 +1884,109 @@
   </div>
 </section>
 
+<section class="story" id="story">
+  <div class="chapter">V. &nbsp; The Story</div>
+  <div class="story-wrap reveal">
+    <div class="story-label">The House</div>
+    <h2 class="story-headline">Two brothers.<br/>One long game.</h2>
+    <div class="story-gold-rule"></div>
+
+    <div class="story-body">
+      <p class="lede">
+        Woolf Ventures isn't a startup. It's a house &mdash; a body of work
+        that two brothers from Austin decided to build under one roof
+        instead of scattering across a dozen jobs for a dozen other
+        people's companies.
+      </p>
+
+      <p>
+        The company was formed in 2025, but the work started long before that.
+        Neal spent a decade running B2B sales in the Austin convenience-store
+        market &mdash; meeting store owners face-to-face, learning which
+        products move at 11pm versus 11am, and watching the industry try and
+        fail to digitize itself from the outside. Steven spent those same
+        years going deep on AI and systems, advising operators and attorneys
+        on how to turn ambiguous human intent into verified outcomes.
+        Different lanes. Same instinct: build the tool you always wished you
+        had, then hand it to people who need it.
+      </p>
+
+      <p>
+        At some point it stopped making sense to keep running the plays for
+        other people. So we put the name on the door, wrote the thesis down,
+        and started stacking ventures under it.
+      </p>
+
+      <div class="subhead">The Thesis</div>
+      <p>
+        Every venture in this house sits at the intersection of four things:
+        <em>sales, technology, story, and sound.</em> Sales is the street
+        knowledge &mdash; the part you only learn by losing deals. Technology
+        is the leverage &mdash; the part that lets a two-person house operate
+        like a twenty-person one. Story is the frame &mdash; the part that
+        makes people care before they understand. Sound is the soul &mdash;
+        the part that gives the work a pulse you remember after you close the
+        tab.
+      </p>
+
+      <p>
+        Most companies lead with one corner and bolt the others on when they
+        need them. We lead with all four at once because the unusual
+        combination is the whole moat. Anybody with a pulse can copy a feature.
+        Nobody can copy the way two brothers with complementary obsessions
+        pay attention to the same problem.
+      </p>
+
+      <div class="story-pullquote">
+        <blockquote>
+          &ldquo;We didn't come here to build a company.<br/>
+          We came here to build a body of work.&rdquo;
+        </blockquote>
+        <cite>— The House Rule</cite>
+      </div>
+
+      <div class="subhead">What's Under The Roof</div>
+      <p>
+        Tasty Trends is the B2B sales platform serving convenience stores
+        across Central Texas. Drip Austin is a consumer brand of premium
+        portion-cup dipping sauces launching in 2026. Woolf Consulting is
+        how we rent out the playbook by the evening. Conquest of Empire,
+        Music &amp; Voice, and Patents &amp; IP are the longer bets &mdash;
+        original screenplays, scored work, and filed ideas that will surface
+        in their own time. The Portfolio page has the whole list, but the
+        list is less interesting than the fact that it all lives in one
+        building and shares one memory.
+      </p>
+
+      <div class="subhead">Why It Matters</div>
+      <p>
+        Because houses outlast jobs. Because the operators who do their best
+        work are the ones who own the whole playbook &mdash; not just the
+        part their title says they're allowed to touch. Because in a market
+        where every tool is converging on the same middle, unusual
+        combinations are the only real edge left. And because, honestly,
+        we've been running together our whole lives. This is just the
+        version where we get to put our name on the door.
+      </p>
+
+      <div class="story-invitation">
+        <p>
+          If you came here because you're curious about a specific venture,
+          start at the Portfolio. If you came here because you want to talk
+          &mdash; about work, about collaboration, about getting involved
+          &mdash; start at the Conversation.
+        </p>
+        <div class="cta-row">
+          <a href="#ventures" class="ghost">See The Portfolio <span>→</span></a>
+          <a href="#book" class="primary">Start A Conversation <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="craft" id="craft">
-  <div class="chapter">V. &nbsp; The Craft</div>
+  <div class="chapter">VI. &nbsp; The Craft</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">Selected Work</div>
@@ -1764,7 +2021,7 @@
 </section>
 
 <section class="consulting" id="consulting">
-  <div class="chapter">VI. &nbsp; The Practice</div>
+  <div class="chapter">VII. &nbsp; The Practice</div>
   <div class="consulting-grid reveal">
     <div>
       <div class="section-label">Woolf Consulting</div>
@@ -1870,7 +2127,7 @@
 </section>
 
 <section class="method" id="method">
-  <div class="chapter">VII. &nbsp; The Method</div>
+  <div class="chapter">VIII. &nbsp; The Method</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">How We Work</div>
@@ -1933,7 +2190,7 @@
 </section>
 
 <section class="book" id="book">
-  <div class="chapter">VIII. &nbsp; The Conversation</div>
+  <div class="chapter">IX. &nbsp; The Conversation</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">Book Your Free 30 Minutes</div>

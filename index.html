@@ -837,13 +837,13 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transform: scale(1.02);
-    animation: spotlightPan 26s ease-in-out infinite alternate;
+    transform-origin: 50% 48%;
+    animation: spotlightPan 18s ease-in-out infinite alternate;
     will-change: transform;
   }
   @keyframes spotlightPan {
-    0%   { transform: scale(1.02) translate(0, 0); }
-    100% { transform: scale(1.10) translate(-1.5%, 0.8%); }
+    0%   { transform: scale(1.00) translate(0, 0); }
+    100% { transform: scale(1.16) translate(-1.2%, 0.5%); }
   }
   .spotlight-frame::after {
     content: '';
@@ -1883,7 +1883,7 @@
   <div class="spotlight-grid reveal">
     <div class="spotlight-frame">
       <div class="spotlight-tag">Launching 2026</div>
-      <img src="images/drip-quartet.jpg" alt="Drip Austin — four-flavor launch lineup in black and gold foil" />
+      <img src="images/drip-cooler-hero.jpg" alt="Drip Austin — premium 2oz dipping cups merchandised on a convenience store cooler door" />
     </div>
     <div class="spotlight-copy">
       <div class="section-label">Featured Venture</div>

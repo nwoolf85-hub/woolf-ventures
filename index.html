@@ -1007,6 +1007,36 @@
   .operator-card:nth-child(2) .operator-monogram {
     animation-delay: -3s;
   }
+  /* Portrait variant of the monogram — same gold ring geometry, but holds a real photo.
+     Slightly larger than the monogram so a face reads at card scale. */
+  .operator-portrait {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,163,91,0.4);
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 40px rgba(201,163,91,0.08);
+    margin-bottom: 6px;
+    animation: monogramBreath 6s ease-in-out infinite alternate;
+    animation-delay: -3s;
+  }
+  .operator-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 32%;
+    display: block;
+    filter: saturate(1.05) contrast(1.03);
+  }
+  .operator-portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 24px rgba(9,9,11,0.35);
+    pointer-events: none;
+  }
   @keyframes monogramBreath {
     0%   { transform: scale(1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 30px rgba(201,163,91,0.04); }
     100% { transform: scale(1.04); box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 60px rgba(201,163,91,0.14); }
@@ -1934,7 +1964,7 @@
       </div>
     </div>
     <div class="operator-card">
-      <div class="operator-monogram">S</div>
+      <div class="operator-portrait"><img src="images/steven-portrait.jpg" alt="Steven Woolf" /></div>
       <div class="operator-role">Co-Founder &amp; CSO · Builder of Tools</div>
       <div class="operator-name">Steven Woolf</div>
       <p class="operator-bio">

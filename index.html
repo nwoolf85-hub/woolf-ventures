@@ -148,7 +148,7 @@
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
     margin: 16px;
-    border-radius: 28px;
+    border-radius: 40px;
     box-shadow:
       0 30px 90px rgba(0,0,0,0.5),
       0 0 0 1px rgba(201,163,91,0.18);
@@ -554,7 +554,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: background 0.4s ease;
+    transition: background 0.4s ease, transform 0.4s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -564,6 +564,7 @@
       radial-gradient(ellipse at top right, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0) 60%),
       var(--card);
     box-shadow: inset 0 0 0 1px rgba(201,163,91,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+    transform: scale(1.02);
   }
   .card .num {
     font-size: 0.75rem;
@@ -727,7 +728,7 @@
     transition: transform 0.5s ease, box-shadow 0.5s ease;
   }
   .craft-image:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.02);
     box-shadow: 0 40px 110px rgba(0,0,0,0.6);
   }
   .craft-image {
@@ -1034,6 +1035,10 @@
       0 0 0 8px rgba(9,9,11,0.9),
       0 0 0 9px rgba(201,163,91,0.22);
     aspect-ratio: 1 / 1;
+    transition: transform 0.5s ease;
+  }
+  .spotlight-frame:hover {
+    transform: scale(1.03);
   }
   .spotlight-frame img {
     width: 100%;
@@ -1180,13 +1185,14 @@
     flex-direction: column;
     gap: 18px;
     position: relative;
-    transition: background 0.4s ease;
+    transition: background 0.4s ease, transform 0.4s ease;
   }
   .operator-card:hover {
     background:
       radial-gradient(ellipse at top right, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0) 60%),
       var(--card);
     box-shadow: inset 0 0 0 1px rgba(201,163,91,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+    transform: scale(1.015);
   }
   .operator-monogram {
     width: 68px;
@@ -1655,12 +1661,13 @@
     flex-direction: column;
     gap: 18px;
     position: relative;
-    transition: background 0.4s ease;
+    transition: background 0.4s ease, transform 0.4s ease;
   }
   .package:hover {
     background:
       radial-gradient(ellipse at top right, rgba(201,163,91,0.06) 0%, rgba(255,255,255,0) 60%),
       var(--card);
+    transform: scale(1.02);
   }
   .package.featured {
     background:
@@ -1768,6 +1775,11 @@
   .service {
     background: var(--bg);
     padding: 36px 40px;
+    transition: transform 0.4s ease, background 0.4s ease;
+  }
+  .service:hover {
+    transform: scale(1.02);
+    background: var(--card);
   }
   .service .tag {
     font-size: 0.6875rem;
@@ -1824,7 +1836,7 @@
     flex-direction: column;
     gap: 18px;
     position: relative;
-    transition: background 0.4s ease;
+    transition: background 0.4s ease, transform 0.4s ease;
     min-height: 320px;
   }
   .method-card:hover {
@@ -1832,6 +1844,7 @@
       radial-gradient(ellipse at top right, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0) 60%),
       var(--card);
     box-shadow: inset 0 0 0 1px rgba(201,163,91,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+    transform: scale(1.02);
   }
   .method-num {
     font-size: 0.6875rem;
@@ -2344,12 +2357,8 @@
   <div class="section-head reveal">
     <div>
       <div class="section-label">Two Brothers</div>
-      <h2>Built Different.<br/>Wired Together.</h2>
+      <h2>Street Knowledge.<br/>System Design.</h2>
     </div>
-    <p class="section-blurb">
-      Street knowledge meets system design. One brother reads the room, the other architects the machine.
-      The portfolio works because the lanes don't overlap. The name came with provenance.
-    </p>
   </div>
   <p class="operators-epigraph reveal">&ldquo;Succession, except everybody works and Dad lives in Jersey.&rdquo;</p>
   <div class="operators-grid reveal">

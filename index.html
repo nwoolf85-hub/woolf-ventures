@@ -551,21 +551,21 @@
   }
   .section-head {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 64px;
-    gap: 40px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 72px;
+    gap: 20px;
   }
   .section-label {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--accent);
   }
   h2 {
-    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
     font-weight: 800;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -573,11 +573,12 @@
     margin-top: 12px;
   }
   .section-blurb {
-    max-width: 420px;
-    font-size: 0.9375rem;
+    max-width: 560px;
+    font-size: 1rem;
     font-weight: 300;
     color: var(--muted);
     line-height: 1.7;
+    text-align: center;
   }
   .grid {
     display: grid;
@@ -624,17 +625,17 @@
     margin-bottom: 32px;
   }
   .card h3 {
-    font-size: 1.5rem;
+    font-size: 1.65rem;
     font-weight: 800;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-bottom: 14px;
   }
   .card p {
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     font-weight: 300;
     color: var(--muted);
-    line-height: 1.6;
+    line-height: 1.7;
   }
   .card .meta {
     margin-top: 28px;
@@ -1889,20 +1890,20 @@
       inset 0 1px 0 var(--glass-shine);
   }
   .service .tag {
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 10px;
   }
   .service h4 {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 800;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-bottom: 10px;
   }
-  .service p { font-size: 0.875rem; margin: 0; max-width: none; }
+  .service p { font-size: 0.95rem; margin: 0; max-width: none; line-height: 1.7; }
 
   /* ---------- METHOD (How We Work) ---------- */
   section.method {
@@ -1988,12 +1989,12 @@
     margin-top: -2px;
   }
   .method-body {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     font-weight: 300;
     line-height: 1.7;
     color: var(--muted);
     margin-top: 8px;
-    max-width: 460px;
+    max-width: 480px;
   }
   .method-practice {
     margin-top: auto;

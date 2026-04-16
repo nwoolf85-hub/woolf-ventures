@@ -129,12 +129,15 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     padding: 10px 22px;
-    border: 1px solid var(--line-strong);
-    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
     transition: all 0.3s ease;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
   .nav-cta:hover {
-    border-color: var(--fg);
+    border-color: rgba(201,163,91,0.4);
     background: rgba(255,255,255,0.06);
   }
 
@@ -163,7 +166,7 @@
     background:
       radial-gradient(ellipse at 30% 45%, rgba(201,163,91,0.06), rgba(9,9,11,0) 65%),
       var(--bg);
-    border-right: 1px solid rgba(201,163,91,0.10);
+    border-right: none;
     overflow: hidden;
     min-height: calc(100vh - 32px);
     container-type: inline-size;
@@ -407,7 +410,7 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     border: 1px solid var(--line-strong);
-    border-radius: 14px;
+    border-radius: 24px;
     transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
     cursor: pointer;
   }
@@ -541,30 +544,41 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(201,163,91,0.12);
-    border: 1px solid rgba(201,163,91,0.12);
-    border-radius: 18px;
-    overflow: hidden;
+    gap: 16px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
   }
   .card {
-    background: var(--bg);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
     padding: 48px 40px;
     min-height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: background 0.4s ease, transform 0.4s ease;
+    transition: all 0.4s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.06);
   }
   .card:hover {
     background:
-      radial-gradient(ellipse at top right, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0) 60%),
-      var(--card);
-    box-shadow: inset 0 0 0 1px rgba(201,163,91,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
-    transform: scale(1.02);
+      linear-gradient(135deg, rgba(201,163,91,0.10) 0%, rgba(255,255,255,0.04) 100%);
+    border-color: rgba(201,163,91,0.25);
+    box-shadow:
+      0 16px 48px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(201,163,91,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.10);
+    transform: scale(1.02) translateY(-4px);
   }
   .card .num {
     font-size: 0.75rem;
@@ -720,9 +734,9 @@
   }
   .craft-image {
     display: block;
-    border-radius: 18px;
+    border-radius: 24px;
     overflow: hidden;
-    border: 1px solid var(--line);
+    border: 1px solid rgba(255,255,255,0.08);
     background: #0a0a0c;
     box-shadow: 0 30px 80px rgba(0,0,0,0.5);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -951,10 +965,16 @@
   .story-invitation {
     margin-top: 72px;
     padding: 36px;
-    border: 1px solid rgba(201,163,91,0.3);
-    border-radius: 12px;
-    background: rgba(201,163,91,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
     text-align: center;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.06);
   }
   .story-invitation p {
     color: rgba(255,255,255,0.88);
@@ -1027,7 +1047,7 @@
   }
   .spotlight-frame {
     position: relative;
-    border-radius: 14px;
+    border-radius: 24px;
     overflow: hidden;
     box-shadow:
       0 40px 120px rgba(0,0,0,0.55),
@@ -1171,27 +1191,38 @@
   .operators-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    overflow: hidden;
+    gap: 16px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
     margin-top: 56px;
   }
   .operator-card {
-    background: var(--bg);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
     padding: 56px 48px;
     display: flex;
     flex-direction: column;
     gap: 18px;
     position: relative;
-    transition: background 0.4s ease, transform 0.4s ease;
+    transition: all 0.4s ease;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.06);
   }
   .operator-card:hover {
     background:
-      radial-gradient(ellipse at top right, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0) 60%),
-      var(--card);
-    box-shadow: inset 0 0 0 1px rgba(201,163,91,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+      linear-gradient(135deg, rgba(201,163,91,0.10) 0%, rgba(255,255,255,0.04) 100%);
+    border-color: rgba(201,163,91,0.25);
+    box-shadow:
+      0 16px 48px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(201,163,91,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.10);
     transform: scale(1.015);
   }
   .operator-monogram {
@@ -1277,16 +1308,29 @@
      he's the name's provenance. Letterhead feel, not team-card feel. */
   .lineage {
     margin-top: 36px;
-    border: 1px solid rgba(201,163,91,0.28);
-    border-radius: 18px;
+    border: 1px solid rgba(201,163,91,0.20);
+    border-radius: 24px;
     padding: 36px 44px;
     background:
-      radial-gradient(ellipse at top right, rgba(201,163,91,0.05) 0%, rgba(255,255,255,0) 60%),
-      var(--card);
+      linear-gradient(135deg, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
     display: flex;
     align-items: center;
     gap: 36px;
     position: relative;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: all 0.4s ease;
+  }
+  .lineage:hover {
+    border-color: rgba(201,163,91,0.35);
+    box-shadow:
+      0 16px 48px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(201,163,91,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.10);
+    transform: scale(1.01);
   }
   .lineage::before {
     content: 'Of Counsel';
@@ -1648,35 +1692,54 @@
   .package-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    overflow: hidden;
+    gap: 16px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
   }
   .package {
-    background: var(--bg);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
     padding: 44px 36px;
     display: flex;
     flex-direction: column;
     gap: 18px;
     position: relative;
-    transition: background 0.4s ease, transform 0.4s ease;
+    transition: all 0.4s ease;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.06);
   }
   .package:hover {
     background:
-      radial-gradient(ellipse at top right, rgba(201,163,91,0.06) 0%, rgba(255,255,255,0) 60%),
-      var(--card);
+      linear-gradient(135deg, rgba(201,163,91,0.10) 0%, rgba(255,255,255,0.04) 100%);
+    border-color: rgba(201,163,91,0.25);
+    box-shadow:
+      0 16px 48px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(201,163,91,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.10);
     transform: scale(1.02);
   }
   .package.featured {
     background:
-      radial-gradient(ellipse at top right, rgba(201,163,91,0.10) 0%, rgba(9,9,11,0) 65%),
-      var(--bg);
-    box-shadow: inset 0 0 0 1px rgba(201,163,91,0.35);
+      linear-gradient(135deg, rgba(201,163,91,0.12) 0%, rgba(255,255,255,0.04) 100%);
+    border-color: rgba(201,163,91,0.35);
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.3),
+      0 0 0 1px rgba(201,163,91,0.25),
+      inset 0 1px 0 rgba(255,255,255,0.08);
   }
   .package.featured:hover {
-    box-shadow: inset 0 0 0 1px rgba(201,163,91,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+    border-color: rgba(201,163,91,0.5);
+    box-shadow:
+      0 16px 48px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(201,163,91,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.12);
   }
   .package-badge {
     position: absolute;
@@ -1766,20 +1829,34 @@
   .service-stack {
     display: flex;
     flex-direction: column;
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    overflow: hidden;
+    gap: 16px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
   }
   .service {
-    background: var(--bg);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
     padding: 36px 40px;
-    transition: transform 0.4s ease, background 0.4s ease;
+    transition: all 0.4s ease;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.06);
   }
   .service:hover {
     transform: scale(1.02);
-    background: var(--card);
+    background:
+      linear-gradient(135deg, rgba(201,163,91,0.10) 0%, rgba(255,255,255,0.04) 100%);
+    border-color: rgba(201,163,91,0.25);
+    box-shadow:
+      0 16px 48px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(201,163,91,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.10);
   }
   .service .tag {
     font-size: 0.6875rem;
@@ -1822,28 +1899,39 @@
   .method-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    overflow: hidden;
+    gap: 16px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
     margin-top: 56px;
   }
   .method-card {
-    background: var(--bg);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
     padding: 56px 56px 64px;
     display: flex;
     flex-direction: column;
     gap: 18px;
     position: relative;
-    transition: background 0.4s ease, transform 0.4s ease;
+    transition: all 0.4s ease;
     min-height: 320px;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.06);
   }
   .method-card:hover {
     background:
-      radial-gradient(ellipse at top right, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0) 60%),
-      var(--card);
-    box-shadow: inset 0 0 0 1px rgba(201,163,91,0.18), inset 0 1px 0 rgba(255,255,255,0.06);
+      linear-gradient(135deg, rgba(201,163,91,0.10) 0%, rgba(255,255,255,0.04) 100%);
+    border-color: rgba(201,163,91,0.25);
+    box-shadow:
+      0 16px 48px rgba(0,0,0,0.4),
+      0 0 0 1px rgba(201,163,91,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.10);
     transform: scale(1.02);
   }
   .method-num {
@@ -1945,8 +2033,9 @@
     margin-top: 32px;
     padding: 24px 28px;
     border-left: 2px solid var(--accent);
-    background: rgba(201,163,91,0.04);
-    border-radius: 0 14px 14px 0;
+    background:
+      linear-gradient(135deg, rgba(201,163,91,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    border-radius: 0 20px 20px 0;
   }
   .book-promise-label {
     font-size: 0.6875rem;
@@ -1966,12 +2055,16 @@
   }
 
   .book-form {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(201,163,91,0.22);
-    border-radius: 18px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
     padding: 48px;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.06);
   }
   .form-row {
     margin-bottom: 28px;
@@ -1995,8 +2088,8 @@
     width: 100%;
     background: rgba(9,9,11,0.6);
     border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 10px;
-    padding: 14px 16px;
+    border-radius: 16px;
+    padding: 14px 18px;
     color: var(--fg);
     font-family: 'Inter', sans-serif;
     font-size: 0.9375rem;
@@ -2030,7 +2123,7 @@
     background: var(--fg);
     color: var(--bg);
     border: 1px solid var(--fg);
-    border-radius: 14px;
+    border-radius: 24px;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
     box-shadow: 0 8px 24px rgba(255,255,255,0.08);
@@ -2071,6 +2164,44 @@
 
   /* ---------- RESPONSIVE ---------- */
   /* Mid widths: shrink hero padding + headline before we stack for mobile */
+  /* ---------- LARGE SCREENS (iMac 27", ultrawide) ---------- */
+  @media (min-width: 1800px) {
+    .hero {
+      margin: 24px;
+      border-radius: 48px;
+      grid-template-columns: 1fr 1.2fr;
+    }
+    .hero-text {
+      padding: 140px 100px 120px;
+    }
+    .hero-content {
+      max-width: 800px;
+    }
+    .wv-seal {
+      width: 300px;
+      height: 300px;
+    }
+    h1 {
+      font-size: clamp(3rem, 5vw, 5.5rem);
+    }
+    section.ventures,
+    section.consulting,
+    section.operators {
+      padding-left: 120px;
+      padding-right: 120px;
+    }
+    section.story,
+    section.craft,
+    section.method,
+    section.book {
+      padding-left: 120px;
+      padding-right: 120px;
+    }
+    .spotlight-grid {
+      max-width: 1480px;
+    }
+  }
+
   @media (max-width: 1180px) {
     .hero-text { padding: 100px 48px 80px; }
     .hero-content { max-width: 100%; }
@@ -2442,57 +2573,23 @@
   <div class="section-rule"></div>
   <div class="chapter">V. &nbsp; The Story</div>
   <div class="story-wrap reveal">
-    <div class="story-label">The House</div>
-    <h2 class="story-headline">Two Midwestern brothers.<br/>One golden age.</h2>
+    <div class="story-label">The Story</div>
+    <h2 class="story-headline">The Thesis.</h2>
     <div class="story-gold-rule"></div>
 
     <div class="story-body">
       <p class="lede">
-        Right now &mdash; this decade, this moment &mdash; is the most
-        interesting time in a generation to be building anything. Elon is
-        moving in. The rockets are getting louder. The next Silicon Valley is
-        quietly assembling itself in a city that still feels like a small
-        town. We'd rather build in it than run plays on someone else's
-        scoreboard.
+        Every venture under this roof sits at the intersection of four things.
+        Most companies pick one and bolt the others on later.
+        We lead with all four because the combination is the moat.
       </p>
 
-      <p>
-        Woolf Ventures is the house we put it all under &mdash; formed in
-        Austin in 2025, but the instinct started a long time before that, in
-        a different town.
-      </p>
-
-      <div class="subhead">The Advantage</div>
-      <p>
-        <strong>We don't turn. We pivot.</strong> A cruise ship needs a mile of
-        open water to change course. We change it overnight. A two-person house
-        with a bench of builders isn't a weakness &mdash; it's the advantage.
-        When the market moves, we move with it, not against it. That's the whole
-        reason to run this under one roof instead of a dozen.
-      </p>
-
-      <p>
-        Built in Austin. Raised in Ann Arbor. Running together.
-      </p>
-
-      <div class="subhead">The Thesis</div>
-      <p>
-        Every venture in this house sits at the intersection of four things:
-      </p>
       <ul class="thesis-list">
         <li><strong>Sales</strong> &mdash; the street knowledge you only learn by losing deals.</li>
         <li><strong>Technology</strong> &mdash; the leverage that lets a two-person house run like a twenty-person one.</li>
         <li><strong>Story</strong> &mdash; the frame that makes people care before they understand.</li>
         <li><strong>Sound</strong> &mdash; the soul that gives the work a pulse you remember after you close the tab.</li>
       </ul>
-
-      <p>
-        Most companies lead with one corner and bolt the others on when they
-        need them. We lead with all four at once because the unusual
-        combination is the whole moat. Anybody with a pulse can copy a feature.
-        Nobody can copy the way two brothers with complementary obsessions
-        pay attention to the same problem.
-      </p>
 
       <div class="story-pullquote">
         <blockquote>
@@ -2502,36 +2599,10 @@
         <cite>— The House Rule</cite>
       </div>
 
-      <div class="subhead">What's Under The Roof</div>
-      <p>
-        Tasty Trends is the B2B sales platform serving convenience stores
-        across Central Texas. Drip Austin is a consumer brand of premium
-        portion-cup dipping sauces launching in 2026. Woolf Consulting is
-        how we rent out the playbook by the evening. Conquest of Empire,
-        Music &amp; Voice, and Patents &amp; IP are the longer bets &mdash;
-        original screenplays, scored work, and filed ideas that will surface
-        in their own time. The Portfolio page has the whole list, but the
-        list is less interesting than the fact that it all lives in one
-        building and shares one memory.
-      </p>
-
-      <div class="subhead">Why It Matters</div>
-      <p>
-        Because houses outlast jobs. Because the operators who do their best
-        work are the ones who own the whole playbook &mdash; not just the
-        part their title says they're allowed to touch. Because in a market
-        where every tool is converging on the same middle, unusual
-        combinations are the only real edge left. And because, honestly,
-        we've been running together our whole lives. This is just the
-        version where we get to put our name on the door.
-      </p>
-
       <div class="story-invitation">
         <p>
-          If you came here because you're curious about a specific venture,
-          start at the Portfolio. If you came here because you want to talk
-          &mdash; about work, about collaboration, about getting involved
-          &mdash; start at the Conversation.
+          If you came here for a specific venture, start at the Portfolio.
+          If you came here to talk, start at the Conversation.
         </p>
         <div class="cta-row">
           <a href="#ventures" class="ghost">See The Portfolio <span>→</span></a>

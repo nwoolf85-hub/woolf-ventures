@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Umami Analytics — privacy-friendly, no cookies, free tier -->
+<!-- TODO: Replace YOUR_WEBSITE_ID with the real ID from cloud.umami.is -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR_WEBSITE_ID"></script>
 <title>Woolf Ventures — An Empire of Ventures</title>
 <meta name="description" content="Two brothers. One long game. The operating company of Neal & Steven Woolf — B2B sales platforms, AI infrastructure, consumer brands, screenplays, music, and patents from one playbook. Raised in Ann Arbor. Built in Austin." />
 <meta property="og:title" content="Woolf Ventures — An Empire of Ventures" />
@@ -136,12 +139,19 @@
   }
 
   /* ---------- HERO (split-screen architecture) ---------- */
+  /* Inset from viewport + rounded — reads as a framed film still
+     matted on a dark wall, not an edge-to-edge 2007 web section. */
   .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - 32px);
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
+    margin: 16px;
+    border-radius: 28px;
+    box-shadow:
+      0 30px 90px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(201,163,91,0.18);
   }
   /* LEFT COLUMN — dark canvas, type, WV monogram */
   .hero-text {
@@ -153,76 +163,168 @@
     background:
       radial-gradient(ellipse at 30% 45%, rgba(201,163,91,0.06), rgba(9,9,11,0) 65%),
       var(--bg);
-    border-right: 1px solid rgba(201,163,91,0.22);
+    border-right: 1px solid rgba(201,163,91,0.10);
     overflow: hidden;
-    min-height: 100vh;
+    min-height: calc(100vh - 32px);
     container-type: inline-size;
   }
   .hero-text::after {
-    /* subtle vertical light leak along the gold rule, slowly breathing */
+    /* Very soft vertical light leak — the old hard gold rule felt 2007.
+       Now a diffuse warm column that fades out top + bottom. */
     content: '';
     position: absolute;
-    top: 0;
+    top: 10%;
     right: -1px;
     width: 1px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent 0%, rgba(201,163,91,0.5) 50%, transparent 100%);
+    height: 80%;
+    background: linear-gradient(180deg, transparent 0%, rgba(201,163,91,0.28) 50%, transparent 100%);
     pointer-events: none;
     animation: rulePulse 9s ease-in-out infinite alternate;
   }
   @keyframes rulePulse {
-    0%   { opacity: 0.55; }
-    100% { opacity: 1; box-shadow: 0 0 24px rgba(201,163,91,0.2); }
+    0%   { opacity: 0.45; }
+    100% { opacity: 0.85; }
   }
   .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 560px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
   }
-  /* The WV wax seal — sits on the photo like an artist signing the canvas.
-     Lives in the .hero-photo column so it never collides with text content. */
-  .wv-seal {
+  /* TITLE CARD — center-axis composition. Massive WV seal anchors the top,
+     headline falls directly below it, subtitle + CTAs centered underneath.
+     Nolan opening-title energy: one emblem, one declaration, one promise. */
+  .title-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* Gold spotlight behind the seal — faint radial bloom that makes the
+     emblem feel lit, not pasted. */
+  .title-card::before {
+    content: '';
     position: absolute;
-    left: 64px;
-    top: 104px;
-    width: 104px;
-    height: 104px;
-    z-index: 5;
+    top: -40px;
+    left: 50%;
+    width: 560px;
+    height: 560px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at center,
+                  rgba(201,163,91,0.18) 0%,
+                  rgba(201,163,91,0.08) 18%,
+                  rgba(201,163,91,0.02) 38%,
+                  rgba(9,9,11,0) 60%);
     pointer-events: none;
-    opacity: 0.95;
-    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.55))
-            drop-shadow(0 0 28px rgba(201,163,91,0.22));
-    animation: sealBreath 9s ease-in-out infinite alternate;
+    z-index: 0;
+    animation: spotlightBreath 9s ease-in-out infinite alternate;
+  }
+  @keyframes spotlightBreath {
+    0%   { opacity: 0.72; }
+    100% { opacity: 1; }
+  }
+  .wv-seal {
+    position: relative;
+    z-index: 1;
+    width: 260px;
+    height: 260px;
+    margin-bottom: 44px;
+    pointer-events: none;
+    animation: sealBeam 6.5s ease-in-out infinite alternate;
+    transform-origin: center;
   }
   .wv-seal svg { width: 100%; height: 100%; display: block; }
-  @keyframes sealBreath {
-    0%   { opacity: 0.82; filter: drop-shadow(0 0 14px rgba(201,163,91,0.14)); }
-    100% { opacity: 1.00; filter: drop-shadow(0 0 28px rgba(201,163,91,0.28))
-                                  drop-shadow(0 0 60px rgba(201,163,91,0.12)); }
+  /* Gold beam pulse — the seal catches light and brightens as if a lamp
+     is passing over it, then settles back. No rotation, no scale jitter.
+     brightness + saturation climb together to make the gold feel lit,
+     drop-shadows widen to throw warm light onto the panel around it. */
+  @keyframes sealBeam {
+    0% {
+      filter:
+        brightness(0.92)
+        saturate(0.95)
+        drop-shadow(0 6px 22px rgba(0,0,0,0.55))
+        drop-shadow(0 0 24px rgba(201,163,91,0.18));
+    }
+    100% {
+      filter:
+        brightness(1.22)
+        saturate(1.15)
+        drop-shadow(0 6px 30px rgba(0,0,0,0.6))
+        drop-shadow(0 0 48px rgba(231,192,110,0.45))
+        drop-shadow(0 0 120px rgba(201,163,91,0.18));
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wv-seal { animation: none; }
+  }
+  /* Gold hairline rule under the seal — divides emblem from declaration. */
+  .title-card .rule {
+    position: relative;
+    z-index: 1;
+    width: 180px;
+    height: 1px;
+    margin: -20px 0 32px;
+    background: linear-gradient(90deg,
+                  transparent 0%,
+                  rgba(201,163,91,0.7) 50%,
+                  transparent 100%);
+  }
+  .title-card h1 {
+    position: relative;
+    z-index: 1;
+    animation: textBreath 7s ease-in-out infinite alternate;
+  }
+  .title-card .subtitle {
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    animation: textBreath 7s ease-in-out infinite alternate;
+    animation-delay: 1.2s;
+  }
+  /* Very subtle text breath — you shouldn't see it, you should feel the
+     page is alive. 1px lift + a whisper of opacity. */
+  @keyframes textBreath {
+    0%   { opacity: 0.94; transform: translateY(0.5px); }
+    100% { opacity: 1;    transform: translateY(-0.5px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .title-card h1,
+    .title-card .subtitle { animation: none; }
+  }
+  .title-card .cta-row {
+    justify-content: center;
   }
 
-  /* RIGHT COLUMN — the photo, with letterbox + Ken Burns + cinematic gradient */
+  /* RIGHT COLUMN — the photo, with letterbox + Ken Burns + cinematic gradient.
+     The outer .hero container now handles rounding, so this just inherits. */
   .hero-photo {
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
-    border-radius: 22px 0 0 22px;
+    min-height: calc(100vh - 32px);
   }
   .hero-bg {
     position: absolute;
-    inset: -3%;
+    inset: -8%;
     background-image: url('images/hero-desert.jpg');
     background-size: cover;
-    background-position: 62% 28%;
+    background-position: 60% 26%;
     filter: brightness(0.8) contrast(1.08) saturate(1.08);
     z-index: 0;
-    animation: kenburns 22s ease-in-out infinite alternate;
+    animation: kenburns 38s ease-in-out infinite alternate;
     will-change: transform;
-    transform-origin: 58% 36%;
+    transform-origin: 60% 48%;
   }
+  /* Softer dolly-in — ~1.02 → ~1.09 anchored on the face so the camera
+     pushes in toward the eyes without clipping the hat crown. */
   @keyframes kenburns {
-    0%   { transform: scale(1.00) translate(0, 0); }
-    100% { transform: scale(1.10) translate(-0.8%, 0.4%); }
+    0%   { transform: scale(1.02) translate(0.8%, 0.4%); }
+    100% { transform: scale(1.09) translate(-0.8%, -0.2%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg { animation: none; transform: scale(1.04); }
   }
   .hero-bg::after {
     content: '';
@@ -251,6 +353,9 @@
   }
   .letterbox.top { top: 0; border-bottom: 1px solid rgba(201,163,91,0.45); }
   .letterbox.bot { bottom: 0; border-top: 1px solid rgba(201,163,91,0.45); }
+
+  /* .hero-title removed — the WV seal on the title card now owns brand identity.
+     The photo column is pure cinema: just Neal, the desert, the letterboxing. */
   .eyebrow {
     font-size: 0.75rem;
     font-weight: 500;
@@ -334,16 +439,45 @@
   /* ---------- MARQUEE TICKER ---------- */
   .marquee {
     position: relative;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    /* Soft gold hairline borders matching the seal's rule vocabulary */
+    border-top: none;
+    border-bottom: none;
     background: linear-gradient(90deg, rgba(201,163,91,0.04), rgba(9,9,11,0) 50%, rgba(201,163,91,0.04));
     overflow: hidden;
     padding: 28px 0;
   }
+  /* Gold hairline rules — fading from center, matching title-card rule */
+  .marquee::before, .marquee::after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,163,91,0.35) 50%, transparent 100%);
+  }
+  .marquee::before { top: 0; }
+  .marquee::after { bottom: 0; }
+  /* Soft fog fade at edges so the marquee dissolves rather than hard-clips */
+  .marquee-fog-left, .marquee-fog-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .marquee-fog-left {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg) 0%, transparent 100%);
+  }
+  .marquee-fog-right {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg) 0%, transparent 100%);
+  }
   .marquee-track {
     display: flex;
     width: max-content;
-    animation: marquee 60s linear infinite;
+    animation: marquee 80s linear infinite;
     gap: 56px;
     align-items: center;
   }
@@ -353,13 +487,13 @@
     font-size: 1.5rem;
     font-weight: 400;
     letter-spacing: 0.02em;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.45);
     white-space: nowrap;
   }
   .marquee-track .sep {
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    color: var(--accent);
+    color: rgba(201,163,91,0.6);
     font-size: 0.875rem;
     font-weight: 600;
   }
@@ -408,8 +542,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
+    background: rgba(201,163,91,0.12);
+    border: 1px solid rgba(201,163,91,0.12);
     border-radius: 18px;
     overflow: hidden;
   }
@@ -506,6 +640,39 @@
   @keyframes scrollLine {
     0%, 100% { transform: scaleX(0.4); transform-origin: left; opacity: 0.4; }
     50%      { transform: scaleX(1);   transform-origin: left; opacity: 1; }
+  }
+
+  /* ---------- GOLD SECTION DIVIDERS ---------- */
+  /* Replace hard white lines with fading gold hairlines that echo
+     the title-card rule vocabulary. Applied to major section tops. */
+  .gold-divide {
+    border-top: none !important;
+    position: relative;
+  }
+  .gold-divide > .section-rule {
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(201,163,91,0.40) 50%,
+      transparent 100%);
+    pointer-events: none;
+  }
+
+  /* Subtle breath on section headlines — same vocabulary as the title card.
+     Barely perceptible, just enough to feel alive. */
+  .section-head h2 {
+    animation: sectionBreath 8s ease-in-out infinite alternate;
+  }
+  @keyframes sectionBreath {
+    0%   { opacity: 0.92; }
+    100% { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .section-head h2 { animation: none; }
   }
 
   /* ---------- REVEAL ON SCROLL (progressive enhancement) ---------- */
@@ -702,6 +869,31 @@
     margin-bottom: 32px;
   }
   .story-body p:last-child { margin-bottom: 0; }
+  .story-body .thesis-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+  }
+  .story-body .thesis-list li {
+    position: relative;
+    padding: 14px 0 14px 28px;
+    border-bottom: 1px solid rgba(201,163,91,0.15);
+  }
+  .story-body .thesis-list li:last-child { border-bottom: none; }
+  .story-body .thesis-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 26px;
+    width: 14px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .story-body .thesis-list strong {
+    color: rgba(255,255,255,0.95);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
   .story-body .lede {
     font-size: 1.25rem;
     color: rgba(255,255,255,0.92);
@@ -717,12 +909,23 @@
     font-weight: 600;
   }
   .story-pullquote {
+    position: relative;
     margin: 72px -20px;
     padding: 48px 40px;
-    border-top: 1px solid rgba(201,163,91,0.35);
-    border-bottom: 1px solid rgba(201,163,91,0.35);
+    border-top: none;
+    border-bottom: none;
     text-align: center;
   }
+  .story-pullquote::before, .story-pullquote::after {
+    content: '';
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,163,91,0.45) 50%, transparent 100%);
+  }
+  .story-pullquote::before { top: 0; }
+  .story-pullquote::after { bottom: 0; }
   .story-pullquote blockquote {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -1029,6 +1232,140 @@
     display: block;
     filter: saturate(1.05) contrast(1.03);
   }
+  .operator-portrait--neal img { object-position: 50% 40%; }
+  .operator-portrait--steven img { object-position: 50% 32%; }
+  .operator-portrait--thomas img { object-position: 50% 35%; }
+  a.operator-portrait-link {
+    display: inline-block;
+    line-height: 0;
+    border-radius: 50%;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  a.operator-portrait-link:hover {
+    transform: scale(1.03);
+  }
+  a.operator-portrait-link:hover .operator-portrait {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 60px rgba(201,163,91,0.22);
+  }
+
+  /* The wink. A self-aware nod to the obvious comparison, placed between the section
+     header and the operator cards so it lands before anyone takes the bios too seriously. */
+  .operators-epigraph {
+    margin: 32px auto 0;
+    max-width: 720px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    color: rgba(201, 163, 91, 0.92);
+    letter-spacing: 0.01em;
+  }
+  @media (max-width: 1024px) {
+    .operators-epigraph { font-size: 1.15rem; padding: 0 16px; }
+  }
+
+  /* ---------- LINEAGE BLOCK (Of Counsel — Thomas Woolf) ----------
+     Distinct visual register from operator cards. He's not a third operator;
+     he's the name's provenance. Letterhead feel, not team-card feel. */
+  .lineage {
+    margin-top: 36px;
+    border: 1px solid rgba(201,163,91,0.28);
+    border-radius: 18px;
+    padding: 36px 44px;
+    background:
+      radial-gradient(ellipse at top right, rgba(201,163,91,0.05) 0%, rgba(255,255,255,0) 60%),
+      var(--card);
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    position: relative;
+  }
+  .lineage::before {
+    content: 'Of Counsel';
+    position: absolute;
+    top: -10px;
+    left: 36px;
+    background: var(--bg);
+    padding: 0 14px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .lineage-portrait {
+    flex: 0 0 96px;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgba(201,163,91,0.4);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 30px rgba(201,163,91,0.06);
+    position: relative;
+  }
+  .lineage-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 32%;
+    display: block;
+    filter: saturate(1.05) contrast(1.03);
+  }
+  .lineage-portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 24px rgba(9,9,11,0.35);
+    pointer-events: none;
+  }
+  a.lineage-portrait-link {
+    display: inline-block;
+    line-height: 0;
+    border-radius: 50%;
+    transition: transform 0.4s ease;
+  }
+  a.lineage-portrait-link:hover { transform: scale(1.04); }
+  a.lineage-portrait-link:hover .lineage-portrait {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 0 50px rgba(201,163,91,0.2);
+  }
+  .lineage-body { flex: 1; }
+  .lineage-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.85rem;
+    line-height: 1.1;
+    color: #fff;
+  }
+  .lineage-role {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 8px;
+  }
+  .lineage-creds {
+    margin-top: 14px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.78);
+  }
+  .lineage-creds strong { color: rgba(255,255,255,0.92); font-weight: 500; }
+  .lineage-tag {
+    margin-top: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: rgba(201,163,91,0.9);
+  }
+  @media (max-width: 760px) {
+    .lineage { flex-direction: column; align-items: flex-start; padding: 36px 28px; gap: 24px; }
+    .lineage::before { left: 22px; }
+  }
   .operator-portrait::after {
     content: '';
     position: absolute;
@@ -1065,6 +1402,48 @@
     color: var(--muted);
     margin-top: 4px;
     max-width: 420px;
+  }
+  .operator-bio-hook {
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.88);
+    font-weight: 400;
+    margin: 0 0 20px;
+    line-height: 1.55;
+  }
+  .operator-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 22px;
+  }
+  .operator-list li {
+    position: relative;
+    padding: 10px 0 10px 22px;
+    border-bottom: 1px solid rgba(201,163,91,0.12);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .operator-list li:last-child { border-bottom: none; }
+  .operator-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 12px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .operator-list strong {
+    color: rgba(255,255,255,0.95);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .operator-bio-close {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    margin: 0;
+    line-height: 1.55;
   }
   .operator-links {
     display: flex;
@@ -1714,36 +2093,52 @@
       grid-template-columns: 1fr;
       grid-template-rows: 55vh auto;
       min-height: auto;
+      margin: 10px;
+      border-radius: 20px;
     }
     .hero-photo {
       order: 1;
       min-height: 55vh;
-      border-radius: 0 0 22px 22px;
     }
     .hero-text {
       order: 2;
       min-height: auto;
       padding: 80px 24px 60px;
       border-right: none;
-      border-top: 1px solid rgba(201,163,91,0.22);
+      border-top: 1px solid rgba(201,163,91,0.10);
     }
     .hero-text::after {
       top: -1px;
-      left: 0;
-      right: 0;
-      width: 100%;
+      left: 10%;
+      right: 10%;
+      width: 80%;
       height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(201,163,91,0.5) 50%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(201,163,91,0.28) 50%, transparent 100%);
     }
     .wv-seal {
-      left: 28px;
-      top: 64px;
-      width: 78px;
-      height: 78px;
+      width: 168px;
+      height: 168px;
+      margin-bottom: 32px;
+    }
+    .title-card::before {
+      width: 360px;
+      height: 360px;
+      top: -30px;
+    }
+    .title-card .rule {
+      width: 120px;
+      margin: -14px 0 24px;
     }
     .hero-bg {
-      background-position: 60% center;
+      background-position: 58% 28%;
+      transform-origin: 58% 46%;
+      animation: kenburns-stacked 38s ease-in-out infinite alternate;
     }
+    @keyframes kenburns-stacked {
+      0%   { transform: scale(1.02) translate(0.6%, 0.3%); }
+      100% { transform: scale(1.08) translate(-0.6%, -0.2%); }
+    }
+    /* .hero-title mobile overrides removed */
     section.spotlight { padding: 90px 24px; }
     .spotlight-grid { grid-template-columns: 1fr; gap: 44px; }
     .spotlight-copy h2 { font-size: 2.6rem; }
@@ -1771,19 +2166,51 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-content reveal">
-      <div class="eyebrow">Est. Austin, Texas · 2025</div>
-      <h1>
-        <span class="serif">An Empire</span><br/>Of Ventures.
-        <span class="light">Sales&nbsp;·&nbsp;Technology<br/>Story&nbsp;·&nbsp;Sound</span>
-      </h1>
-      <p class="subtitle">
-        The operating company of Neal &amp; Steven Woolf — building B2B sales platforms,
-        AI infrastructure, original screenplays, music, and consumer brands from one playbook.
-      </p>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:1.375rem;color:#c9a35b;margin:-28px 0 40px;letter-spacing:0.005em;opacity:0.92;">Run together.</p>
-      <div class="cta-row">
-        <a href="#ventures" class="btn btn-primary">Explore The Portfolio <span class="arrow">→</span></a>
-        <a href="#consulting" class="btn btn-ghost">Woolf Consulting <span class="arrow">→</span></a>
+      <div class="title-card">
+        <div class="wv-seal" aria-hidden="true">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <path id="wv-seal-arc-top" d="M 100 100 m -78 0 a 78 78 0 1 1 156 0" />
+              <path id="wv-seal-arc-bot" d="M 100 100 m -72 0 a 72 72 0 1 0 144 0" />
+              <linearGradient id="wv-seal-gold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"   stop-color="#e3c47e" />
+                <stop offset="55%"  stop-color="#c9a35b" />
+                <stop offset="100%" stop-color="#8f6d34" />
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="100" r="96" fill="rgba(9,9,11,0.55)" stroke="url(#wv-seal-gold)" stroke-width="1.8" opacity="0.98"/>
+            <circle cx="100" cy="100" r="88" fill="none" stroke="url(#wv-seal-gold)" stroke-width="0.8" opacity="0.6"/>
+            <circle cx="100" cy="100" r="62" fill="none" stroke="url(#wv-seal-gold)" stroke-width="1.1" opacity="0.85"/>
+            <text font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="3.2" fill="url(#wv-seal-gold)">
+              <textPath href="#wv-seal-arc-top" startOffset="50%" text-anchor="middle">WOOLF · VENTURES</textPath>
+            </text>
+            <text font-family="Inter, sans-serif" font-size="9" font-weight="500" letter-spacing="2.6" fill="url(#wv-seal-gold)" opacity="0.9">
+              <textPath href="#wv-seal-arc-bot" startOffset="50%" text-anchor="middle">EST · AUSTIN TEXAS · MMXXV</textPath>
+            </text>
+            <g fill="url(#wv-seal-gold)" opacity="0.85">
+              <circle cx="28" cy="100" r="1.6"/>
+              <circle cx="172" cy="100" r="1.6"/>
+            </g>
+            <text x="100" y="118" text-anchor="middle"
+                  font-family="Cormorant Garamond, serif" font-style="italic"
+                  font-size="68" font-weight="500"
+                  fill="url(#wv-seal-gold)"
+                  letter-spacing="-2">WV</text>
+          </svg>
+        </div>
+        <div class="rule" aria-hidden="true"></div>
+        <h1>
+          <span class="serif">An Empire</span><br/>Of Ventures.
+          <span class="light">Sales&nbsp;·&nbsp;Technology<br/>Story&nbsp;·&nbsp;Sound</span>
+        </h1>
+        <p class="subtitle">
+          The operating company of Neal &amp; Steven Woolf — building B2B sales platforms,
+          AI infrastructure, original screenplays, music, and consumer brands from one playbook.
+        </p>
+        <div class="cta-row">
+          <a href="#ventures" class="btn btn-primary">Explore The Portfolio <span class="arrow">→</span></a>
+          <a href="#consulting" class="btn btn-ghost">Woolf Consulting <span class="arrow">→</span></a>
+        </div>
       </div>
     </div>
     <div class="scroll-cue">Scroll</div>
@@ -1792,42 +2219,14 @@
     <div class="hero-bg"></div>
     <div class="letterbox top"></div>
     <div class="letterbox bot"></div>
+    <!-- hero-title removed: seal owns brand identity, photo is pure cinema -->
     <div class="chapter">I. &nbsp; Prologue</div>
-    <div class="wv-seal" aria-hidden="true">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <path id="wv-seal-arc-top" d="M 100 100 m -78 0 a 78 78 0 1 1 156 0" />
-          <path id="wv-seal-arc-bot" d="M 100 100 m -72 0 a 72 72 0 1 0 144 0" />
-          <linearGradient id="wv-seal-gold" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stop-color="#e3c47e" />
-            <stop offset="55%"  stop-color="#c9a35b" />
-            <stop offset="100%" stop-color="#8f6d34" />
-          </linearGradient>
-        </defs>
-        <circle cx="100" cy="100" r="96" fill="rgba(9,9,11,0.35)" stroke="url(#wv-seal-gold)" stroke-width="1.6" opacity="0.95"/>
-        <circle cx="100" cy="100" r="88" fill="none" stroke="url(#wv-seal-gold)" stroke-width="0.8" opacity="0.6"/>
-        <circle cx="100" cy="100" r="62" fill="none" stroke="url(#wv-seal-gold)" stroke-width="1.1" opacity="0.85"/>
-        <text font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="3.2" fill="url(#wv-seal-gold)">
-          <textPath href="#wv-seal-arc-top" startOffset="50%" text-anchor="middle">WOOLF · VENTURES</textPath>
-        </text>
-        <text font-family="Inter, sans-serif" font-size="9" font-weight="500" letter-spacing="2.6" fill="url(#wv-seal-gold)" opacity="0.9">
-          <textPath href="#wv-seal-arc-bot" startOffset="50%" text-anchor="middle">EST · AUSTIN TEXAS · MMXXV</textPath>
-        </text>
-        <text x="100" y="118" text-anchor="middle"
-              font-family="Cormorant Garamond, serif" font-style="italic"
-              font-size="68" font-weight="500"
-              fill="url(#wv-seal-gold)"
-              letter-spacing="-2">WV</text>
-        <g fill="url(#wv-seal-gold)" opacity="0.85">
-          <circle cx="28" cy="100" r="1.6"/>
-          <circle cx="172" cy="100" r="1.6"/>
-        </g>
-      </svg>
-    </div>
   </div>
 </section>
 
 <section class="marquee" aria-hidden="true">
+  <div class="marquee-fog-left"></div>
+  <div class="marquee-fog-right"></div>
   <div class="marquee-track">
     <span>Tasty Trends</span><span class="sep">✦</span>
     <span>Woolf Consulting</span><span class="sep">✦</span>
@@ -1844,7 +2243,8 @@
   </div>
 </section>
 
-<section class="ventures" id="ventures">
+<section class="ventures gold-divide" id="ventures">
+  <div class="section-rule"></div>
   <div class="chapter">II. &nbsp; The Portfolio</div>
   <div class="section-head reveal">
     <div>
@@ -1865,19 +2265,19 @@
       </div>
       <div class="meta"><span class="dot dot-live"></span>Operating · Production</div>
     </a>
-    <div class="card reveal">
+    <a class="card reveal" href="#consulting">
       <div>
         <div class="num">02</div>
         <h3>Woolf Consulting</h3>
         <p>AI &amp; systems advisory and B2B sales strategy for operators who need to move from intent to verified outcome.</p>
       </div>
       <div class="meta"><span class="dot dot-booking"></span>Booking · 2026</div>
-    </div>
+    </a>
     <a class="card reveal" href="https://nwoolf85-hub.github.io/drip-austin/" target="_blank" rel="noopener">
       <div>
         <div class="num">03</div>
         <h3>Drip Austin</h3>
-        <p>Premium pizza dipping sauces. Olive oil and ghee base. No seed oils. Four launch flavors. Drip. Drizzle. Dip.</p>
+        <p>Premium pizza dipping sauces. Olive oil and ghee base. No seed oils. Four launch flavors. Made for pizza. Ready for everything.</p>
       </div>
       <div class="meta"><span class="dot dot-booking"></span>Launching · 2026</div>
     </a>
@@ -1908,7 +2308,8 @@
   </div>
 </section>
 
-<section class="spotlight" id="spotlight">
+<section class="spotlight gold-divide" id="spotlight">
+  <div class="section-rule"></div>
   <div class="chapter">III. &nbsp; The Drop</div>
   <div class="spotlight-grid reveal">
     <div class="spotlight-frame">
@@ -1918,7 +2319,7 @@
     <div class="spotlight-copy">
       <div class="section-label">Featured Venture</div>
       <h2>Drip Austin</h2>
-      <div class="tagline">Drip. Drizzle. Dip.</div>
+      <div class="tagline">Made for Pizza. Ready for Everything.</div>
       <p class="body">
         A premium 2&nbsp;oz dipping-cup brand built for the way people actually eat &mdash;
         pure olive oil and ghee, no seed oils, four Austin-born flavors designed
@@ -1937,42 +2338,55 @@
   </div>
 </section>
 
-<section class="operators" id="operators">
+<section class="operators gold-divide" id="operators">
+  <div class="section-rule"></div>
   <div class="chapter">IV. &nbsp; The Operators</div>
   <div class="section-head reveal">
     <div>
       <div class="section-label">Two Brothers</div>
-      <h2>One Playbook.<br/>Two Brains.</h2>
+      <h2>Built Different.<br/>Wired Together.</h2>
     </div>
     <p class="section-blurb">
-      Woolf Ventures is run by brothers — one in the field, one in the systems.
-      The portfolio works because the lanes don't overlap.
+      Street knowledge meets system design. One brother reads the room, the other architects the machine.
+      The portfolio works because the lanes don't overlap. The name came with provenance.
     </p>
   </div>
+  <p class="operators-epigraph reveal">&ldquo;Succession, except everybody works and Dad lives in Jersey.&rdquo;</p>
   <div class="operators-grid reveal">
     <div class="operator-card">
-      <div class="operator-monogram">N</div>
+      <div class="operator-portrait operator-portrait--neal"><img src="images/neal-portrait.jpg" alt="Neal Woolf" /></div>
       <div class="operator-role">Founder &amp; CEO · Austin, Texas</div>
       <div class="operator-name">Neal Woolf</div>
-      <p class="operator-bio">
-        B2B sales operator. Built Tasty Trends from a truck cab into a multi-supplier
-        distribution platform serving convenience retailers across Texas. Lives where
-        the orders get written.
-      </p>
+      <div class="operator-bio">
+        <p class="operator-bio-hook">A B2B sales operator who's spent his career reading where the next wave was breaking.</p>
+        <ul class="operator-list">
+          <li><strong>Michigan craft beer scene</strong> &mdash; came up in one of the most talent-dense markets in the country</li>
+          <li><strong>Global beer network</strong> &mdash; ran Belgian imports across the Southeast and Southwest US (13 states + Puerto Rico, with research trips to Belgium, Italy, and Germany &mdash; strictly educational, of course)</li>
+          <li><strong>Meridian Hive</strong> &mdash; grew the Austin meadery by 300% as their sales rep</li>
+          <li><strong>The pivot</strong> &mdash; read the tea leaves on young consumers walking away from alcohol and got in front of the alternative beverage wave</li>
+          <li><strong>Today</strong> &mdash; sells kratom, hemp-derived THC, and other alternative beverages into independent convenience stores and high-end grocers across Texas</li>
+          <li><strong>Also running</strong> &mdash; a house of ventures in consumer brands, story, film, and sound</li>
+        </ul>
+        <p class="operator-bio-close">Passion makes you take the swing. The swings you don't take are the ones you look back on.</p>
+      </div>
       <div class="operator-links">
         <a class="operator-link" href="https://tasty-trends-production.up.railway.app" target="_blank" rel="noopener">Tasty Trends →</a>
       </div>
     </div>
     <div class="operator-card">
-      <div class="operator-portrait"><img src="images/steven-portrait.jpg" alt="Steven Woolf" /></div>
-      <div class="operator-role">Co-Founder &amp; CSO · Builder of Tools</div>
+      <div class="operator-portrait operator-portrait--steven"><img src="images/steven-portrait.jpg" alt="Steven Woolf" /></div>
+      <div class="operator-role">Co-Founder &amp; CSO · Ann Arbor, Michigan</div>
       <div class="operator-name">Steven Woolf</div>
-      <p class="operator-bio">
-        Specification infrastructure for AI-native teams. Advises operators, attorneys,
-        and technical leaders on turning ambiguity into shipped outcomes. The systems
-        brain behind the playbook &mdash; and the quiet founder of a portfolio of
-        his own.
-      </p>
+      <div class="operator-bio">
+        <p class="operator-bio-hook">Self-taught AI polymath &mdash; learned the craft before there was a playbook for it, and now teaches it to the next group.</p>
+        <ul class="operator-list">
+          <li><strong>Specification infrastructure</strong> &mdash; builds AI systems for operators and attorneys</li>
+          <li><strong>M&amp;A advisory</strong> &mdash; quietly advises counsel in New York on large healthcare and cross-industry deals</li>
+          <li><strong>Mentorship</strong> &mdash; trains a bench of top engineers out of the University of Michigan, giving Midwestern graduates a door into the fastest-moving industry on earth</li>
+          <li><strong>Advisory</strong> &mdash; weighs in on every venture under the Woolf roof</li>
+        </ul>
+        <p class="operator-bio-close">The kind of work that doesn't come with a logo wall.</p>
+      </div>
       <div class="also-building">
         <div class="also-building-label">Also building &mdash;</div>
         <a class="also-building-item" href="https://cascadehq.io" target="_blank" rel="noopener">
@@ -1986,57 +2400,75 @@
       </div>
     </div>
   </div>
+
+  <div class="lineage reveal">
+    <a class="lineage-portrait-link" href="tom.html" title="Don't call the cell. The cell is for the grandchildren.">
+      <div class="lineage-portrait"><img src="images/thomas-portrait.jpg" alt="Thomas Woolf" /></div>
+    </a>
+    <div class="lineage-body">
+      <div class="lineage-name">Thomas Woolf, Ph.D.</div>
+      <div class="lineage-role">Of Counsel · IP &amp; Regulatory Advisory</div>
+      <div class="lineage-creds">
+        <strong>First in his family to go to college.</strong> Graduated top of his class
+        at <strong>Washington University</strong>, then top of his class again at
+        <strong>Johns Hopkins</strong>, where he earned his Ph.D. Forty years a
+        pharmaceutical patent attorney on the Manhattan M&amp;A circuit &mdash; based in
+        New Jersey, practicing with high-powered counsel in New York City.
+        Author of the <em>Handbook of Drug Metabolism</em>,
+        still in print. When it matters, this is who&rsquo;s in the room.
+      </div>
+      <div class="lineage-tag">The Woolf name was already on record. The brothers just put it on the building.</div>
+    </div>
+  </div>
 </section>
 
-<section class="story" id="story">
+<section class="story gold-divide" id="story">
+  <div class="section-rule"></div>
   <div class="chapter">V. &nbsp; The Story</div>
   <div class="story-wrap reveal">
     <div class="story-label">The House</div>
-    <h2 class="story-headline">Two brothers.<br/>One long game.</h2>
+    <h2 class="story-headline">Two Midwestern brothers.<br/>One golden age.</h2>
     <div class="story-gold-rule"></div>
 
     <div class="story-body">
       <p class="lede">
-        Woolf Ventures isn't a startup. It's a house &mdash; a body of work
-        that two brothers from Ann Arbor, Michigan decided to build under
-        one roof instead of scattering across a dozen jobs for a dozen
-        other people's companies.
+        Right now &mdash; this decade, this moment &mdash; is the most
+        interesting time in a generation to be building anything. Elon is
+        moving in. The rockets are getting louder. The next Silicon Valley is
+        quietly assembling itself in a city that still feels like a small
+        town. We'd rather build in it than run plays on someone else's
+        scoreboard.
       </p>
 
       <p>
-        The company was formed in Austin in 2025, but the story started a
-        long time before that, in a different town. Neal and Steven grew up
-        in Ann Arbor &mdash; a place that teaches you that the quiet,
-        unfashionable pursuits are the ones that age well. Neal followed the
-        craft beer industry down to Austin in 2019, stayed for the people
-        and the pace, and spent the next several years running B2B sales in
-        the Central Texas convenience-store market &mdash; meeting store
-        owners face-to-face, learning which products move at 11pm versus
-        11am, and watching the industry try and fail to digitize itself
-        from the outside. Steven went deep on AI and systems, advising
-        operators and attorneys on how to turn ambiguous human intent into
-        verified outcomes. Different lanes. Same instinct: build the tool
-        you always wished you had, then hand it to people who need it.
+        Woolf Ventures is the house we put it all under &mdash; formed in
+        Austin in 2025, but the instinct started a long time before that, in
+        a different town.
+      </p>
+
+      <div class="subhead">The Advantage</div>
+      <p>
+        <strong>We don't turn. We pivot.</strong> A cruise ship needs a mile of
+        open water to change course. We change it overnight. A two-person house
+        with a bench of builders isn't a weakness &mdash; it's the advantage.
+        When the market moves, we move with it, not against it. That's the whole
+        reason to run this under one roof instead of a dozen.
       </p>
 
       <p>
-        At some point it stopped making sense to keep running the plays for
-        other people. So we put the name on the door, wrote the thesis down,
-        and started stacking ventures under it. Built in Austin. Raised in
-        Ann Arbor. Running together.
+        Built in Austin. Raised in Ann Arbor. Running together.
       </p>
 
       <div class="subhead">The Thesis</div>
       <p>
         Every venture in this house sits at the intersection of four things:
-        <em>sales, technology, story, and sound.</em> Sales is the street
-        knowledge &mdash; the part you only learn by losing deals. Technology
-        is the leverage &mdash; the part that lets a two-person house operate
-        like a twenty-person one. Story is the frame &mdash; the part that
-        makes people care before they understand. Sound is the soul &mdash;
-        the part that gives the work a pulse you remember after you close the
-        tab.
       </p>
+      <ul class="thesis-list">
+        <li><strong>Sales</strong> &mdash; the street knowledge you only learn by losing deals.</li>
+        <li><strong>Technology</strong> &mdash; the leverage that lets a two-person house run like a twenty-person one.</li>
+        <li><strong>Story</strong> &mdash; the frame that makes people care before they understand.</li>
+        <li><strong>Sound</strong> &mdash; the soul that gives the work a pulse you remember after you close the tab.</li>
+      </ul>
 
       <p>
         Most companies lead with one corner and bolt the others on when they
@@ -2094,7 +2526,8 @@
   </div>
 </section>
 
-<section class="craft" id="craft">
+<section class="craft gold-divide" id="craft">
+  <div class="section-rule"></div>
   <div class="chapter">VI. &nbsp; The Craft</div>
   <div class="section-head reveal">
     <div>
@@ -2120,7 +2553,7 @@
         No seed oils. Four launch flavors, three more coming.
       </p>
       <p class="craft-small">
-        Drip. Drizzle. Dip.
+        Made for Pizza. Ready for Everything.
       </p>
       <a href="https://nwoolf85-hub.github.io/drip-austin/" class="craft-link" target="_blank" rel="noopener">
         Visit Drip Austin <span class="arrow">→</span>
@@ -2129,7 +2562,8 @@
   </div>
 </section>
 
-<section class="consulting" id="consulting">
+<section class="consulting gold-divide" id="consulting">
+  <div class="section-rule"></div>
   <div class="chapter">VII. &nbsp; The Practice</div>
   <div class="consulting-grid reveal">
     <div>
@@ -2173,6 +2607,11 @@
         <div class="tag">Practice 03</div>
         <h4>Operator-In-Residence</h4>
         <p>For founders who need someone to actually pick up the phone, write the deck, and run the demo. Pilot engagements only.</p>
+      </div>
+      <div class="service">
+        <div class="tag">Practice 04</div>
+        <h4>IP &amp; Regulatory Strategy</h4>
+        <p>Patent positioning, pharmaceutical IP, and regulatory navigation. Led by Thomas Woolf, Ph.D. &mdash; 40-year patent attorney, Manhattan M&amp;A circuit, author of the <em>Handbook of Drug Metabolism</em>.</p>
       </div>
     </div>
 
@@ -2235,7 +2674,8 @@
   </div>
 </section>
 
-<section class="method" id="method">
+<section class="method gold-divide" id="method">
+  <div class="section-rule"></div>
   <div class="chapter">VIII. &nbsp; The Method</div>
   <div class="section-head reveal">
     <div>
@@ -2298,7 +2738,8 @@
   </div>
 </section>
 
-<section class="book" id="book">
+<section class="book gold-divide" id="book">
+  <div class="section-rule"></div>
   <div class="chapter">IX. &nbsp; The Conversation</div>
   <div class="section-head reveal">
     <div>
@@ -2377,13 +2818,50 @@
 </footer>
 
 <script>
-  function submitBook(e) {
+  // Formspree form ID — sign up at formspree.io (free: 50 submissions/month)
+  // and replace this with your real form ID (e.g. 'xyzabcde')
+  const FORMSPREE_ID = '';  // TODO: add your Formspree ID
+
+  async function submitBook(e) {
     e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.book-submit');
     const name = document.getElementById('bookName').value.trim();
     const email = document.getElementById('bookEmail').value.trim();
     const problem = document.getElementById('bookProblem').value.trim();
     const tried = document.getElementById('bookTried').value.trim();
     const success = document.getElementById('bookSuccess').value.trim();
+
+    // If Formspree is configured, submit directly
+    if (FORMSPREE_ID) {
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name, email,
+            problem, tried, success,
+            _subject: `Woolf Consulting · Free 30 Min · ${name}`
+          })
+        });
+        if (res.ok) {
+          form.innerHTML = `
+            <div style="text-align:center;padding:60px 20px;">
+              <div style="font-size:1.5rem;font-weight:600;margin-bottom:12px;color:#fff;">Submission received.</div>
+              <div style="color:rgba(255,255,255,0.7);font-size:0.95rem;">
+                We read every one personally. Expect a reply within 24 hours.
+              </div>
+            </div>`;
+          return false;
+        }
+      } catch (_) { /* fall through to mailto */ }
+      btn.textContent = 'Send My Submission →';
+      btn.disabled = false;
+    }
+
+    // Fallback: mailto
     const subject = `Woolf Consulting · Free 30 Min · ${name}`;
     const body =
       `Hi Neal,\n\nI'd like to book a free 30-minute intro session with Woolf Consulting.\n\n` +

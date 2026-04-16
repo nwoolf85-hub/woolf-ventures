@@ -265,37 +265,58 @@
     0%   { opacity: 0.72; }
     100% { opacity: 1; }
   }
-  .wv-seal {
+  /* THE RING — outer rotating text ring wraps the seal */
+  .ring-assembly {
     position: relative;
     z-index: 1;
-    width: 260px;
-    height: 260px;
-    margin-bottom: 44px;
+    width: 440px;
+    height: 440px;
+    margin: 0 auto 32px;
     pointer-events: none;
-    animation: sealBeam 6.5s ease-in-out infinite alternate, sealReveal 2.4s ease-out forwards;
-    transform-origin: center;
+  }
+  .ring-outer {
+    position: absolute;
+    inset: 0;
+    animation: ringRotate 100s linear infinite, ringReveal 2.8s ease-out forwards;
     opacity: 0;
   }
-  /* GAMBLE 1 — The Reveal: seal fades in from nothing on page load */
-  @keyframes sealReveal {
-    0%   { opacity: 0; transform: scale(0.92); filter: brightness(0.4) saturate(0); }
-    60%  { opacity: 0.7; transform: scale(1.01); }
-    100% { opacity: 1; transform: scale(1); filter: brightness(1) saturate(1); }
+  @keyframes ringRotate {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
-  /* GAMBLE 2 — The Pulse Ring: sonar ping radiates from the seal */
+  @keyframes ringReveal {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .wv-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    animation: sealBeam 6.5s ease-in-out infinite alternate, sealReveal 2.4s ease-out forwards;
+    opacity: 0;
+  }
+  @keyframes sealReveal {
+    0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.88); filter: brightness(0.4) saturate(0); }
+    60%  { opacity: 0.7; transform: translate(-50%, -50%) scale(1.01); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: brightness(1) saturate(1); }
+  }
+  /* Pulse ping from the seal center */
   .wv-seal::after {
     content: '';
     position: absolute;
     inset: -4px;
     border-radius: 50%;
-    border: 1px solid rgba(201,163,91,0.4);
-    animation: sealPulseRing 6s ease-out infinite;
+    border: 1px solid rgba(201,163,91,0.35);
+    animation: sealPulseRing 6s ease-out infinite 3s;
     pointer-events: none;
   }
   @keyframes sealPulseRing {
-    0%   { transform: scale(1); opacity: 0.5; border-width: 1px; }
-    70%  { transform: scale(1.35); opacity: 0; border-width: 0.5px; }
-    100% { transform: scale(1.35); opacity: 0; }
+    0%   { transform: scale(1); opacity: 0.5; }
+    70%  { transform: scale(1.4); opacity: 0; }
+    100% { transform: scale(1.4); opacity: 0; }
   }
   .wv-seal svg { width: 100%; height: 100%; display: block; }
   .wv-seal-img {
@@ -2245,25 +2266,41 @@
   }
 
   /* ---------- LIGHT MODE OVERRIDES ---------- */
+  /* ALWAYS DARK HERO — the hero text panel stays dark in both modes.
+     The seal was born for darkness. Let it live there. */
   [data-theme="light"] .hero-text {
     background:
-      /* Subtle linen texture — diagonal micro-gradient that adds depth without a pattern */
-      repeating-linear-gradient(
-        135deg,
-        rgba(144,110,26,0.015) 0px,
-        transparent 1px,
-        transparent 3px,
-        rgba(144,110,26,0.01) 4px
-      ),
-      /* Warm vignette — darker at edges, lighter center. Draws the eye to the seal. */
-      radial-gradient(ellipse at 50% 45%,
-        rgba(245,240,232,0) 0%,
-        rgba(245,240,232,0) 40%,
-        rgba(215,205,188,0.35) 100%),
-      /* Gold bloom behind seal area */
-      radial-gradient(ellipse at 50% 35%, rgba(144,110,26,0.06), rgba(245,240,232,0) 55%),
-      /* Base: warm gradient instead of flat color */
-      linear-gradient(175deg, #F5F0E8 0%, #EDE7DC 50%, #E8E0D2 100%);
+      radial-gradient(ellipse at 50% 35%, rgba(201,163,91,0.06), rgba(9,9,11,0) 55%),
+      radial-gradient(ellipse at 30% 45%, rgba(201,163,91,0.04), rgba(9,9,11,0) 65%),
+      #09090B;
+    color: #fff;
+  }
+  [data-theme="light"] .hero-text * {
+    color: inherit;
+  }
+  [data-theme="light"] .hero-text .subtitle {
+    color: rgba(255,255,255,0.55);
+  }
+  [data-theme="light"] h1 .serif {
+    color: rgba(255,255,255,0.94);
+  }
+  [data-theme="light"] h1 .light {
+    opacity: 0.5;
+    color: rgba(255,255,255,0.7);
+  }
+  [data-theme="light"] .hero-text .btn-primary {
+    background: #fff;
+    color: #09090B;
+    border-color: #fff;
+  }
+  [data-theme="light"] .hero-text .btn-ghost {
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.06);
+  }
+  [data-theme="light"] .hero-text .btn-ghost:hover {
+    border-color: rgba(201,163,91,0.5);
+    background: rgba(201,163,91,0.1);
   }
   [data-theme="light"] .hero-bg::after {
     background:
@@ -2291,26 +2328,7 @@
       rgba(144,110,26,0.03) 18%,
       rgba(245,240,232,0) 60%);
   }
-  /* GAMBLE 3 — Glass Seal: frosted depth in light mode, Apple Vision Pro energy */
-  [data-theme="light"] .wv-seal {
-    animation: sealBeamLight 6.5s ease-in-out infinite alternate, sealReveal 2.4s ease-out forwards;
-    background: rgba(9,9,11,0.03);
-    border-radius: 50%;
-    backdrop-filter: blur(2px) saturate(1.2);
-    -webkit-backdrop-filter: blur(2px) saturate(1.2);
-    box-shadow:
-      0 12px 40px rgba(0,0,0,0.12),
-      0 0 0 1px rgba(201,163,91,0.15),
-      inset 0 1px 0 rgba(255,255,255,0.1);
-  }
-  /* Force the seal's SVG circles to be fully opaque dark in light mode */
-  [data-theme="light"] .wv-seal svg circle:first-of-type {
-    fill: rgba(9,9,11,0.95);
-  }
-  /* Pulse ring is subtler in light mode */
-  [data-theme="light"] .wv-seal::after {
-    border-color: rgba(140,105,20,0.25);
-  }
+  /* Hero is always dark — no light mode seal overrides needed */
   @keyframes sealBeamLight {
     0% {
       filter:
@@ -2330,7 +2348,7 @@
     }
   }
   [data-theme="light"] .hero-text::after {
-    background: linear-gradient(180deg, transparent 0%, rgba(144,110,26,0.12) 50%, transparent 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(201,163,91,0.28) 50%, transparent 100%);
   }
   /* Light mode: headline is uniform dark — no ghost-white serif */
   [data-theme="light"] h1 .serif {
@@ -2555,9 +2573,13 @@
     .hero-content {
       max-width: 800px;
     }
+    .ring-assembly {
+      width: 500px;
+      height: 500px;
+    }
     .wv-seal {
-      width: 300px;
-      height: 300px;
+      width: 220px;
+      height: 220px;
     }
     h1 {
       font-size: clamp(3rem, 5vw, 5.5rem);
@@ -2637,10 +2659,14 @@
       height: 1px;
       background: linear-gradient(90deg, transparent 0%, rgba(201,163,91,0.28) 50%, transparent 100%);
     }
+    .ring-assembly {
+      width: 320px;
+      height: 320px;
+      margin-bottom: 20px;
+    }
     .wv-seal {
-      width: 168px;
-      height: 168px;
-      margin-bottom: 32px;
+      width: 140px;
+      height: 140px;
     }
     .title-card::before {
       width: 360px;
@@ -2692,36 +2718,53 @@
   <div class="hero-text">
     <div class="hero-content reveal">
       <div class="title-card">
-        <div class="wv-seal" aria-hidden="true">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <div class="ring-assembly" aria-hidden="true">
+          <!-- Outer rotating ring -->
+          <svg class="ring-outer" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <path id="wv-seal-arc-top" d="M 100 100 m -78 0 a 78 78 0 1 1 156 0" />
-              <path id="wv-seal-arc-bot" d="M 100 100 m -72 0 a 72 72 0 1 0 144 0" />
-              <linearGradient id="wv-seal-gold" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%"   stop-color="#e3c47e" />
-                <stop offset="55%"  stop-color="#c9a35b" />
-                <stop offset="100%" stop-color="#8f6d34" />
+              <path id="ring-text-path" d="M 220 220 m -200 0 a 200 200 0 1 1 400 0 a 200 200 0 1 1 -400 0" />
+              <linearGradient id="ring-gold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#e3c47e" /><stop offset="100%" stop-color="#8f6d34" />
               </linearGradient>
             </defs>
-            <circle cx="100" cy="100" r="96" fill="rgba(9,9,11,0.55)" stroke="url(#wv-seal-gold)" stroke-width="1.8" opacity="0.98"/>
-            <circle cx="100" cy="100" r="88" fill="none" stroke="url(#wv-seal-gold)" stroke-width="0.8" opacity="0.6"/>
-            <circle cx="100" cy="100" r="62" fill="none" stroke="url(#wv-seal-gold)" stroke-width="1.1" opacity="0.85"/>
-            <text font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="3.2" fill="url(#wv-seal-gold)">
-              <textPath href="#wv-seal-arc-top" startOffset="50%" text-anchor="middle">WOOLF · VENTURES</textPath>
+            <circle cx="220" cy="220" r="210" fill="none" stroke="url(#ring-gold)" stroke-width="0.5" opacity="0.35"/>
+            <circle cx="220" cy="220" r="200" fill="none" stroke="url(#ring-gold)" stroke-width="0.3" opacity="0.2"/>
+            <text font-family="Inter, sans-serif" font-size="11.5" font-weight="600" letter-spacing="6" fill="url(#ring-gold)" opacity="0.5">
+              <textPath href="#ring-text-path" startOffset="0%">WOOLF VENTURES · SALES · TECHNOLOGY · DISTRIBUTION · AUSTIN TEXAS · MMXXV · WOOLF VENTURES · SALES · TECHNOLOGY · DISTRIBUTION · AUSTIN TEXAS · MMXXV ·</textPath>
             </text>
-            <text font-family="Inter, sans-serif" font-size="9" font-weight="500" letter-spacing="2.6" fill="url(#wv-seal-gold)" opacity="0.9">
-              <textPath href="#wv-seal-arc-bot" startOffset="50%" text-anchor="middle">EST · AUSTIN TEXAS · MMXXV</textPath>
-            </text>
-            <g fill="url(#wv-seal-gold)" opacity="0.85">
-              <circle cx="28" cy="100" r="1.6"/>
-              <circle cx="172" cy="100" r="1.6"/>
-            </g>
-            <text x="100" y="118" text-anchor="middle"
-                  font-family="Cormorant Garamond, serif" font-style="italic"
-                  font-size="68" font-weight="500"
-                  fill="url(#wv-seal-gold)"
-                  letter-spacing="-2">WV</text>
           </svg>
+          <!-- Inner seal -->
+          <div class="wv-seal">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="wv-seal-arc-top" d="M 100 100 m -78 0 a 78 78 0 1 1 156 0" />
+                <path id="wv-seal-arc-bot" d="M 100 100 m -72 0 a 72 72 0 1 0 144 0" />
+                <linearGradient id="wv-seal-gold" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%"   stop-color="#e3c47e" />
+                  <stop offset="55%"  stop-color="#c9a35b" />
+                  <stop offset="100%" stop-color="#8f6d34" />
+                </linearGradient>
+              </defs>
+              <circle cx="100" cy="100" r="96" fill="rgba(9,9,11,0.7)" stroke="url(#wv-seal-gold)" stroke-width="1.8" opacity="0.98"/>
+              <circle cx="100" cy="100" r="88" fill="none" stroke="url(#wv-seal-gold)" stroke-width="0.8" opacity="0.6"/>
+              <circle cx="100" cy="100" r="62" fill="none" stroke="url(#wv-seal-gold)" stroke-width="1.1" opacity="0.85"/>
+              <text font-family="Inter, sans-serif" font-size="11" font-weight="600" letter-spacing="3.2" fill="url(#wv-seal-gold)">
+                <textPath href="#wv-seal-arc-top" startOffset="50%" text-anchor="middle">WOOLF · VENTURES</textPath>
+              </text>
+              <text font-family="Inter, sans-serif" font-size="9" font-weight="500" letter-spacing="2.6" fill="url(#wv-seal-gold)" opacity="0.9">
+                <textPath href="#wv-seal-arc-bot" startOffset="50%" text-anchor="middle">EST · AUSTIN TEXAS · MMXXV</textPath>
+              </text>
+              <g fill="url(#wv-seal-gold)" opacity="0.85">
+                <circle cx="28" cy="100" r="1.6"/>
+                <circle cx="172" cy="100" r="1.6"/>
+              </g>
+              <text x="100" y="118" text-anchor="middle"
+                    font-family="Cormorant Garamond, serif" font-style="italic"
+                    font-size="68" font-weight="500"
+                    fill="url(#wv-seal-gold)"
+                    letter-spacing="-2">WV</text>
+            </svg>
+          </div>
         </div>
         <div class="rule" aria-hidden="true"></div>
         <h1>

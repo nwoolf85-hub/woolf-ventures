@@ -58,23 +58,23 @@
 
   /* ---------- LIGHT MODE (Dawn) ---------- */
   [data-theme="light"] {
-    --bg: #FAFAFA;
-    --fg: #1C1917;
-    --muted: rgba(28,25,23,0.55);
-    --line: rgba(28,25,23,0.06);
-    --line-strong: rgba(28,25,23,0.16);
+    --bg: #F8F6F2;
+    --fg: #1A1816;
+    --muted: rgba(26,24,22,0.52);
+    --line: rgba(26,24,22,0.06);
+    --line-strong: rgba(26,24,22,0.15);
     --accent: #8B6914;
-    --card: rgba(255,255,255,0.7);
-    --glass-bg: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.5) 100%);
-    --glass-border: rgba(28,25,23,0.06);
-    --glass-shine: rgba(255,255,255,0.9);
-    --glass-hover-bg: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.6) 100%);
-    --glass-hover-border: rgba(140,105,20,0.35);
-    --glass-shadow: 0 8px 32px rgba(28,25,23,0.06);
-    --glass-shadow-hover: 0 16px 48px rgba(28,25,23,0.10);
+    --card: rgba(255,255,255,0.6);
+    --glass-bg: linear-gradient(135deg, rgba(255,255,255,0.75) 0%, rgba(248,246,242,0.5) 100%);
+    --glass-border: rgba(26,24,22,0.06);
+    --glass-shine: rgba(255,255,255,0.85);
+    --glass-hover-bg: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(248,246,242,0.6) 100%);
+    --glass-hover-border: rgba(140,105,20,0.3);
+    --glass-shadow: 0 8px 32px rgba(26,24,22,0.06);
+    --glass-shadow-hover: 0 16px 48px rgba(26,24,22,0.10);
     --hero-photo-filter: brightness(0.92) contrast(1.08) saturate(1.08);
     --grain-opacity: 0.02;
-    --nav-bg: rgba(250,250,250,0.92);
+    --nav-bg: rgba(248,246,242,0.92);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
@@ -272,8 +272,30 @@
     height: 260px;
     margin-bottom: 44px;
     pointer-events: none;
-    animation: sealBeam 6.5s ease-in-out infinite alternate;
+    animation: sealBeam 6.5s ease-in-out infinite alternate, sealReveal 2.4s ease-out forwards;
     transform-origin: center;
+    opacity: 0;
+  }
+  /* GAMBLE 1 — The Reveal: seal fades in from nothing on page load */
+  @keyframes sealReveal {
+    0%   { opacity: 0; transform: scale(0.92); filter: brightness(0.4) saturate(0); }
+    60%  { opacity: 0.7; transform: scale(1.01); }
+    100% { opacity: 1; transform: scale(1); filter: brightness(1) saturate(1); }
+  }
+  /* GAMBLE 2 — The Pulse Ring: sonar ping radiates from the seal */
+  .wv-seal::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,163,91,0.4);
+    animation: sealPulseRing 6s ease-out infinite;
+    pointer-events: none;
+  }
+  @keyframes sealPulseRing {
+    0%   { transform: scale(1); opacity: 0.5; border-width: 1px; }
+    70%  { transform: scale(1.35); opacity: 0; border-width: 0.5px; }
+    100% { transform: scale(1.35); opacity: 0; }
   }
   .wv-seal svg { width: 100%; height: 100%; display: block; }
   .wv-seal-img {
@@ -307,7 +329,7 @@
   @media (prefers-reduced-motion: reduce) {
     .wv-seal { animation: none; }
   }
-  /* Gold hairline rule under the seal — divides emblem from declaration. */
+  /* Gold hairline rule under the seal — draws itself in after the seal reveals */
   .title-card .rule {
     position: relative;
     z-index: 1;
@@ -318,19 +340,34 @@
                   transparent 0%,
                   rgba(201,163,91,0.7) 50%,
                   transparent 100%);
+    animation: ruleDrawIn 1.2s ease-out 1.0s forwards;
+    transform: scaleX(0);
+  }
+  @keyframes ruleDrawIn {
+    0%   { transform: scaleX(0); opacity: 0; }
+    100% { transform: scaleX(1); opacity: 1; }
   }
   .title-card h1 {
     position: relative;
     z-index: 1;
-    animation: textBreath 7s ease-in-out infinite alternate;
+    animation: textBreath 7s ease-in-out infinite alternate, titleReveal 1.8s ease-out 1.2s forwards;
+    opacity: 0;
+  }
+  @keyframes titleReveal {
+    0%   { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
   .title-card .subtitle {
     position: relative;
     z-index: 1;
     margin-left: auto;
     margin-right: auto;
-    animation: textBreath 7s ease-in-out infinite alternate;
-    animation-delay: 1.2s;
+    animation: textBreath 7s ease-in-out infinite alternate, titleReveal 1.8s ease-out 1.8s forwards;
+    opacity: 0;
+  }
+  .title-card .cta-row {
+    animation: titleReveal 1.4s ease-out 2.4s forwards;
+    opacity: 0;
   }
   /* Very subtle text breath — you shouldn't see it, you should feel the
      page is alive. 1px lift + a whisper of opacity. */
@@ -2210,20 +2247,20 @@
   /* ---------- LIGHT MODE OVERRIDES ---------- */
   [data-theme="light"] .hero-text {
     background:
-      radial-gradient(ellipse at 30% 45%, rgba(140,105,20,0.04), rgba(250,250,250,0) 65%),
+      radial-gradient(ellipse at 30% 45%, rgba(140,105,20,0.035), rgba(248,246,242,0) 65%),
       var(--bg);
   }
   [data-theme="light"] .hero-bg::after {
     background:
       linear-gradient(90deg,
-        rgba(250,250,250,0.40) 0%,
-        rgba(250,250,250,0.08) 30%,
-        rgba(250,250,250,0) 100%),
+        rgba(248,246,242,0.40) 0%,
+        rgba(248,246,242,0.08) 30%,
+        rgba(248,246,242,0) 100%),
       linear-gradient(180deg,
-        rgba(250,250,250,0.25) 0%,
-        rgba(250,250,250,0) 25%,
-        rgba(250,250,250,0) 75%,
-        rgba(250,250,250,0.35) 100%);
+        rgba(248,246,242,0.25) 0%,
+        rgba(248,246,242,0) 25%,
+        rgba(248,246,242,0) 75%,
+        rgba(248,246,242,0.35) 100%);
   }
   [data-theme="light"] .hero {
     box-shadow:
@@ -2235,16 +2272,29 @@
   [data-theme="light"] .letterbox.bot { border-top-color: rgba(158,124,60,0.25); }
   [data-theme="light"] .title-card::before {
     background: radial-gradient(circle at center,
-      rgba(140,105,20,0.08) 0%,
-      rgba(140,105,20,0.03) 18%,
-      rgba(250,250,250,0) 60%);
+      rgba(140,105,20,0.07) 0%,
+      rgba(140,105,20,0.025) 18%,
+      rgba(248,246,242,0) 60%);
   }
+  /* GAMBLE 3 — Glass Seal: frosted depth in light mode, Apple Vision Pro energy */
   [data-theme="light"] .wv-seal {
-    animation: sealBeamLight 6.5s ease-in-out infinite alternate;
+    animation: sealBeamLight 6.5s ease-in-out infinite alternate, sealReveal 2.4s ease-out forwards;
+    background: rgba(9,9,11,0.03);
+    border-radius: 50%;
+    backdrop-filter: blur(2px) saturate(1.2);
+    -webkit-backdrop-filter: blur(2px) saturate(1.2);
+    box-shadow:
+      0 12px 40px rgba(0,0,0,0.12),
+      0 0 0 1px rgba(201,163,91,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.1);
   }
   /* Force the seal's SVG circles to be fully opaque dark in light mode */
   [data-theme="light"] .wv-seal svg circle:first-of-type {
     fill: rgba(9,9,11,0.95);
+  }
+  /* Pulse ring is subtler in light mode */
+  [data-theme="light"] .wv-seal::after {
+    border-color: rgba(140,105,20,0.25);
   }
   @keyframes sealBeamLight {
     0% {

@@ -900,7 +900,7 @@
     font-size: clamp(2.4rem, 5.6vw, 4.4rem);
     line-height: 1.02;
     letter-spacing: -0.01em;
-    color: #fff;
+    color: var(--fg);
     text-align: center;
     margin-bottom: 56px;
   }
@@ -911,7 +911,7 @@
     margin: 0 auto 56px;
   }
   .story-body {
-    color: rgba(255,255,255,0.78);
+    color: var(--muted);
     font-size: 1.125rem;
     line-height: 1.85;
     font-weight: 300;
@@ -941,13 +941,13 @@
     background: var(--accent);
   }
   .story-body .thesis-list strong {
-    color: rgba(255,255,255,0.95);
+    color: var(--fg);
     font-weight: 600;
     letter-spacing: 0.02em;
   }
   .story-body .lede {
     font-size: 1.25rem;
-    color: rgba(255,255,255,0.92);
+    color: var(--fg);
     font-weight: 400;
   }
   .story-body .subhead {
@@ -983,7 +983,7 @@
     font-weight: 500;
     font-size: clamp(1.75rem, 3.4vw, 2.6rem);
     line-height: 1.25;
-    color: #fff;
+    color: var(--fg);
     margin: 0 auto;
     max-width: 700px;
   }
@@ -1047,8 +1047,8 @@
   }
   .story-invitation a.ghost {
     background: transparent;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.24);
+    color: var(--fg);
+    border: 1px solid var(--line-strong);
   }
   .story-invitation a.ghost:hover {
     border-color: var(--accent);
@@ -1148,7 +1148,7 @@
     font-size: clamp(2.4rem, 4.2cqw + 1rem, 4.2rem);
     line-height: 1.02;
     margin-bottom: 14px;
-    color: #fff;
+    color: var(--fg);
   }
   .spotlight-copy .tagline {
     font-family: 'Cormorant Garamond', serif;
@@ -1175,7 +1175,7 @@
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.82);
+    color: var(--muted);
     padding: 8px 14px;
     border: 1px solid rgba(201,163,91,0.35);
     border-radius: 999px;
@@ -1422,7 +1422,7 @@
     font-weight: 500;
     font-size: 1.85rem;
     line-height: 1.1;
-    color: #fff;
+    color: var(--fg);
   }
   .lineage-role {
     font-size: 0.6875rem;
@@ -2363,6 +2363,67 @@
   }
   [data-theme="light"] .operators-epigraph {
     color: rgba(28,25,23,0.5);
+  }
+  /* Spotlight text contrast */
+  [data-theme="light"] .spotlight-copy h2 {
+    color: var(--fg);
+  }
+  [data-theme="light"] .spotlight-copy .tagline {
+    color: #7A6230;
+  }
+  [data-theme="light"] .spotlight-copy p.body {
+    color: rgba(28,25,23,0.7);
+  }
+  [data-theme="light"] .flavor-chip {
+    color: var(--fg);
+    border-color: rgba(28,25,23,0.18);
+    background: rgba(28,25,23,0.04);
+  }
+  [data-theme="light"] .spotlight-cta {
+    background: var(--fg);
+    color: var(--bg);
+  }
+  /* Craft section text */
+  [data-theme="light"] .craft-label {
+    color: var(--accent);
+  }
+  [data-theme="light"] .craft-copy h3 {
+    color: var(--fg);
+  }
+  [data-theme="light"] .craft-copy p {
+    color: rgba(28,25,23,0.7);
+  }
+  [data-theme="light"] .craft-small {
+    color: #7A6230;
+  }
+  [data-theme="light"] .craft-link {
+    color: var(--fg);
+  }
+  /* Chapter markers */
+  [data-theme="light"] .chapter {
+    color: var(--accent);
+  }
+  /* Marquee text */
+  [data-theme="light"] .marquee-track span {
+    color: rgba(28,25,23,0.35);
+  }
+  [data-theme="light"] .marquee-track .sep {
+    color: rgba(158,124,60,0.45);
+  }
+  /* Gold section dividers — warmer for light mode */
+  [data-theme="light"] .gold-divide > .section-rule {
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(158,124,60,0.25) 50%,
+      transparent 100%);
+  }
+  /* Hero: ensure parchment background on text panel */
+  [data-theme="light"] .hero {
+    background: var(--bg);
+  }
+  /* Nav border */
+  [data-theme="light"] nav {
+    border-bottom-color: rgba(28,25,23,0.06);
   }
   [data-theme="light"] body::before {
     mix-blend-mode: multiply;

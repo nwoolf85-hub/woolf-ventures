@@ -477,8 +477,12 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin-bottom: 36px;
+    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 45%, #a8863a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  /* "Woolf" — Playfair Display, editorial italic, commanding presence */
+  /* "Woolf" — Playfair Display, editorial italic, gold to match the seal */
   h1 .serif {
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
@@ -486,7 +490,10 @@
     text-transform: none;
     letter-spacing: 0.04em;
     font-size: 1.3em;
-    color: #fff;
+    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 55%, #a8863a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     display: block;
     margin-bottom: 2px;
     line-height: 0.9;
@@ -494,13 +501,16 @@
   /* "Sales · Technology · Distribution" — spaced-out editorial pillars */
   h1 .light {
     font-weight: 400;
-    opacity: 0.45;
     display: block;
     font-size: 0.38em;
     letter-spacing: 0.28em;
     margin-top: 24px;
     text-transform: uppercase;
     font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, rgba(201,163,91,0.55) 0%, rgba(168,134,58,0.4) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .subtitle {
     font-family: 'Playfair Display', Georgia, serif;
@@ -2298,13 +2308,7 @@
   [data-theme="light"] .hero-text .subtitle {
     color: rgba(255,255,255,0.55);
   }
-  [data-theme="light"] h1 .serif {
-    color: rgba(255,255,255,0.94);
-  }
-  [data-theme="light"] h1 .light {
-    opacity: 0.5;
-    color: rgba(255,255,255,0.7);
-  }
+  /* Hero is always dark — gold gradients persist in light mode */
   [data-theme="light"] .hero-text .btn-primary {
     background: #fff;
     color: #09090B;

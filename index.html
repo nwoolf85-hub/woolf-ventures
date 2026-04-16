@@ -58,7 +58,7 @@
 
   /* ---------- LIGHT MODE (Dawn) ---------- */
   [data-theme="light"] {
-    --bg: #F5F0E8;
+    --bg: #F0EBE1;
     --fg: #181614;
     --muted: rgba(24,22,20,0.50);
     --line: rgba(24,22,20,0.07);
@@ -74,7 +74,7 @@
     --glass-shadow-hover: 0 16px 48px rgba(24,22,20,0.12);
     --hero-photo-filter: brightness(0.93) contrast(1.06) saturate(1.1) sepia(0.03);
     --grain-opacity: 0.025;
-    --nav-bg: rgba(245,240,232,0.94);
+    --nav-bg: rgba(240,235,225,0.94);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
@@ -2247,8 +2247,23 @@
   /* ---------- LIGHT MODE OVERRIDES ---------- */
   [data-theme="light"] .hero-text {
     background:
-      radial-gradient(ellipse at 30% 45%, rgba(144,110,26,0.05), rgba(245,240,232,0) 65%),
-      var(--bg);
+      /* Subtle linen texture — diagonal micro-gradient that adds depth without a pattern */
+      repeating-linear-gradient(
+        135deg,
+        rgba(144,110,26,0.015) 0px,
+        transparent 1px,
+        transparent 3px,
+        rgba(144,110,26,0.01) 4px
+      ),
+      /* Warm vignette — darker at edges, lighter center. Draws the eye to the seal. */
+      radial-gradient(ellipse at 50% 45%,
+        rgba(245,240,232,0) 0%,
+        rgba(245,240,232,0) 40%,
+        rgba(215,205,188,0.35) 100%),
+      /* Gold bloom behind seal area */
+      radial-gradient(ellipse at 50% 35%, rgba(144,110,26,0.06), rgba(245,240,232,0) 55%),
+      /* Base: warm gradient instead of flat color */
+      linear-gradient(175deg, #F5F0E8 0%, #EDE7DC 50%, #E8E0D2 100%);
   }
   [data-theme="light"] .hero-bg::after {
     background:
@@ -2264,8 +2279,8 @@
   }
   [data-theme="light"] .hero {
     box-shadow:
-      0 30px 90px rgba(28,25,23,0.10),
-      0 0 0 1px rgba(158,124,60,0.15);
+      0 30px 90px rgba(28,25,23,0.14),
+      0 0 0 1px rgba(144,110,26,0.2);
   }
   [data-theme="light"] .letterbox { background: var(--bg); }
   [data-theme="light"] .letterbox.top { border-bottom-color: rgba(158,124,60,0.25); }

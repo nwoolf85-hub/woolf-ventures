@@ -478,10 +478,34 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin-bottom: 36px;
-    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 45%, #a8863a 100%);
+    background:
+      linear-gradient(
+        110deg,
+        rgba(245,230,168,0) 0%,
+        rgba(245,230,168,0) 35%,
+        rgba(255,245,200,0.5) 45%,
+        rgba(245,230,168,0) 55%,
+        rgba(245,230,168,0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        #f5e6a8 0%,
+        #dbb94e 12%,
+        #c9a35b 30%,
+        #8f6d34 50%,
+        #c9a35b 70%,
+        #dbb94e 88%,
+        #f5e6a8 100%
+      );
+    background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: goldShimmerWV 8s ease-in-out 2s infinite;
+  }
+  @keyframes goldShimmerWV {
+    0%   { background-position: -100% 0, 0 0; }
+    100% { background-position: 200% 0, 0 0; }
   }
   /* "Woolf" — Playfair Display italic, larger, elegant gold. The Vanity Fair half. */
   h1 .serif {
@@ -491,13 +515,34 @@
     text-transform: none;
     letter-spacing: 0.01em;
     font-size: 1.5em;
-    background: linear-gradient(180deg, #f0d590 0%, #c9a35b 55%, #a8863a 100%);
+    background:
+      linear-gradient(
+        110deg,
+        rgba(245,230,168,0) 0%,
+        rgba(245,230,168,0) 35%,
+        rgba(255,245,200,0.6) 45%,
+        rgba(245,230,168,0) 55%,
+        rgba(245,230,168,0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        #f5e6a8 0%,
+        #dbb94e 12%,
+        #c9a35b 30%,
+        #8f6d34 50%,
+        #c9a35b 70%,
+        #dbb94e 88%,
+        #f5e6a8 100%
+      );
+    background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: block;
     margin-bottom: -4px;
     line-height: 0.85;
+    filter: drop-shadow(0 2px 12px rgba(201,163,91,0.3));
+    animation: goldShimmerWV 8s ease-in-out 2s infinite;
   }
   /* "Sales · Technology · Distribution · Entertainment" — spaced-out editorial pillars */
   h1 .light {
@@ -666,10 +711,14 @@
     text-transform: none;
     line-height: 1.05;
     margin-top: 12px;
-    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 55%, #a8863a 100%);
+    background:
+      linear-gradient(110deg, rgba(245,230,168,0) 0%, rgba(245,230,168,0) 35%, rgba(255,245,200,0.5) 45%, rgba(245,230,168,0) 55%, rgba(245,230,168,0) 100%),
+      linear-gradient(180deg, #f5e6a8 0%, #dbb94e 12%, #c9a35b 30%, #8f6d34 50%, #c9a35b 70%, #dbb94e 88%, #f5e6a8 100%);
+    background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: goldShimmerWV 8s ease-in-out 2s infinite;
   }
   .section-blurb {
     max-width: 560px;
@@ -731,10 +780,14 @@
     letter-spacing: 0.01em;
     text-transform: none;
     margin-bottom: 14px;
-    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 55%, #a8863a 100%);
+    background:
+      linear-gradient(110deg, rgba(245,230,168,0) 0%, rgba(245,230,168,0) 35%, rgba(255,245,200,0.5) 45%, rgba(245,230,168,0) 55%, rgba(245,230,168,0) 100%),
+      linear-gradient(180deg, #f5e6a8 0%, #dbb94e 12%, #c9a35b 30%, #8f6d34 50%, #c9a35b 70%, #dbb94e 88%, #f5e6a8 100%);
+    background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: goldShimmerWV 8s ease-in-out 2s infinite;
   }
   .card p {
     font-size: 0.95rem;
@@ -1091,10 +1144,14 @@
     line-height: 1.25;
     margin: 0 auto;
     max-width: 700px;
-    background: linear-gradient(180deg, #f0d590 0%, #c9a35b 55%, #a8863a 100%);
+    background:
+      linear-gradient(110deg, rgba(245,230,168,0) 0%, rgba(245,230,168,0) 35%, rgba(255,245,200,0.5) 45%, rgba(245,230,168,0) 55%, rgba(245,230,168,0) 100%),
+      linear-gradient(180deg, #f5e6a8 0%, #dbb94e 12%, #c9a35b 30%, #8f6d34 50%, #c9a35b 70%, #dbb94e 88%, #f5e6a8 100%);
+    background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: goldShimmerWV 8s ease-in-out 2s infinite;
   }
   .story-pullquote cite {
     display: block;
@@ -1595,10 +1652,14 @@
     line-height: 1;
     letter-spacing: -0.01em;
     margin-top: -4px;
-    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 55%, #a8863a 100%);
+    background:
+      linear-gradient(110deg, rgba(245,230,168,0) 0%, rgba(245,230,168,0) 35%, rgba(255,245,200,0.5) 45%, rgba(245,230,168,0) 55%, rgba(245,230,168,0) 100%),
+      linear-gradient(180deg, #f5e6a8 0%, #dbb94e 12%, #c9a35b 30%, #8f6d34 50%, #c9a35b 70%, #dbb94e 88%, #f5e6a8 100%);
+    background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: goldShimmerWV 8s ease-in-out 2s infinite;
   }
   .operator-bio {
     font-size: 0.9375rem;
@@ -1915,10 +1976,14 @@
     font-size: 1.875rem;
     line-height: 1;
     letter-spacing: -0.01em;
-    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 55%, #a8863a 100%);
+    background:
+      linear-gradient(110deg, rgba(245,230,168,0) 0%, rgba(245,230,168,0) 35%, rgba(255,245,200,0.5) 45%, rgba(245,230,168,0) 55%, rgba(245,230,168,0) 100%),
+      linear-gradient(180deg, #f5e6a8 0%, #dbb94e 12%, #c9a35b 30%, #8f6d34 50%, #c9a35b 70%, #dbb94e 88%, #f5e6a8 100%);
+    background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: goldShimmerWV 8s ease-in-out 2s infinite;
   }
   .package-meta {
     font-size: 0.6875rem;
@@ -2101,10 +2166,14 @@
     line-height: 0.95;
     letter-spacing: -0.02em;
     margin-top: -6px;
-    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 55%, #a8863a 100%);
+    background:
+      linear-gradient(110deg, rgba(245,230,168,0) 0%, rgba(245,230,168,0) 35%, rgba(255,245,200,0.5) 45%, rgba(245,230,168,0) 55%, rgba(245,230,168,0) 100%),
+      linear-gradient(180deg, #f5e6a8 0%, #dbb94e 12%, #c9a35b 30%, #8f6d34 50%, #c9a35b 70%, #dbb94e 88%, #f5e6a8 100%);
+    background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: goldShimmerWV 8s ease-in-out 2s infinite;
   }
   .method-tagline {
     font-size: 0.8125rem;

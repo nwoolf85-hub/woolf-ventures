@@ -246,6 +246,96 @@
     color: rgba(255,255,255,0.45);
   }
 
+  /* CHEF PROFILE */
+  .chef-profile {
+    padding: 48px 24px;
+    text-align: center;
+    border-bottom: 1px solid rgba(201,163,91,0.1);
+  }
+  .chef-card {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 36px 32px;
+    background: rgba(201,163,91,0.04);
+    border: 1px solid rgba(201,163,91,0.15);
+  }
+  .chef-initial {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(201,163,91,0.2) 0%, rgba(201,163,91,0.08) 100%);
+    border: 1px solid rgba(201,163,91,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #c9a35b;
+  }
+  .chef-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 55%, #a8863a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .chef-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(201,163,91,0.6);
+    margin-bottom: 16px;
+  }
+  .chef-rule {
+    width: 40px;
+    height: 2px;
+    background: #c9a35b;
+    margin: 0 auto 16px;
+  }
+  .chef-creds {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .chef-creds li {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+    color: rgba(255,255,255,0.7);
+  }
+  .chef-creds li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 10px;
+    height: 2px;
+    background: #c9a35b;
+  }
+  .chef-creds li strong {
+    color: #fff;
+    font-weight: 600;
+  }
+  .chef-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(201,163,91,0.7);
+    margin: 0;
+  }
+
   /* FOOTER */
   .page-footer {
     text-align: center;
@@ -446,6 +536,24 @@
   <div class="showcase-label">The Lineup</div>
   <img src="images/drip-quartet.jpg" alt="Drip Austin — four flavors">
   <p class="showcase-caption">Four flavors. Pure olive oil and ghee. No seed oils.</p>
+</div>
+
+<!-- CHEF PROFILE -->
+<div class="chef-profile">
+  <div class="showcase-label">The Chef Behind the Sauce</div>
+  <div class="chef-card">
+    <div class="chef-initial">CV</div>
+    <h3 class="chef-name">Claudia Vital</h3>
+    <p class="chef-title">Chef &amp; Co-Creator &nbsp;·&nbsp; Austin, Texas</p>
+    <div class="chef-rule"></div>
+    <ul class="chef-creds">
+      <li>Personal chef for <strong>Matthew McConaughey</strong> — Oscar-winning actor</li>
+      <li>Cooked for <strong>John Mackey</strong> — founder of Whole Foods Market</li>
+      <li>Mexican-American culinary heritage — bringing authentic Southwest flavors to every recipe</li>
+      <li>Austin-based — born to create flavors that belong in this city</li>
+    </ul>
+    <p class="chef-quote">"Italian pizza meets Mexican soul. That's Drip Austin."</p>
+  </div>
 </div>
 
 <!-- FOOTER -->

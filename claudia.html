@@ -30,13 +30,13 @@
     position: absolute;
     inset: -4%;
     background: url('images/drip-cooler-hero.jpg') center/cover no-repeat;
-    filter: brightness(0.3) saturate(1.1);
-    animation: heroDrift 30s ease-in-out infinite alternate;
+    filter: brightness(0.38) saturate(1.15) contrast(1.05);
+    animation: heroDrift 10s ease-in-out infinite alternate;
     transform-origin: center center;
   }
   @keyframes heroDrift {
-    0%   { transform: scale(1.0); }
-    100% { transform: scale(1.06); }
+    0%   { transform: scale(1.12); }
+    100% { transform: scale(1.0); }
   }
   /* Film grain overlay */
   body::before {
@@ -250,6 +250,7 @@
     color: rgba(255,255,255,0.5);
     background: none;
     border: 1px solid rgba(201,163,91,0.25);
+    border-radius: 6px;
     padding: 8px 20px;
     cursor: pointer;
     transition: all 0.3s;
@@ -320,10 +321,14 @@
   }
 
   .callout {
-    background: rgba(201,163,91,0.08);
+    background: linear-gradient(135deg, rgba(201,163,91,0.1) 0%, rgba(201,163,91,0.04) 100%);
     border-left: 3px solid #c9a35b;
+    border-radius: 12px;
     padding: 16px 20px;
     margin: 14px 0;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.04);
   }
   .callout strong {
     display: block;
@@ -356,12 +361,17 @@
   .showcase img {
     width: 100%;
     max-width: 560px;
-    border-radius: 0;
+    border-radius: 16px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,163,91,0.2);
     margin-bottom: 16px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    animation: productFloat 5s ease-in-out infinite alternate;
+  }
+  @keyframes productFloat {
+    0%   { transform: translateY(0) scale(1.0); box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,163,91,0.15); }
+    100% { transform: translateY(-8px) scale(1.02); box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(201,163,91,0.25), 0 0 40px rgba(201,163,91,0.08); }
   }
   .showcase-caption {
     font-family: 'Playfair Display', Georgia, serif;
@@ -380,8 +390,18 @@
     max-width: 480px;
     margin: 0 auto;
     padding: 36px 32px;
-    background: rgba(201,163,91,0.04);
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
     border: 1px solid rgba(201,163,91,0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .chef-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.35), 0 0 60px rgba(201,163,91,0.08), 0 0 0 1px rgba(201,163,91,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+    border-color: rgba(201,163,91,0.3);
   }
   .chef-initial {
     width: 72px;
@@ -398,6 +418,12 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: #c9a35b;
+    animation: chefBreath 6s ease-in-out infinite alternate;
+    box-shadow: 0 0 20px rgba(201,163,91,0.1);
+  }
+  @keyframes chefBreath {
+    0%   { transform: scale(1.0); box-shadow: 0 0 20px rgba(201,163,91,0.1); }
+    100% { transform: scale(1.06); box-shadow: 0 0 40px rgba(201,163,91,0.2); }
   }
   .chef-name {
     font-family: 'Playfair Display', Georgia, serif;

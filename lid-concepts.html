@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drip Austin — Lid Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #09090B;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 60px;
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.15em;
+    color: #c9a35b;
+    text-align: center;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+    max-width: 700px;
+  }
+  .lid-wrap {
+    text-align: center;
+  }
+  .lid-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(201,163,91,0.6);
+    margin-bottom: 12px;
+  }
+
+  /* BASE LID */
+  .lid {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.6),
+      0 0 0 2px rgba(201,163,91,0.25),
+      inset 0 0 60px rgba(0,0,0,0.3);
+  }
+
+  /* ===================== LID A — CLASSIC GOLD ===================== */
+  .lid-a {
+    background: radial-gradient(circle at 40% 35%, #1a1714 0%, #0e0c0a 60%, #080706 100%);
+  }
+  .lid-a .inner-ring {
+    position: absolute;
+    inset: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,163,91,0.3);
+  }
+  .lid-a .inner-ring-2 {
+    position: absolute;
+    inset: 18px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(201,163,91,0.15);
+  }
+  .lid-a .content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .lid-a .drip {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.2rem;
+    letter-spacing: 0.12em;
+    background: linear-gradient(180deg, #f5e6a8 0%, #dbb94e 20%, #c9a35b 40%, #8f6d34 60%, #c9a35b 80%, #f5e6a8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 0.9;
+  }
+  .lid-a .austin {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    color: rgba(201,163,91,0.6);
+    margin-top: 1px;
+  }
+  .lid-a .ritual {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.55rem;
+    color: rgba(201,163,91,0.4);
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+  .lid-a .flavor {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    color: #fff;
+    margin-top: 12px;
+    line-height: 1;
+  }
+  .lid-a .promise {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.45rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(201,163,91,0.55);
+    margin-top: 10px;
+  }
+  .lid-a .size {
+    font-size: 0.4rem;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===================== LID B — MINIMAL CLEAN ===================== */
+  .lid-b {
+    background: #0c0b09;
+  }
+  .lid-b .content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .lid-b .drip {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.8rem;
+    letter-spacing: 0.15em;
+    color: #fff;
+    line-height: 0.85;
+  }
+  .lid-b .austin {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+  }
+  .lid-b .divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(201,163,91,0.5);
+    margin: 10px auto;
+  }
+  .lid-b .flavor {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #c9a35b;
+    letter-spacing: 0.02em;
+  }
+  .lid-b .promise {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-top: 12px;
+  }
+  .lid-b .size {
+    font-size: 0.4rem;
+    color: rgba(255,255,255,0.2);
+    margin-top: 4px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===================== LID C — FULL GOLD LUXE ===================== */
+  .lid-c {
+    background: radial-gradient(circle at 45% 40%, #1e1810 0%, #141008 50%, #0a0806 100%);
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.6),
+      0 0 0 3px rgba(201,163,91,0.35),
+      0 0 0 5px rgba(9,9,11,0.8),
+      0 0 0 6px rgba(201,163,91,0.15),
+      inset 0 0 40px rgba(0,0,0,0.4);
+  }
+  .lid-c .content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .lid-c .drip {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 0.1em;
+    background: linear-gradient(180deg, #f5e6a8 0%, #c9a35b 30%, #8f6d34 50%, #c9a35b 70%, #f5e6a8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 0.9;
+  }
+  .lid-c .austin {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: rgba(201,163,91,0.5);
+    margin-top: 2px;
+  }
+  .lid-c .ritual {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.5rem;
+    color: rgba(201,163,91,0.35);
+    margin-top: 5px;
+  }
+  .lid-c .flavor {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.3rem;
+    background: linear-gradient(180deg, #f5e6a8 0%, #c9a35b 50%, #a8863a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 10px;
+    letter-spacing: 0.01em;
+  }
+  .lid-c .promise {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.42rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(201,163,91,0.45);
+    margin-top: 10px;
+  }
+  .lid-c .tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.5rem;
+    color: rgba(201,163,91,0.3);
+    margin-top: 4px;
+  }
+
+  /* ===================== LID D — BOLD STATEMENT ===================== */
+  .lid-d {
+    background: linear-gradient(170deg, #151210 0%, #0a0908 100%);
+  }
+  .lid-d .stripe {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,163,91,0.3), transparent);
+    transform: translateY(-50%);
+  }
+  .lid-d .stripe-2 {
+    position: absolute;
+    top: calc(50% + 50px);
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,163,91,0.2), transparent);
+  }
+  .lid-d .content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .lid-d .flavor-top {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.5rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(201,163,91,0.6);
+    margin-bottom: 6px;
+  }
+  .lid-d .drip {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4.2rem;
+    letter-spacing: 0.08em;
+    color: #fff;
+    line-height: 0.8;
+    text-shadow: 0 2px 20px rgba(201,163,91,0.2);
+  }
+  .lid-d .flavor {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: #c9a35b;
+    margin-top: 8px;
+  }
+  .lid-d .promise {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.42rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.3);
+    margin-top: 16px;
+    max-width: 160px;
+    line-height: 1.4;
+  }
+  .lid-d .size {
+    font-size: 0.38rem;
+    color: rgba(255,255,255,0.2);
+    margin-top: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    .lid { width: 260px; height: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>LID CONCEPTS</h1>
+
+<div class="grid">
+
+  <!-- LID A — CLASSIC GOLD -->
+  <div class="lid-wrap">
+    <div class="lid-label">Concept A — Classic Gold</div>
+    <div class="lid lid-a">
+      <div class="inner-ring"></div>
+      <div class="inner-ring-2"></div>
+      <div class="content">
+        <div class="drip">DRIP</div>
+        <div class="austin">AUSTIN</div>
+        <div class="ritual">drip. drizzle. dip.</div>
+        <div class="flavor">Garlic Butter</div>
+        <div class="promise">NO SEED OILS</div>
+        <div class="size">2 OZ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LID B — MINIMAL CLEAN -->
+  <div class="lid-wrap">
+    <div class="lid-label">Concept B — Minimal Clean</div>
+    <div class="lid lid-b">
+      <div class="content">
+        <div class="drip">DRIP</div>
+        <div class="austin">AUSTIN</div>
+        <div class="divider"></div>
+        <div class="flavor">Garlic Butter</div>
+        <div class="promise">NO SEED OILS · REAL INGREDIENTS</div>
+        <div class="size">2 OZ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LID C — FULL GOLD LUXE -->
+  <div class="lid-wrap">
+    <div class="lid-label">Concept C — Full Gold Luxe</div>
+    <div class="lid lid-c">
+      <div class="content">
+        <div class="drip">DRIP</div>
+        <div class="austin">AUSTIN</div>
+        <div class="ritual">drip · drizzle · dip</div>
+        <div class="flavor">Garlic Butter</div>
+        <div class="promise">NO SEED OILS · REAL INGREDIENTS YOU CAN TRUST</div>
+        <div class="tagline">Made for Pizza. Ready for Everything.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LID D — BOLD STATEMENT -->
+  <div class="lid-wrap">
+    <div class="lid-label">Concept D — Bold Statement</div>
+    <div class="lid lid-d">
+      <div class="stripe"></div>
+      <div class="stripe-2"></div>
+      <div class="content">
+        <div class="flavor-top">Garlic Butter</div>
+        <div class="drip">DRIP</div>
+        <div class="flavor">AUSTIN · TEXAS</div>
+        <div class="promise">No seed oils. Real ingredients you can trust.</div>
+        <div class="size">2 OZ</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

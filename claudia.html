@@ -28,14 +28,15 @@
   }
   .hero-bg {
     position: absolute;
-    inset: 0;
+    inset: -4%;
     background: url('images/drip-cooler-hero.jpg') center/cover no-repeat;
     filter: brightness(0.3) saturate(1.1);
     animation: heroDrift 30s ease-in-out infinite alternate;
+    transform-origin: center center;
   }
   @keyframes heroDrift {
-    0%   { transform: scale(1.02) translate(0.5%, 0.2%); }
-    100% { transform: scale(1.08) translate(-0.8%, -0.2%); }
+    0%   { transform: scale(1.0); }
+    100% { transform: scale(1.06); }
   }
   /* Film grain overlay */
   body::before {

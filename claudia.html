@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drip Austin — Para Claudia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #09090B;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('images/drip-cooler-hero.jpg') center/cover no-repeat;
+    filter: brightness(0.3) saturate(1.1);
+    animation: heroDrift 30s ease-in-out infinite alternate;
+  }
+  @keyframes heroDrift {
+    0%   { transform: scale(1.02); }
+    100% { transform: scale(1.08); }
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px 24px;
+    max-width: 640px;
+  }
+  .hero-logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px;
+    display: block;
+    box-shadow: 0 0 40px rgba(201,163,91,0.2);
+  }
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    background: linear-gradient(180deg, #f0d590 0%, #c9a35b 55%, #a8863a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+  }
+  .hero-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(201,163,91,0.7);
+    margin-bottom: 28px;
+  }
+  .scroll-hint {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-top: 40px;
+  }
+
+  /* LANG TOGGLE */
+  .lang-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 24px;
+    background: rgba(201,163,91,0.06);
+    border-top: 1px solid rgba(201,163,91,0.15);
+    border-bottom: 1px solid rgba(201,163,91,0.15);
+  }
+  .lang-btn {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    background: none;
+    border: 1px solid rgba(201,163,91,0.25);
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .lang-btn.active {
+    color: #09090B;
+    background: #c9a35b;
+    border-color: #c9a35b;
+  }
+  .lang-btn:hover:not(.active) {
+    border-color: rgba(201,163,91,0.5);
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* CONTENT SECTIONS */
+  .content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .lang-block { display: none; }
+  .lang-block.active { display: block; }
+
+  section.pitch {
+    padding: 48px 0;
+    border-bottom: 1px solid rgba(201,163,91,0.1);
+  }
+  section.pitch:last-of-type { border-bottom: none; }
+
+  .section-head {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+    background: linear-gradient(180deg, #e3c47e 0%, #c9a35b 55%, #a8863a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .rule {
+    width: 40px;
+    height: 2px;
+    background: #c9a35b;
+    margin-bottom: 18px;
+  }
+  .bullets {
+    list-style: none;
+    padding: 0;
+  }
+  .bullets li {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    padding-left: 24px;
+    position: relative;
+    color: rgba(255,255,255,0.8);
+  }
+  .bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 14px;
+    height: 2px;
+    background: #c9a35b;
+  }
+
+  .callout {
+    background: rgba(201,163,91,0.08);
+    border-left: 3px solid #c9a35b;
+    padding: 16px 20px;
+    margin: 14px 0;
+  }
+  .callout strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: #fff;
+  }
+  .callout p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* IMAGE SHOWCASE */
+  .showcase {
+    padding: 48px 24px;
+    text-align: center;
+    border-bottom: 1px solid rgba(201,163,91,0.1);
+  }
+  .showcase-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(201,163,91,0.6);
+    margin-bottom: 16px;
+  }
+  .showcase img {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,163,91,0.15);
+    margin-bottom: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .showcase-caption {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* FOOTER */
+  .page-footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid rgba(201,163,91,0.15);
+  }
+  .footer-sign {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .footer-brand {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(201,163,91,0.5);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <img class="hero-logo" src="images/woolf-logo.jpeg" alt="Woolf Ventures">
+    <h1 class="hero-title">Drip Austin</h1>
+    <p class="hero-sub">Made for Pizza. Ready for Everything.</p>
+    <p class="hero-tag">For Claudia Vital &nbsp;·&nbsp; April 2026</p>
+    <p class="scroll-hint">↓ Scroll</p>
+  </div>
+</div>
+
+<!-- LANGUAGE TOGGLE -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('es')">Español</button>
+</div>
+
+<!-- PRODUCT SHOWCASE 1 -->
+<div class="showcase">
+  <div class="showcase-label">The Vision</div>
+  <img src="images/drip-cooler-hero.jpg" alt="Drip Austin on the cooler door">
+  <p class="showcase-caption">Right where people grab a drink — and now, a dip.</p>
+</div>
+
+<!-- ENGLISH CONTENT -->
+<div class="content">
+<div class="lang-block active" id="lang-en">
+
+  <section class="pitch">
+    <h2 class="section-head">The big picture.</h2>
+    <div class="rule"></div>
+    <ul class="bullets">
+      <li>I sell into 30+ convenience stores and gas stations across Austin.</li>
+      <li>Most of them have Hunt Brothers Pizza — customers buy pizza every day but there's nothing to dip it in.</li>
+      <li>We put Drip Austin right next to the pizza warmer. $2.99 impulse buy. Nobody else is doing this.</li>
+      <li>The demand is already there. We just need the sauce.</li>
+    </ul>
+  </section>
+
+  <section class="pitch">
+    <h2 class="section-head">What I'm looking for.</h2>
+    <div class="rule"></div>
+    <ul class="bullets">
+      <li>A garlic butter dipping sauce made with cleaner ingredients. No seed oils — that's the only hard rule.</li>
+      <li>It needs to be shelf-stable. At least 3-6 months. This is going into stores, not a fridge.</li>
+      <li>Start with one flavor. If it works, we expand from there.</li>
+    </ul>
+  </section>
+
+  <section class="pitch">
+    <h2 class="section-head">How we work together.</h2>
+    <div class="rule"></div>
+    <ul class="bullets">
+      <li>This is a partnership, not a job. We figure out what's fair together.</li>
+      <li>You bring the talent and the kitchen. I bring the stores and the brand.</li>
+      <li>I take care of you, you take care of me, and we see if we can build something real.</li>
+    </ul>
+  </section>
+
+  <section class="pitch">
+    <h2 class="section-head">The opportunity.</h2>
+    <div class="rule"></div>
+    <div class="callout">
+      <strong>There is no pizza dip category in stores.</strong>
+      <p>Every sauce aisle has a hundred options for burgers and wings. Nobody has a clean dipping sauce made for pizza. We'd be the first.</p>
+    </div>
+    <ul class="bullets">
+      <li>Hunt Brothers Pizza is in over 10,000 convenience stores across the country.</li>
+      <li>None of them sell a dipping sauce next to the pizza.</li>
+      <li>If we prove this works in Austin, the opportunity goes way beyond Austin.</li>
+    </ul>
+  </section>
+
+  <section class="pitch">
+    <h2 class="section-head">Next step.</h2>
+    <div class="rule"></div>
+    <ul class="bullets">
+      <li>Make a test batch of your best garlic butter sauce. Something you're proud of.</li>
+      <li>We taste it. We get feedback. We go from there.</li>
+      <li>No pressure. Let's just see what you can do.</li>
+    </ul>
+  </section>
+
+</div>
+
+<!-- SPANISH CONTENT -->
+<div class="lang-block" id="lang-es">
+
+  <section class="pitch">
+    <h2 class="section-head">El panorama.</h2>
+    <div class="rule"></div>
+    <ul class="bullets">
+      <li>Yo vendo en más de 30 tiendas y gasolineras en todo Austin.</li>
+      <li>La mayoría tiene Hunt Brothers Pizza — los clientes compran pizza todos los días pero no tienen nada para dipearla.</li>
+      <li>Ponemos Drip Austin al lado de donde calientan la pizza. $2.99, compra por impulso. Nadie más está haciendo esto.</li>
+      <li>La demanda ya existe. Solo necesitamos la salsa.</li>
+    </ul>
+  </section>
+
+  <section class="pitch">
+    <h2 class="section-head">Lo que busco.</h2>
+    <div class="rule"></div>
+    <ul class="bullets">
+      <li>Una salsa de mantequilla con ajo hecha con ingredientes más limpios. Sin aceites de semilla — esa es la única regla.</li>
+      <li>Tiene que ser estable — mínimo 3-6 meses de vida útil. Va a estar en tiendas, no en un refrigerador.</li>
+      <li>Empezamos con un sabor. Si funciona, crecemos desde ahí.</li>
+    </ul>
+  </section>
+
+  <section class="pitch">
+    <h2 class="section-head">Cómo trabajamos juntos.</h2>
+    <div class="rule"></div>
+    <ul class="bullets">
+      <li>Esto es una sociedad, no un trabajo. Juntos vemos qué es justo para los dos.</li>
+      <li>Tú pones el talento y la cocina. Yo pongo las tiendas y la marca.</li>
+      <li>Yo te cuido, tú me cuidas, y vemos si podemos construir algo de verdad.</li>
+    </ul>
+  </section>
+
+  <section class="pitch">
+    <h2 class="section-head">La oportunidad.</h2>
+    <div class="rule"></div>
+    <div class="callout">
+      <strong>No existe una categoría de "dip para pizza" en las tiendas.</strong>
+      <p>Todos los pasillos de salsas tienen cien opciones para hamburguesas y alitas. Nadie tiene una salsa limpia hecha para pizza. Seríamos los primeros.</p>
+    </div>
+    <ul class="bullets">
+      <li>Hunt Brothers Pizza está en más de 10,000 tiendas en todo el país.</li>
+      <li>Ninguna vende una salsa para dipear al lado de la pizza.</li>
+      <li>Si probamos que funciona en Austin, la oportunidad va mucho más allá de Austin.</li>
+    </ul>
+  </section>
+
+  <section class="pitch">
+    <h2 class="section-head">El siguiente paso.</h2>
+    <div class="rule"></div>
+    <ul class="bullets">
+      <li>Haz un lote de prueba de tu mejor salsa de mantequilla con ajo. Algo de lo que estés orgullosa.</li>
+      <li>La probamos. Recibimos opiniones. Y desde ahí seguimos.</li>
+      <li>Sin presión. Solo quiero ver lo que puedes hacer.</li>
+    </ul>
+  </section>
+
+</div>
+</div>
+
+<!-- PRODUCT SHOWCASE 2 -->
+<div class="showcase">
+  <div class="showcase-label">The Lineup</div>
+  <img src="images/drip-quartet.jpg" alt="Drip Austin — four flavors">
+  <p class="showcase-caption">Four flavors. Pure olive oil and ghee. No seed oils.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <div class="footer-sign">— Neal</div>
+  <p class="footer-brand">Woolf Ventures LLC &nbsp;&bull;&nbsp; Drip Austin &nbsp;&bull;&nbsp; Austin, TX</p>
+</div>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('.lang-block').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  document.querySelector('.lang-btn[onclick*="' + lang + '"]').classList.add('active');
+}
+</script>
+</body>
+</html>

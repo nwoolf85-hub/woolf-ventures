@@ -78,6 +78,28 @@
     color: rgba(201,163,91,0.7);
     margin-bottom: 28px;
   }
+  .parent-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(201,163,91,0.15);
+  }
+  .parent-logo {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .parent-brand span {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
   .scroll-hint {
     font-size: 0.7rem;
     letter-spacing: 0.2em;
@@ -251,10 +273,13 @@
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <img class="hero-logo" src="images/woolf-logo.jpeg" alt="Woolf Ventures">
     <h1 class="hero-title">Drip Austin</h1>
     <p class="hero-sub">Made for Pizza. Ready for Everything.</p>
     <p class="hero-tag">For Claudia Vital &nbsp;·&nbsp; April 2026</p>
+    <div class="parent-brand">
+      <img class="parent-logo" src="images/woolf-logo.jpeg" alt="Woolf Ventures">
+      <span>A Woolf Ventures Brand</span>
+    </div>
     <p class="scroll-hint">↓ Scroll</p>
   </div>
 </div>
@@ -404,7 +429,8 @@
 <!-- FOOTER -->
 <div class="page-footer">
   <div class="footer-sign">— Neal</div>
-  <p class="footer-brand">Woolf Ventures LLC &nbsp;&bull;&nbsp; Drip Austin &nbsp;&bull;&nbsp; Austin, TX</p>
+  <p class="footer-brand">Drip Austin &nbsp;&bull;&nbsp; Austin, TX</p>
+  <p class="footer-brand" style="margin-top:6px;opacity:0.5;">A Woolf Ventures LLC Brand</p>
 </div>
 
 <script>

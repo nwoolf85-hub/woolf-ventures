@@ -120,27 +120,54 @@
     0%   { opacity: 0; transform: translateY(16px); }
     100% { opacity: 1; transform: translateY(0); }
   }
-  .hero-logo-img {
-    width: clamp(240px, 60vw, 380px);
-    display: block;
-    margin: 0 auto 2px;
-    animation: heroReveal 2s ease-out forwards;
+  .hero-title {
+    margin-bottom: 4px;
+    animation: heroReveal 1.8s ease-out forwards;
     opacity: 0;
-    filter:
-      brightness(1.3)
-      contrast(1.1)
-      drop-shadow(0 4px 24px rgba(201,163,91,0.25))
-      drop-shadow(0 0 40px rgba(201,163,91,0.1));
+    text-align: center;
+    line-height: 1;
+  }
+  .drip-word {
+    font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(5rem, 18vw, 9rem);
+    letter-spacing: 0.1em;
+    display: block;
+    background: linear-gradient(
+      180deg,
+      #f5e6a8 0%,
+      #e8cc6e 15%,
+      #c9a35b 40%,
+      #a8863a 65%,
+      #c9a35b 80%,
+      #f0d590 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 0.85;
+    filter: drop-shadow(0 2px 8px rgba(201,163,91,0.3));
+  }
+  .austin-word {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: clamp(1.1rem, 4vw, 1.8rem);
+    letter-spacing: 0.4em;
+    display: block;
+    color: rgba(201,163,91,0.55);
+    margin-top: 2px;
   }
   .hero-ritual {
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(0.8rem, 2.2vw, 1rem);
-    color: rgba(201,163,91,0.65);
-    letter-spacing: 0.14em;
-    margin: 6px 0 6px;
-    animation: heroReveal 1.4s ease-out 0.6s forwards;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    color: rgba(201,163,91,0.55);
+    letter-spacing: 0.1em;
+    margin: 8px 0 6px;
+    animation: heroReveal 1.4s ease-out 0.5s forwards;
     opacity: 0;
   }
   .hero-rule {
@@ -442,7 +469,7 @@
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <img class="hero-logo-img" src="images/drip-austin-logo.png" alt="DRIP AUSTIN">
+    <h1 class="hero-title"><span class="drip-word">DRIP</span><span class="austin-word">AUSTIN</span></h1>
     <p class="hero-ritual">drip &nbsp;· &nbsp;drizzle &nbsp;· &nbsp;dip</p>
     <div class="hero-rule"></div>
     <p class="hero-sub hero-sub-en">Made for Pizza. Ready for Everything.</p>

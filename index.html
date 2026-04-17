@@ -113,7 +113,7 @@
     position: absolute;
     top: 96px;        /* below the 72px fixed nav + 24px breathing */
     right: 80px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-size: 0.875rem;
     letter-spacing: 0.18em;
@@ -616,7 +616,7 @@
     align-items: center;
   }
   .marquee-track span {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-size: 1.5rem;
     font-weight: 400;
@@ -658,11 +658,13 @@
     color: var(--accent);
   }
   h2 {
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(2.25rem, 4.5vw, 3.75rem);
-    font-weight: 800;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    line-height: 1;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    line-height: 1.05;
     margin-top: 12px;
   }
   .section-blurb {
@@ -687,7 +689,7 @@
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    border-radius: 0;
     padding: 48px 40px;
     min-height: 280px;
     display: flex;
@@ -718,10 +720,12 @@
     margin-bottom: 32px;
   }
   .card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 1.65rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 0.01em;
+    text-transform: none;
     margin-bottom: 14px;
   }
   .card p {
@@ -864,7 +868,7 @@
   }
   .craft-image {
     display: block;
-    border-radius: 24px;
+    border-radius: 0;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.08);
     background: var(--bg);
@@ -903,7 +907,7 @@
     margin-bottom: 20px;
   }
   .craft-copy h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: clamp(2.25rem, 4.5vw, 3.75rem);
@@ -919,7 +923,7 @@
     font-weight: 300;
   }
   .craft-copy .craft-small {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-size: 1.125rem;
     color: var(--accent);
@@ -988,7 +992,7 @@
     text-align: center;
   }
   .story-headline {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: clamp(2.4rem, 5.6vw, 4.4rem);
@@ -1072,7 +1076,7 @@
   .story-pullquote::before { top: 0; }
   .story-pullquote::after { bottom: 0; }
   .story-pullquote blockquote {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: clamp(1.75rem, 3.4vw, 2.6rem);
@@ -1096,7 +1100,7 @@
     margin-top: 48px;
     padding: 36px;
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 24px;
+    border-radius: 0;
     background:
       linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
     backdrop-filter: blur(20px) saturate(140%);
@@ -1128,7 +1132,7 @@
     text-transform: uppercase;
     letter-spacing: 0.16em;
     text-decoration: none;
-    border-radius: 999px;
+    border-radius: 0;
     transition: transform .25s ease, box-shadow .25s ease;
   }
   .story-invitation a.primary {
@@ -1177,7 +1181,7 @@
   }
   .spotlight-frame {
     position: relative;
-    border-radius: 24px;
+    border-radius: 0;
     overflow: hidden;
     box-shadow:
       0 40px 120px rgba(0,0,0,0.55),
@@ -1225,7 +1229,7 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     padding: 8px 14px;
-    border-radius: 999px;
+    border-radius: 0;
     font-weight: 600;
   }
   .spotlight-copy .section-label {
@@ -1236,7 +1240,7 @@
     margin-bottom: 18px;
   }
   .spotlight-copy h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: clamp(2.4rem, 4.2cqw + 1rem, 4.2rem);
@@ -1245,7 +1249,7 @@
     color: var(--fg);
   }
   .spotlight-copy .tagline {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-size: 1.35rem;
     color: var(--accent);
@@ -1272,7 +1276,7 @@
     color: var(--muted);
     padding: 8px 14px;
     border: 1px solid rgba(201,163,91,0.35);
-    border-radius: 999px;
+    border-radius: 0;
     background: rgba(201,163,91,0.05);
     font-weight: 500;
   }
@@ -1287,7 +1291,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    border-radius: 999px;
+    border-radius: 0;
     text-decoration: none;
     transition: transform .25s ease, box-shadow .25s ease;
   }
@@ -1333,7 +1337,7 @@
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    border-radius: 0;
     padding: 56px 48px;
     display: flex;
     flex-direction: column;
@@ -1361,7 +1365,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: 2rem;
@@ -1425,7 +1429,7 @@
     margin: 32px auto 0;
     max-width: 720px;
     text-align: center;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 400;
     font-size: 1.35rem;
@@ -1443,7 +1447,7 @@
   .lineage {
     margin-top: 36px;
     border: 1px solid rgba(201,163,91,0.20);
-    border-radius: 24px;
+    border-radius: 0;
     padding: 36px 44px;
     background:
       linear-gradient(135deg, rgba(201,163,91,0.08) 0%, rgba(255,255,255,0.02) 100%);
@@ -1520,7 +1524,7 @@
   }
   .lineage-body { flex: 1; }
   .lineage-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: 1.85rem;
@@ -1544,7 +1548,7 @@
   .lineage-creds strong { color: rgba(255,255,255,0.92); font-weight: 500; }
   .lineage-tag {
     margin-top: 14px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-size: 1.15rem;
     color: rgba(201,163,91,0.9);
@@ -1573,7 +1577,7 @@
     color: var(--accent);
   }
   .operator-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: 2.5rem;
@@ -1667,7 +1671,7 @@
     color: rgba(201,163,91,0.75);
     margin-bottom: 14px;
     font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: none;
@@ -1765,7 +1769,7 @@
     color: var(--accent);
   }
   .rate-value {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: 2.75rem;
@@ -1810,7 +1814,7 @@
     margin-bottom: 8px;
   }
   .packages-head h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: 2.25rem;
@@ -1840,7 +1844,7 @@
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    border-radius: 0;
     padding: 44px 36px;
     display: flex;
     flex-direction: column;
@@ -1886,12 +1890,12 @@
     text-transform: uppercase;
     color: var(--accent);
     border: 1px solid rgba(201,163,91,0.4);
-    border-radius: 999px;
+    border-radius: 0;
     padding: 4px 12px;
     background: rgba(201,163,91,0.06);
   }
   .package-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: 1.875rem;
@@ -1913,7 +1917,7 @@
     margin-top: 8px;
   }
   .package-price .amount {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: 2.5rem;
@@ -1975,7 +1979,7 @@
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    border-radius: 0;
     padding: 36px 40px;
     transition: all 0.4s ease;
     box-shadow:
@@ -2044,7 +2048,7 @@
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    border-radius: 0;
     padding: 56px 56px 64px;
     display: flex;
     flex-direction: column;
@@ -2073,7 +2077,7 @@
     color: var(--accent);
   }
   .method-word {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: 3.25rem;
@@ -2143,7 +2147,7 @@
     margin-top: 56px;
   }
   .book-intro h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 500;
     font-size: 2.75rem;
@@ -2177,7 +2181,7 @@
     margin-bottom: 10px;
   }
   .book-promise-text {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 400;
     font-size: 1.125rem;
@@ -2189,7 +2193,7 @@
     background:
       linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 24px;
+    border-radius: 0;
     padding: 48px;
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
@@ -2219,7 +2223,7 @@
     width: 100%;
     background: rgba(9,9,11,0.6);
     border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 16px;
+    border-radius: 0;
     padding: 14px 18px;
     color: var(--fg);
     font-family: 'Inter', sans-serif;
@@ -2254,7 +2258,7 @@
     background: var(--fg);
     color: var(--bg);
     border: 1px solid var(--fg);
-    border-radius: 24px;
+    border-radius: 0;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
     box-shadow: 0 8px 24px rgba(255,255,255,0.08);
@@ -2566,7 +2570,7 @@
   }
   /* Theme toggle */
   .theme-toggle {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-size: 0.875rem;
     letter-spacing: 0.08em;
@@ -2729,7 +2733,7 @@
     .hero {
       grid-template-rows: 35vh auto;
       margin: 6px;
-      border-radius: 16px;
+      border-radius: 0;
     }
     .hero-photo {
       min-height: 35vh;

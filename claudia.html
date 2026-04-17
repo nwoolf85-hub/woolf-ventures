@@ -364,13 +364,16 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <h1 class="hero-title">Drip Austin</h1>
-    <p class="hero-sub">Made for Pizza. Ready for Everything.</p>
-    <p class="hero-tag">For Claudia Vital &nbsp;·&nbsp; April 2026</p>
+    <p class="hero-sub hero-sub-en">Made for Pizza. Ready for Everything.</p>
+    <p class="hero-sub hero-sub-es" style="display:none;">Hecha para Pizza. Lista para Todo.</p>
+    <p class="hero-tag hero-tag-en">For Claudia Vital &nbsp;·&nbsp; April 2026</p>
+    <p class="hero-tag hero-tag-es" style="display:none;">Para Claudia Vital &nbsp;·&nbsp; Abril 2026</p>
     <div class="parent-brand">
       <img class="parent-logo" src="images/woolf-logo.jpeg" alt="Woolf Ventures">
-      <span>A Woolf Ventures Brand</span>
+      <span class="parent-en">A Woolf Ventures Brand</span>
+      <span class="parent-es" style="display:none;">Una Marca de Woolf Ventures</span>
     </div>
-    <p class="scroll-hint">↓ Scroll</p>
+    <p class="scroll-hint">↓</p>
   </div>
 </div>
 
@@ -382,9 +385,11 @@
 
 <!-- PRODUCT SHOWCASE 1 -->
 <div class="showcase">
-  <div class="showcase-label">The Vision</div>
+  <div class="showcase-label showcase-en">The Vision</div>
+  <div class="showcase-label showcase-es" style="display:none;">La Visión</div>
   <img src="images/drip-cooler-hero.jpg" alt="Drip Austin on the cooler door">
-  <p class="showcase-caption">Right where people grab a drink — and now, a dip.</p>
+  <p class="showcase-caption showcase-en">Right where people grab a drink — and now, a dip.</p>
+  <p class="showcase-caption showcase-es" style="display:none;">Justo donde la gente agarra una bebida — y ahora, un dip.</p>
 </div>
 
 <!-- ENGLISH CONTENT -->
@@ -533,9 +538,11 @@
 
 <!-- PRODUCT SHOWCASE 2 -->
 <div class="showcase">
-  <div class="showcase-label">The Lineup</div>
+  <div class="showcase-label showcase-en">The Lineup</div>
+  <div class="showcase-label showcase-es" style="display:none;">La Línea</div>
   <img src="images/drip-quartet.jpg" alt="Drip Austin — four flavors">
-  <p class="showcase-caption">Four flavors. Pure olive oil and ghee. No seed oils.</p>
+  <p class="showcase-caption showcase-en">Four flavors. Pure olive oil and ghee. No seed oils.</p>
+  <p class="showcase-caption showcase-es" style="display:none;">Cuatro sabores. Aceite de oliva puro y ghee. Sin aceites de semilla.</p>
 </div>
 
 <!-- CHEF PROFILE -->
@@ -582,9 +589,10 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('lang-' + lang).classList.add('active');
   document.querySelector('.lang-btn[onclick*="' + lang + '"]').classList.add('active');
-  // Toggle chef profile language
-  document.querySelector('.chef-en').style.display = lang === 'en' ? 'block' : 'none';
-  document.querySelector('.chef-es').style.display = lang === 'es' ? 'block' : 'none';
+  // Toggle all language-specific elements
+  var en = lang === 'en', es = lang === 'es';
+  document.querySelectorAll('.chef-en, .showcase-en, .hero-sub-en, .hero-tag-en, .parent-en').forEach(function(el) { el.style.display = en ? '' : 'none'; });
+  document.querySelectorAll('.chef-es, .showcase-es, .hero-sub-es, .hero-tag-es, .parent-es').forEach(function(el) { el.style.display = es ? '' : 'none'; });
 }
 </script>
 </body>

@@ -34,8 +34,19 @@
     animation: heroDrift 30s ease-in-out infinite alternate;
   }
   @keyframes heroDrift {
-    0%   { transform: scale(1.02); }
-    100% { transform: scale(1.08); }
+    0%   { transform: scale(1.02) translate(0.5%, 0.2%); }
+    100% { transform: scale(1.08) translate(-0.8%, -0.2%); }
+  }
+  /* Film grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 0.5;
   }
   .hero-content {
     position: relative;
@@ -56,19 +67,25 @@
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 700;
-    font-size: clamp(2.2rem, 7vw, 3.5rem);
-    line-height: 1.05;
-    margin-bottom: 12px;
+    font-size: clamp(2.8rem, 9vw, 4.5rem);
+    line-height: 1.0;
+    margin-bottom: 14px;
     background: linear-gradient(180deg, #f0d590 0%, #c9a35b 55%, #a8863a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: heroReveal 1.8s ease-out forwards;
+    opacity: 0;
   }
   .hero-sub {
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-    font-weight: 300;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+    font-weight: 400;
     color: rgba(255,255,255,0.6);
     margin-bottom: 8px;
+    animation: heroReveal 1.6s ease-out 0.4s forwards;
+    opacity: 0;
   }
   .hero-tag {
     font-size: 0.7rem;
@@ -77,6 +94,24 @@
     text-transform: uppercase;
     color: rgba(201,163,91,0.7);
     margin-bottom: 28px;
+    animation: heroReveal 1.4s ease-out 0.8s forwards;
+    opacity: 0;
+  }
+  @keyframes heroReveal {
+    0%   { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .hero-rule {
+    width: 120px;
+    height: 1px;
+    margin: 0 auto 16px;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,163,91,0.7) 50%, transparent 100%);
+    animation: ruleDrawIn 1.2s ease-out 0.3s forwards;
+    transform: scaleX(0);
+  }
+  @keyframes ruleDrawIn {
+    0%   { transform: scaleX(0); opacity: 0; }
+    100% { transform: scaleX(1); opacity: 1; }
   }
   .parent-brand {
     display: flex;
@@ -86,6 +121,8 @@
     margin-top: 20px;
     padding-top: 16px;
     border-top: 1px solid rgba(201,163,91,0.15);
+    animation: heroReveal 1.2s ease-out 1.2s forwards;
+    opacity: 0;
   }
   .parent-logo {
     width: 28px;
@@ -232,8 +269,8 @@
   .showcase img {
     width: 100%;
     max-width: 560px;
-    border-radius: 12px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,163,91,0.15);
+    border-radius: 0;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,163,91,0.2);
     margin-bottom: 16px;
     display: block;
     margin-left: auto;
@@ -364,6 +401,7 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <h1 class="hero-title">Drip Austin</h1>
+    <div class="hero-rule"></div>
     <p class="hero-sub hero-sub-en">Made for Pizza. Ready for Everything.</p>
     <p class="hero-sub hero-sub-es" style="display:none;">Hecha para Pizza. Lista para Todo.</p>
     <p class="hero-tag hero-tag-en">For Claudia Vital &nbsp;·&nbsp; April 2026</p>

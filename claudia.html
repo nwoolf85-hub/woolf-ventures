@@ -134,20 +134,37 @@
     font-size: clamp(5rem, 18vw, 9rem);
     letter-spacing: 0.1em;
     display: block;
-    background: linear-gradient(
-      180deg,
-      #f5e6a8 0%,
-      #e8cc6e 15%,
-      #c9a35b 40%,
-      #a8863a 65%,
-      #c9a35b 80%,
-      #f0d590 100%
-    );
+    background:
+      linear-gradient(
+        110deg,
+        rgba(245,230,168,0) 0%,
+        rgba(245,230,168,0) 35%,
+        rgba(255,245,200,0.6) 45%,
+        rgba(245,230,168,0) 55%,
+        rgba(245,230,168,0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        #f5e6a8 0%,
+        #dbb94e 12%,
+        #c9a35b 30%,
+        #8f6d34 50%,
+        #c9a35b 70%,
+        #dbb94e 88%,
+        #f5e6a8 100%
+      );
+    background-size: 200% 100%, 100% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 0.85;
-    filter: drop-shadow(0 2px 8px rgba(201,163,91,0.3));
+    filter: drop-shadow(0 2px 12px rgba(201,163,91,0.35));
+    animation: heroReveal 1.8s ease-out forwards, goldShimmer 6s ease-in-out 2.5s infinite;
+    opacity: 0;
+  }
+  @keyframes goldShimmer {
+    0%   { background-position: -100% 0, 0 0; }
+    100% { background-position: 200% 0, 0 0; }
   }
   .austin-word {
     font-family: 'Inter', sans-serif;
@@ -469,7 +486,7 @@
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1 class="hero-title"><span class="drip-word">DRIP</span><span class="austin-word">AUSTIN</span></h1>
+    <h1 class="hero-title"><span class="drip-word" data-text="DRIP">DRIP</span><span class="austin-word">AUSTIN</span></h1>
     <p class="hero-ritual">drip &nbsp;· &nbsp;drizzle &nbsp;· &nbsp;dip</p>
     <div class="hero-rule"></div>
     <p class="hero-sub hero-sub-en">Made for Pizza. Ready for Everything.</p>

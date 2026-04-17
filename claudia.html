@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drip Austin — Para Claudia</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -64,18 +64,37 @@
     box-shadow: 0 0 40px rgba(201,163,91,0.2);
   }
   .hero-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-style: italic;
-    font-weight: 700;
-    font-size: clamp(2.8rem, 9vw, 4.5rem);
-    line-height: 1.0;
     margin-bottom: 14px;
-    background: linear-gradient(180deg, #f0d590 0%, #c9a35b 55%, #a8863a 100%);
+    animation: heroReveal 1.8s ease-out forwards;
+    opacity: 0;
+    text-align: center;
+    line-height: 1;
+  }
+  .drip-word {
+    font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(4.5rem, 16vw, 8rem);
+    letter-spacing: 0.08em;
+    display: block;
+    background: linear-gradient(180deg, #f0d590 0%, #c9a35b 45%, #a8863a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: heroReveal 1.8s ease-out forwards;
-    opacity: 0;
+    line-height: 0.9;
+  }
+  .austin-word {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: clamp(1rem, 3.5vw, 1.6rem);
+    letter-spacing: 0.35em;
+    display: block;
+    background: linear-gradient(180deg, rgba(240,213,144,0.7) 0%, rgba(201,163,91,0.5) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 4px;
   }
   .hero-sub {
     font-family: 'Playfair Display', Georgia, serif;
@@ -400,7 +419,7 @@
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1 class="hero-title">Drip Austin</h1>
+    <h1 class="hero-title"><span class="drip-word">DRIP</span><span class="austin-word">AUSTIN</span></h1>
     <div class="hero-rule"></div>
     <p class="hero-sub hero-sub-en">Made for Pizza. Ready for Everything.</p>
     <p class="hero-sub hero-sub-es" style="display:none;">Hecha para Pizza. Lista para Todo.</p>

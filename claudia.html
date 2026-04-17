@@ -540,18 +540,32 @@
 
 <!-- CHEF PROFILE -->
 <div class="chef-profile">
-  <div class="showcase-label">The Chef Behind the Sauce</div>
   <div class="chef-card">
     <div class="chef-initial">CV</div>
     <h3 class="chef-name">Claudia Vital</h3>
     <p class="chef-title">Chef &amp; Co-Creator &nbsp;·&nbsp; Austin, Texas</p>
     <div class="chef-rule"></div>
-    <ul class="chef-creds">
-      <li>Private caterer for <strong>Oscar-winning actors</strong>, <strong>Fortune 500 founders</strong>, and Austin's most discerning tables — including <strong>Matthew McConaughey</strong> and <strong>John Mackey</strong>, the man who built Whole Foods</li>
-      <li>Runs her own kitchen — specializes in fresh, from-scratch sauces with real ingredients</li>
-      <li>Mexican-American heritage — the flavors she grew up with are the ones nobody else is putting in a dip cup</li>
-    </ul>
-    <p class="chef-quote">"The people who've eaten her food don't forget it. Now everyone else gets to try."</p>
+
+    <div class="chef-en">
+      <div class="showcase-label">The Chef Behind the Sauce</div>
+      <ul class="chef-creds">
+        <li>Private caterer for <strong>Oscar-winning actors</strong>, <strong>Fortune 500 founders</strong>, and Austin's most discerning tables — including <strong>Matthew McConaughey</strong> and <strong>John Mackey</strong>, the man who built Whole Foods</li>
+        <li>Runs her own kitchen — specializes in fresh, from-scratch sauces with real ingredients</li>
+        <li>Mexican-American heritage — the flavors she grew up with are the ones nobody else is putting in a dip cup</li>
+      </ul>
+      <p class="chef-quote">"The people who've eaten her food don't forget it. Now everyone else gets to try."</p>
+    </div>
+
+    <div class="chef-es" style="display:none;">
+      <div class="showcase-label">La Chef Detrás de la Salsa</div>
+      <ul class="chef-creds">
+        <li>Chef privada para <strong>actores ganadores del Oscar</strong>, <strong>fundadores de empresas Fortune 500</strong>, y las mesas más exclusivas de Austin — incluyendo a <strong>Matthew McConaughey</strong> y <strong>John Mackey</strong>, el hombre que creó Whole Foods</li>
+        <li>Dirige su propia cocina — se especializa en salsas frescas, hechas desde cero con ingredientes de verdad</li>
+        <li>Herencia mexicoamericana — los sabores con los que creció son los que nadie más está poniendo en un vasito de salsa</li>
+      </ul>
+      <p class="chef-quote">"La gente que ha probado su comida no la olvida. Ahora todos los demás pueden probar."</p>
+    </div>
+
   </div>
 </div>
 
@@ -568,6 +582,9 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('lang-' + lang).classList.add('active');
   document.querySelector('.lang-btn[onclick*="' + lang + '"]').classList.add('active');
+  // Toggle chef profile language
+  document.querySelector('.chef-en').style.display = lang === 'en' ? 'block' : 'none';
+  document.querySelector('.chef-es').style.display = lang === 'es' ? 'block' : 'none';
 }
 </script>
 </body>

@@ -2607,6 +2607,51 @@
   /* ---------- RESPONSIVE ---------- */
   /* Mid widths: shrink hero padding + headline before we stack for mobile */
   /* ---------- LARGE SCREENS (iMac 27", ultrawide) ---------- */
+  /* ---------- MEDIUM SCREENS (1024–1280) — tighter side-by-side ---------- */
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    .hero {
+      grid-template-columns: 1fr 1fr;
+      margin: 10px;
+      border-radius: 28px;
+    }
+    .hero-text {
+      padding: 60px 40px 50px;
+    }
+    .ring-assembly {
+      width: 320px;
+      height: 320px;
+      margin-bottom: 20px;
+    }
+    .wv-seal {
+      width: 145px;
+      height: 145px;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+    h1 .light {
+      font-size: 0.3em;
+      letter-spacing: 0.16em;
+    }
+    .subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+    .title-card::before {
+      width: 360px;
+      height: 360px;
+    }
+    .title-card .rule {
+      width: 100px;
+      margin: -10px 0 18px;
+    }
+    .btn {
+      padding: 14px 26px;
+      font-size: 0.7rem;
+    }
+  }
+
   @media (min-width: 1800px) {
     .hero {
       margin: 24px;
@@ -2810,19 +2855,24 @@
       padding: 10px 14px;
     }
     .nav-cta {
-      font-size: 0.65rem;
-      padding: 8px 14px;
+      font-size: 0.6rem;
+      padding: 7px 12px;
+      letter-spacing: 0.1em;
     }
     .brand {
-      font-size: 0.7rem;
-      gap: 8px;
+      font-size: 0.65rem;
+      gap: 6px;
     }
     .brand img {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
+    }
+    .brand span {
+      display: none;
     }
     .theme-toggle {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
+      padding: 4px 8px;
     }
   }
 </style>

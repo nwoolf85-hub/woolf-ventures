@@ -499,12 +499,12 @@
     margin-bottom: -4px;
     line-height: 0.85;
   }
-  /* "Sales · Technology · Distribution" — spaced-out editorial pillars */
+  /* "Sales · Technology · Distribution · Entertainment" — spaced-out editorial pillars */
   h1 .light {
     font-weight: 400;
     display: block;
-    font-size: 0.38em;
-    letter-spacing: 0.28em;
+    font-size: 0.34em;
+    letter-spacing: 0.2em;
     margin-top: 24px;
     text-transform: uppercase;
     font-family: 'Inter', sans-serif;
@@ -2657,19 +2657,19 @@
     /* Hero stacks: photo on top, text+monogram below */
     .hero {
       grid-template-columns: 1fr;
-      grid-template-rows: 55vh auto;
+      grid-template-rows: 40vh auto;
       min-height: auto;
       margin: 10px;
       border-radius: 20px;
     }
     .hero-photo {
       order: 1;
-      min-height: 55vh;
+      min-height: 40vh;
     }
     .hero-text {
       order: 2;
       min-height: auto;
-      padding: 80px 24px 60px;
+      padding: 48px 24px 40px;
       border-right: none;
       border-top: 1px solid rgba(201,163,91,0.10);
     }
@@ -2682,23 +2682,25 @@
       background: linear-gradient(90deg, transparent 0%, rgba(201,163,91,0.28) 50%, transparent 100%);
     }
     .ring-assembly {
-      width: 320px;
-      height: 320px;
-      margin-bottom: 20px;
+      width: 280px;
+      height: 280px;
+      margin-bottom: 16px;
     }
     .wv-seal {
-      width: 140px;
-      height: 140px;
+      width: 130px;
+      height: 130px;
     }
     .title-card::before {
-      width: 360px;
-      height: 360px;
-      top: -30px;
+      width: 320px;
+      height: 320px;
+      top: -20px;
     }
     .title-card .rule {
-      width: 120px;
-      margin: -14px 0 24px;
+      width: 100px;
+      margin: -10px 0 18px;
     }
+    h1 { margin-bottom: 20px; }
+    .subtitle { margin-bottom: 28px; }
     .hero-bg {
       background-position: 58% 28%;
       transform-origin: 58% 46%;
@@ -2720,6 +2722,84 @@
     .operators-grid { grid-template-columns: 1fr; }
     .operator-card { padding: 40px 28px; }
     .operator-name { font-size: 2rem; }
+  }
+
+  /* ---------- PHONE (≤480px) ---------- */
+  @media (max-width: 480px) {
+    .hero {
+      grid-template-rows: 35vh auto;
+      margin: 6px;
+      border-radius: 16px;
+    }
+    .hero-photo {
+      min-height: 35vh;
+    }
+    .hero-text {
+      padding: 32px 18px 32px;
+    }
+    .ring-assembly {
+      width: 220px;
+      height: 220px;
+      margin-bottom: 12px;
+    }
+    .wv-seal {
+      width: 100px;
+      height: 100px;
+    }
+    .title-card::before {
+      width: 260px;
+      height: 260px;
+      top: -16px;
+    }
+    .title-card .rule {
+      width: 80px;
+      margin: -8px 0 14px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+    h1 .serif {
+      font-size: 1.4em;
+    }
+    h1 .light {
+      font-size: 0.32em;
+      letter-spacing: 0.18em;
+      margin-top: 12px;
+    }
+    .subtitle {
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+    .cta-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn {
+      padding: 14px 24px;
+      font-size: 0.7rem;
+      width: 100%;
+      justify-content: center;
+    }
+    .scroll-cue { display: none; }
+    nav {
+      padding: 10px 14px;
+    }
+    .nav-cta {
+      font-size: 0.65rem;
+      padding: 8px 14px;
+    }
+    .brand {
+      font-size: 0.7rem;
+      gap: 8px;
+    }
+    .brand img {
+      width: 28px;
+      height: 28px;
+    }
+    .theme-toggle {
+      font-size: 0.65rem;
+    }
   }
 </style>
 </head>

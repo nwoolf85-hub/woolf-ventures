@@ -120,6 +120,14 @@
     0%   { opacity: 0; transform: translateY(16px); }
     100% { opacity: 1; transform: translateY(0); }
   }
+  .hero-logo-img {
+    width: clamp(220px, 55vw, 340px);
+    display: block;
+    margin: 0 auto 6px;
+    animation: heroReveal 2s ease-out forwards;
+    opacity: 0;
+    filter: drop-shadow(0 4px 20px rgba(201,163,91,0.15));
+  }
   .hero-ritual {
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
@@ -430,8 +438,7 @@
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1 class="hero-title"><span class="drip-word">DRIP</span><span class="austin-word">AUSTIN</span></h1>
-    <p class="hero-ritual">drip. drizzle. dip.</p>
+    <img class="hero-logo-img" src="images/drip-austin-logo.png" alt="DRIP AUSTIN — drip. drizzle. dip.">
     <div class="hero-rule"></div>
     <p class="hero-sub hero-sub-en">Made for Pizza. Ready for Everything.</p>
     <p class="hero-sub hero-sub-es" style="display:none;">Hecha para Pizza. Lista para Todo.</p>

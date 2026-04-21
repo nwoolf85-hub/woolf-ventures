@@ -941,8 +941,17 @@
     box-shadow: 0 0 0 0 rgba(74,222,128,0.6);
     animation: pulse 2.4s ease-out infinite;
   }
-  .dot-booking { background: var(--accent); }
+  .dot-booking {
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(201,163,91,0.6);
+    animation: pulseGold 3s ease-out infinite;
+  }
   .dot-dev { background: rgba(255,255,255,0.4); }
+  @keyframes pulseGold {
+    0%   { box-shadow: 0 0 0 0 rgba(201,163,91,0.55); }
+    70%  { box-shadow: 0 0 0 8px rgba(201,163,91,0); }
+    100% { box-shadow: 0 0 0 0 rgba(201,163,91,0); }
+  }
   @keyframes pulse {
     0%   { box-shadow: 0 0 0 0 rgba(74,222,128,0.55); }
     70%  { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
@@ -2494,8 +2503,31 @@
 
   /* ---------- FOOTER ---------- */
   footer {
-    padding: 60px 80px;
+    padding: 72px 80px 56px;
     border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    text-align: center;
+  }
+  /* Manifesto line — the sendoff. Playfair italic, echoes the tagline's
+     register. Sits above the brand row as the page's closing sentence. */
+  .footer-manifesto {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.55);
+    max-width: 680px;
+  }
+  [data-theme="light"] .footer-manifesto {
+    color: rgba(24,22,20,0.55);
+  }
+  .footer-row {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -3785,13 +3817,18 @@
 </section>
 
 <footer>
-  <div class="brand">
-    <img src="images/woolf-logo.jpeg" alt="Woolf Ventures" />
-    <span>Woolf Ventures LLC · Austin, Texas</span>
+  <div class="footer-manifesto">
+    Raised in Ann Arbor. Built in Austin. From Big Bend to Your Backyard.
   </div>
-  <div class="footer-meta">
-    <a href="pack.html" style="color:rgba(201,163,91,0.75);margin-right:18px;letter-spacing:0.12em;">The Pack →</a>
-    © 2026 Austin, Texas · All Rights Reserved
+  <div class="footer-row">
+    <div class="brand">
+      <img src="images/woolf-logo.jpeg" alt="Woolf Ventures" />
+      <span>Woolf Ventures LLC · Austin, Texas</span>
+    </div>
+    <div class="footer-meta">
+      <a href="pack.html" style="color:rgba(201,163,91,0.75);margin-right:18px;letter-spacing:0.12em;">The Pack →</a>
+      © 2026 Austin, Texas · All Rights Reserved
+    </div>
   </div>
 </footer>
 

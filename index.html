@@ -7,9 +7,9 @@
 <!-- TODO: Replace YOUR_WEBSITE_ID with the real ID from cloud.umami.is -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR_WEBSITE_ID"></script>
 <title>Woolf Ventures — Sales · Technology · Distribution · Entertainment</title>
-<meta name="description" content="Two brothers. One long game. The operating company of Neal & Steven Woolf — B2B sales platforms, AI infrastructure, consumer brands, screenplays, music, and patents from one playbook. Raised in Ann Arbor. Built in Austin." />
+<meta name="description" content="From Big Bend to Your Backyard. Woolf Ventures — B2B sales platforms, AI-powered distribution, consumer brands, and original entertainment. Built in Austin by Neal & Steven Woolf." />
 <meta property="og:title" content="Woolf Ventures — Sales · Technology · Distribution · Entertainment" />
-<meta property="og:description" content="Two brothers. One long game. Sales · Technology · Story · Sound. Raised in Ann Arbor, built in Austin." />
+<meta property="og:description" content="From Big Bend to Your Backyard. The operating company of Neal & Steven Woolf — sales, technology, story, sound." />
 <meta property="og:image" content="https://nwoolf85-hub.github.io/woolf-ventures/images/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -86,7 +86,9 @@
   }
   a { color: inherit; text-decoration: none; }
 
-  /* ---------- FILM GRAIN OVERLAY (sitewide) ---------- */
+  /* ---------- FILM GRAIN OVERLAY (sitewide) ----------
+     Projector-strike effect: grain starts at zero, builds to full opacity
+     over 1.4s on load. That first beat where the lamp warms up. */
   body::before {
     content: '';
     position: fixed;
@@ -95,10 +97,12 @@
     height: 200%;
     pointer-events: none;
     z-index: 9999;
-    opacity: var(--grain-opacity);
+    opacity: 0;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    animation: grainShift 0.6s steps(4) infinite;
+    animation:
+      grainShift 0.6s steps(4) infinite,
+      grainStrike 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
   @keyframes grainShift {
     0%   { transform: translate(0, 0); }
@@ -106,6 +110,13 @@
     50%  { transform: translate(1%, -2%); }
     75%  { transform: translate(-1%, 2%); }
     100% { transform: translate(2%, -1%); }
+  }
+  @keyframes grainStrike {
+    0%   { opacity: 0; }
+    100% { opacity: var(--grain-opacity); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    body::before { animation: none; opacity: var(--grain-opacity); }
   }
 
   /* ---------- CHAPTER MARKERS (Roman numerals) ---------- */
@@ -129,6 +140,21 @@
     height: 1px;
     background: var(--accent);
     opacity: 0.6;
+  }
+  /* Hero chapter marker — sits inside the photo column just below the
+     top letterbox, fades in after the matte settles. Film-title-card
+     register: "I · Austin, MMXXV" reads as a chapter head, not a label. */
+  .chapter.on-hero {
+    top: 58px;
+    right: 32px;
+    z-index: 5;
+    opacity: 0;
+    animation: titleReveal 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1.6s forwards;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  }
+  .chapter.on-hero::before {
+    background: linear-gradient(90deg, transparent 0%, var(--accent) 100%);
+    opacity: 0.75;
   }
 
   /* ---------- NAV ---------- */
@@ -201,7 +227,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 120px 80px 100px;
+    padding: 100px 48px 80px;
     background:
       radial-gradient(ellipse at 30% 45%, rgba(201,163,91,0.06), rgba(9,9,11,0) 65%),
       var(--bg);
@@ -362,7 +388,7 @@
                   transparent 0%,
                   rgba(201,163,91,0.7) 50%,
                   transparent 100%);
-    animation: ruleDrawIn 1.2s ease-out 1.0s forwards;
+    animation: ruleDrawIn 1.4s ease-out 1.4s forwards;
     transform: scaleX(0);
   }
   @keyframes ruleDrawIn {
@@ -372,7 +398,7 @@
   .title-card h1 {
     position: relative;
     z-index: 1;
-    animation: textBreath 7s ease-in-out infinite alternate, titleReveal 1.8s ease-out 1.2s forwards;
+    animation: textBreath 7s ease-in-out infinite alternate, titleReveal 2.0s cubic-bezier(0.2, 0.7, 0.2, 1) 2.0s forwards;
     opacity: 0;
   }
   @keyframes titleReveal {
@@ -384,11 +410,11 @@
     z-index: 1;
     margin-left: auto;
     margin-right: auto;
-    animation: textBreath 7s ease-in-out infinite alternate, titleReveal 1.8s ease-out 1.8s forwards;
+    animation: textBreath 7s ease-in-out infinite alternate, titleReveal 2.0s cubic-bezier(0.2, 0.7, 0.2, 1) 3.0s forwards;
     opacity: 0;
   }
   .title-card .cta-row {
-    animation: titleReveal 1.4s ease-out 2.4s forwards;
+    animation: titleReveal 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 4.0s forwards;
     opacity: 0;
   }
   /* Very subtle text breath — you shouldn't see it, you should feel the
@@ -414,21 +440,25 @@
   }
   .hero-bg {
     position: absolute;
-    inset: -8%;
+    inset: -10%;
     background-image: url('images/hero-desert.jpg');
     background-size: cover;
     background-position: 60% 26%;
     filter: var(--hero-photo-filter);
     z-index: 0;
-    animation: kenburns 38s ease-in-out infinite alternate;
+    animation: kenburns 54s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
     will-change: transform;
-    transform-origin: 60% 48%;
+    transform-origin: 62% 40%;
   }
-  /* Slow left drift — documentary camera on a tripod, barely noticeable
-     push-in with a gentle leftward pan. Anchored on Neal's face. */
+  /* Milius push-in — camera starts wide, slowly drives into the eye-line
+     under the hat brim, holds a beat at peak, then continues past. The
+     hold-beat between 45% and 55% is the Eastwood moment: the gaze
+     catches you before the camera keeps going. */
   @keyframes kenburns {
-    0%   { transform: scale(1.02) translate(0.6%, 0.2%); }
-    100% { transform: scale(1.06) translate(-1.2%, -0.1%); }
+    0%   { transform: scale(1.03) translate(0.6%, 0.5%); }
+    45%  { transform: scale(1.11) translate(-0.9%, -0.3%); }
+    55%  { transform: scale(1.115) translate(-1.0%, -0.35%); }
+    100% { transform: scale(1.15) translate(-1.8%, -0.7%); }
   }
   @media (prefers-reduced-motion: reduce) {
     .hero-bg { animation: none; transform: scale(1.04); }
@@ -438,6 +468,20 @@
     position: absolute;
     inset: 0;
     background:
+      /* Classic spaghetti-western vignette — corners pull toward black.
+         Center stays lit so the eyes hold the frame. */
+      radial-gradient(ellipse 120% 90% at 62% 40%,
+        transparent 0%,
+        transparent 45%,
+        rgba(9,9,11,0.18) 78%,
+        rgba(9,9,11,0.42) 100%),
+      /* Leone warm dust — low-opacity sepia pulled across the whole image,
+         heavier at the bottom where the land would be. */
+      linear-gradient(180deg,
+        rgba(201,142,72,0.04) 0%,
+        rgba(201,142,72,0.00) 45%,
+        rgba(100,55,20,0.08) 100%),
+      /* Existing text-side fade and top/bottom darkening — preserved. */
       linear-gradient(90deg,
         rgba(9,9,11,0.45) 0%,
         rgba(9,9,11,0.10) 30%,
@@ -460,6 +504,20 @@
   }
   .letterbox.top { top: 0; border-bottom: 1px solid rgba(201,163,91,0.45); }
   .letterbox.bot { bottom: 0; border-top: 1px solid rgba(201,163,91,0.45); }
+  /* Aspect-ratio lock — bars start at 50px and crunch down to 36px over
+     900ms. The matte is settling into place, like a projectionist adjusting
+     the aperture before the title card. */
+  .letterbox {
+    height: 50px;
+    animation: letterboxSettle 900ms cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  }
+  @keyframes letterboxSettle {
+    0%   { height: 50px; }
+    100% { height: 36px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .letterbox { height: 36px; animation: none; }
+  }
 
   /* .hero-title removed — the WV seal on the title card now owns brand identity.
      The photo column is pure cinema: just Neal, the desert, the letterboxing. */
@@ -548,10 +606,13 @@
   h1 .light {
     font-weight: 400;
     display: block;
-    font-size: 0.34em;
-    letter-spacing: 0.2em;
+    font-size: 0.26em;
+    letter-spacing: 0.12em;
     margin-top: 24px;
     text-transform: uppercase;
+    white-space: normal;
+    line-height: 1.4;
+    max-width: 100%;
     font-family: 'Inter', sans-serif;
     background: linear-gradient(180deg, rgba(201,163,91,0.55) 0%, rgba(168,134,58,0.4) 100%);
     -webkit-background-clip: text;
@@ -561,15 +622,44 @@
   .subtitle {
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
-    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    font-size: clamp(1.3rem, 2.2vw, 1.85rem);
     font-weight: 400;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.45);
-    max-width: 520px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.55);
+    max-width: 680px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 48px;
     letter-spacing: 0.01em;
+  }
+  /* Tagline gold bookends — "Big Bend" and "Backyard" get the same
+     gold-on-gold shimmer treatment as the "Woolf" serif in the h1. Two
+     warm anchors that frame the sentence; your eye bounces between them
+     and the connective tissue recedes. */
+  .subtitle .gold {
+    background:
+      linear-gradient(110deg,
+        rgba(245,230,168,0) 0%,
+        rgba(245,230,168,0) 35%,
+        rgba(255,245,200,0.55) 45%,
+        rgba(245,230,168,0) 55%,
+        rgba(245,230,168,0) 100%),
+      linear-gradient(180deg,
+        #f5e6a8 0%,
+        #dbb94e 12%,
+        #c9a35b 30%,
+        #8f6d34 50%,
+        #c9a35b 70%,
+        #dbb94e 88%,
+        #f5e6a8 100%);
+    background-size: 200% 100%, 100% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: goldShimmerWV 8s ease-in-out 2s infinite;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    filter: drop-shadow(0 1px 8px rgba(201,163,91,0.25));
   }
   .cta-row {
     display: flex;
@@ -586,7 +676,7 @@
     letter-spacing: 0.22em;
     text-transform: uppercase;
     border: 1px solid var(--line-strong);
-    border-radius: 0;
+    border-radius: 16px;
     transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
     cursor: pointer;
   }
@@ -600,17 +690,51 @@
     transform: translateY(-2px);
     box-shadow: 0 16px 40px rgba(255,255,255,0.18), 0 0 80px rgba(201,163,91,0.15);
   }
+  /* Apple Control-Center glass — frosted material, top-edge highlight,
+     inner bottom shade for dimensional depth. The hand lands here, so the
+     glass material is intentional, not decorative. */
   .btn-ghost {
-    background: rgba(255,255,255,0.04);
-    backdrop-filter: blur(20px) saturate(150%);
-    -webkit-backdrop-filter: blur(20px) saturate(150%);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    background: var(--glass-bg);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.18),
+      inset 0 -1px 0 rgba(0,0,0,0.12),
+      0 10px 28px rgba(0,0,0,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Slow light-sweep across the glass — barely visible, the kind of thing
+     you only notice because your eye has already settled on it. */
+  .btn-ghost::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(
+      100deg,
+      transparent 0%,
+      rgba(255,255,255,0.08) 45%,
+      rgba(255,255,255,0.14) 50%,
+      rgba(255,255,255,0.08) 55%,
+      transparent 100%
+    );
+    transition: left 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    pointer-events: none;
   }
   .btn-ghost:hover {
-    border-color: rgba(255,255,255,0.6);
-    background: rgba(255,255,255,0.08);
+    border-color: var(--glass-hover-border);
+    background: var(--glass-hover-bg);
     transform: translateY(-2px);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 12px 32px rgba(0,0,0,0.4);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      inset 0 -1px 0 rgba(0,0,0,0.14),
+      0 16px 40px rgba(0,0,0,0.45),
+      0 0 60px rgba(201,163,91,0.12);
+  }
+  .btn-ghost:hover::before {
+    left: 100%;
   }
   .btn .arrow { display: inline-block; transition: transform 0.3s ease; }
   .btn:hover .arrow { transform: translateX(6px); }
@@ -742,7 +866,7 @@
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
     border: 1px solid var(--glass-border);
-    border-radius: 0;
+    border-radius: 24px;
     padding: 48px 40px;
     min-height: 280px;
     display: flex;
@@ -2799,12 +2923,12 @@
       margin-bottom: 20px;
     }
     h1 .light {
-      font-size: 0.3em;
-      letter-spacing: 0.16em;
+      font-size: 0.24em;
+      letter-spacing: 0.10em;
     }
     .subtitle {
-      font-size: 0.9rem;
-      margin-bottom: 28px;
+      font-size: 1.3rem;
+      margin-bottom: 32px;
     }
     .title-card::before {
       width: 360px;
@@ -3003,12 +3127,13 @@
       font-size: 1.4em;
     }
     h1 .light {
-      font-size: 0.32em;
-      letter-spacing: 0.18em;
+      font-size: 0.28em;
+      letter-spacing: 0.10em;
       margin-top: 12px;
+      white-space: normal;
     }
     .subtitle {
-      font-size: 0.85rem;
+      font-size: 1.15rem;
       margin-bottom: 20px;
     }
     .cta-row {
@@ -3119,7 +3244,7 @@
           <span class="light">Sales&nbsp;·&nbsp;Technology&nbsp;·&nbsp;Distribution&nbsp;·&nbsp;Entertainment</span>
         </h1>
         <p class="subtitle">
-          B2B sales platforms, AI-powered distribution, consumer brands, original screenplays, and music — built from Austin by Neal &amp; Steven Woolf.
+          From <span class="gold">Big Bend</span> to Your <span class="gold">Backyard</span>.
         </p>
         <div class="cta-row">
           <a href="#ventures" class="btn btn-primary">Explore The Portfolio <span class="arrow">→</span></a>
@@ -3134,7 +3259,7 @@
     <div class="letterbox top"></div>
     <div class="letterbox bot"></div>
     <!-- hero-title removed: seal owns brand identity, photo is pure cinema -->
-    <div class="chapter">I. &nbsp; Prologue</div>
+    <div class="chapter on-hero">I &nbsp;·&nbsp; Prologue</div>
   </div>
 </section>
 
@@ -3199,9 +3324,9 @@
       <div>
         <div class="num">04</div>
         <h3>Conquest of Empire</h3>
-        <p>HBO-style limited series. The Spanish conquest of the Aztecs. Three of eight episodes drafted.</p>
+        <p>HBO-style limited series on the fall of Tenochtitlán. All eight episodes written. Proof-of-concept short heading to the festival circuit.</p>
       </div>
-      <div class="meta"><span class="dot dot-dev"></span>Screenplay · Drafting</div>
+      <div class="meta"><span class="dot dot-booking"></span>Screenplay Complete · Short in Production</div>
     </div>
     <div class="card reveal">
       <div>
@@ -3771,6 +3896,93 @@
     btn.textContent = isLight ? 'Dusk' : 'Dawn';
   }
   updateToggleLabel();
+</script>
+
+<!-- ─────────────────────────────────────────────────────────────
+     HERO MOUSE INTERACTION — parallax + eye-lock
+     Two effects on one mousemove listener:
+     1. Title card tilts 1.5° opposite to cursor (Apple product-page vibe)
+     2. Ken Burns transform-origin drifts toward cursor — Neal's gaze follows
+     Skips on touch, reduced-motion, or missing elements.
+     ───────────────────────────────────────────────────────────── */
+<script>
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
+  const hero = document.querySelector('.hero');
+  const titleCard = document.querySelector('.title-card');
+  const heroBg = document.querySelector('.hero-bg');
+  if (!hero || !titleCard || !heroBg) return;
+
+  // Base pivot matches the CSS transform-origin (62% 40% — eye-line)
+  const BASE_X = 62, BASE_Y = 40;
+  const ORIGIN_RANGE_X = 5;   // % drift left/right
+  const ORIGIN_RANGE_Y = 4;   // % drift up/down
+  const TILT_MAX = 1.6;       // degrees
+  const SHIFT_MAX = 4;        // pixels opposite cursor
+
+  let targetTiltX = 0, targetTiltY = 0;
+  let targetShiftX = 0, targetShiftY = 0;
+  let targetOriginX = BASE_X, targetOriginY = BASE_Y;
+  let currentTiltX = 0, currentTiltY = 0;
+  let currentShiftX = 0, currentShiftY = 0;
+  let currentOriginX = BASE_X, currentOriginY = BASE_Y;
+
+  let active = false;
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    // Normalized cursor position from hero center: -1 (edge) to +1 (edge)
+    const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+
+    // Title card: tilt opposite to cursor (Apple-style), subtle shift same direction
+    targetTiltX = -ny * TILT_MAX;  // mouse up → card tilts top toward you
+    targetTiltY = nx * TILT_MAX;   // mouse right → card tilts right toward you
+    targetShiftX = -nx * SHIFT_MAX;
+    targetShiftY = -ny * SHIFT_MAX;
+
+    // Ken Burns pivot drifts toward cursor — his gaze shifts slightly to follow
+    targetOriginX = BASE_X + nx * ORIGIN_RANGE_X;
+    targetOriginY = BASE_Y + ny * ORIGIN_RANGE_Y;
+
+    active = true;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    targetTiltX = 0; targetTiltY = 0;
+    targetShiftX = 0; targetShiftY = 0;
+    targetOriginX = BASE_X; targetOriginY = BASE_Y;
+  });
+
+  function raf() {
+    const ease = 0.08;
+    currentTiltX += (targetTiltX - currentTiltX) * ease;
+    currentTiltY += (targetTiltY - currentTiltY) * ease;
+    currentShiftX += (targetShiftX - currentShiftX) * ease;
+    currentShiftY += (targetShiftY - currentShiftY) * ease;
+    currentOriginX += (targetOriginX - currentOriginX) * ease;
+    currentOriginY += (targetOriginY - currentOriginY) * ease;
+
+    titleCard.style.transform =
+      `perspective(1400px) ` +
+      `rotateX(${currentTiltX.toFixed(3)}deg) ` +
+      `rotateY(${currentTiltY.toFixed(3)}deg) ` +
+      `translate3d(${currentShiftX.toFixed(2)}px, ${currentShiftY.toFixed(2)}px, 0)`;
+
+    heroBg.style.transformOrigin =
+      `${currentOriginX.toFixed(2)}% ${currentOriginY.toFixed(2)}%`;
+
+    requestAnimationFrame(raf);
+  }
+  // Prep the title card for 3D transforms + GPU acceleration
+  titleCard.style.willChange = 'transform';
+  titleCard.style.transformStyle = 'preserve-3d';
+  heroBg.style.willChange = 'transform, transform-origin';
+
+  raf();
+})();
 </script>
 </body>
 </html>
